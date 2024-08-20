@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Design with Animations</title>
+    <style>
+        body {
+            background-color: #1a1a1a;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: 'Arial', sans-serif;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            opacity: 0;
+            animation: fadeIn 2s forwards;
+        }
+
+        .springs {
+            display: flex;
+            justify-content: space-between;
+            width: 120px;
+            position: relative;
+        }
+
+        .spring {
+            width: 10px;
+            height: 150px;
+            background: linear-gradient(135deg, #0d47a1, #42a5f5);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+            border-radius: 5px;
+            animation: springMove 2s infinite ease-in-out, springRotate 3s infinite ease-in-out;
+            transform-origin: top;
+        }
+
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes springMove {
+            0%, 100% { transform: scaleY(1) translateX(0); }
+            25% { transform: scaleY(0.8) translateX(20px); }
+            75% { transform: scaleY(0.8) translateX(-20px); }
+        }
+
+        @keyframes springRotate {
+            0%, 100% { transform: rotate(0deg); }
+            50% { transform: rotate(10deg); }
+        }
+
+        .spring.opposite {
+            animation: springMoveOpposite 2s infinite ease-in-out, springRotate 3s infinite ease-in-out;
+        }
+
+        @keyframes springMoveOpposite {
+            0%, 100% { transform: scaleY(1) translateX(0); }
+            25% { transform: scaleY(0.8) translateX(-20px); }
+            75% { transform: scaleY(0.8) translateX(20px); }
+        }
+
+        .device {
+            background-color: #0d47a1;
+            width: 300px;
+            padding: 25px;
+            border-radius: 20px;
+            position: relative;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+            animation: slideInFromLeft 1.5s ease-out;
+        }
+
+        @keyframes slideInFromLeft {
+            0% {
+                transform: translateX(-100%);
+            }
+            100% {
+                transform: translateX(0);
+            }
+        }
+
+        .screen {
+            background-color: #212121;
+            color: white;
+            padding: 20px;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.7);
+        }
+
+        .plus {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background-color: #1a1a1a;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 18px;
+            border-radius: 50%;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.5);
+            animation: rotatePlus 2s infinite linear, plusBounce 1.5s infinite ease-in-out;
+            cursor: pointer;
+        }
+
+        @keyframes rotatePlus {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        @keyframes plusBounce {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+        }
+
+        .plus:nth-child(1) {
+            top: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .plus:nth-child(2) {
+            right: -10px;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        .plus:nth-child(3) {
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .plus:nth-child(4) {
+            left: -10px;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        .button-container {
+            margin-top: 30px;
+            position: relative;
+            display: flex;
+            justify-content: space-between;
+            opacity: 0;
+            animation: fadeIn 2s 1s forwards;
+        }
+
+        .click-text {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            top: -50px;
+            background: linear-gradient(45deg, #ff4081, #ffca28);
+            color: white;
+            padding: 10px;
+            border-radius: 15px;
+            font-weight: bold;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+            font-family: 'Arial', sans-serif;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+            transform: perspective(500px) rotateX(15deg);
+        }
+
+        .power-button {
+            background: radial-gradient(circle, #ffca28, #ff9800);
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            transition: transform 0.2s ease-in-out;
+            box-shadow: inset 0px 0px 10px rgba(0, 0, 0, 0.5), 0px 5px 15px rgba(0, 0, 0, 0.5);
+            animation: rotatePowerButton 3s infinite linear;
+        }
+
+        .power-icon {
+            width: 25px;
+            height: 25px;
+            background-color: #212121;
+            clip-path: polygon(50% 0%, 75% 25%, 60% 40%, 60% 100%, 40% 100%, 40% 40%, 25% 25%);
+        }
+
+        .power-button:active {
+            transform: scale(0.9);
+        }
+
+        @keyframes rotatePowerButton {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Fire Animation */
+        .fire {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: orange;
+            clip-path: polygon(50% 0%, 61% 32%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 32%);
+            animation: fire 0.5s ease-out forwards;
+        }
+
+        @keyframes fire {
+            0% {
+                transform: scale(0);
+                opacity: 1;
+            }
+            100% {
+                transform: scale(1.5);
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="springs">
+            <div class="spring"></div>
+            <div class="spring opposite"></div>
+        </div>
+        <div class="device">
+            <div class="plus">+</div>
+            <div class="plus">+</div>
+            <div class="plus">+</div>
+            <div class="plus">+</div>
+            <div class="screen">
+                <p>I'm 🇷‌🇦‌🇭‌🇺‌🇱‌ᴘᴜʀɪ</p>
+                <p> स्वागत है आपका, मेरे पर्सनल डैशबोर्ड पर❗</p>
+            </div>
+            <div class="button-container">
+                <div class="click-text">Ｈ么ＣＫ卄Ｒ☣</div>
+                <div class="power-button left-button">
+                    <div class="power-icon"></div>
+                </div>
+                <div class="power-button right-button">
+                    <div class="power-icon"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+    // Auto-redirect after 5 seconds
+        setTimeout(function() {
+            window.location.href = "https://example.com"; // Yahan tumhe apni desired website ka URL daalna hai
+        }, 5000);
+    
+        document.querySelectorAll('.plus').forEach(plus => {
+            plus.addEventListener('click', function() {
+                let fire = document.createElement('div');
+                fire.className = 'fire';
+                fire.style.left = this.offsetLeft + 'px';
+                fire.style.top = this.offsetTop + 'px';
+                document.body.appendChild(fire);
+
+                setTimeout(() => {
+                    fire.remove();
+                }, 500);
+            });
+        });
+
+        document.querySelector('.left-button').addEventListener('click', function() {
+            this.style.backgroundColor = '#4caf50';
+            alert('Left Power Button Clicked!');
+        });
+
+        document.querySelector('.right-button').addEventListener('click', function() {
+            this.style.backgroundColor = '#4caf50';
+            alert('Right Power Button Clicked!');
+        });
+    </script>
+</body>
+</html>
