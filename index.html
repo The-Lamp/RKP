@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Interactive Design with Animations</title>
+    <meta http-equiv="refresh" content="5;url=https://example.com"> <!-- Meta Refresh Tag -->
+
     <style>
         body {
             background-color: #1a1a1a;
@@ -250,34 +252,22 @@
         </div>
     </div>
 
+    <!-- JavaScript for Interactions -->
     <script>
-    // Auto-redirect after 5 seconds
-        setTimeout(function() {
-            window.location.href = "https://example.com"; // Yahan tumhe apni desired website ka URL daalna hai
-        }, 5000);
-    
-        document.querySelectorAll('.plus').forEach(plus => {
-            plus.addEventListener('click', function() {
-                let fire = document.createElement('div');
+        document.querySelectorAll('.power-button').forEach(button => {
+            button.addEventListener('click', () => {
+                // Button click animation
+                const fire = document.createElement('div');
                 fire.className = 'fire';
-                fire.style.left = this.offsetLeft + 'px';
-                fire.style.top = this.offsetTop + 'px';
+                fire.style.left = `${Math.random() * window.innerWidth}px`;
+                fire.style.top = `${Math.random() * window.innerHeight}px`;
                 document.body.appendChild(fire);
 
+                // Remove fire animation after it finishes
                 setTimeout(() => {
-                    fire.remove();
+                    document.body.removeChild(fire);
                 }, 500);
             });
-        });
-
-        document.querySelector('.left-button').addEventListener('click', function() {
-            this.style.backgroundColor = '#4caf50';
-            alert('Left Power Button Clicked!');
-        });
-
-        document.querySelector('.right-button').addEventListener('click', function() {
-            this.style.backgroundColor = '#4caf50';
-            alert('Right Power Button Clicked!');
         });
     </script>
 </body>
