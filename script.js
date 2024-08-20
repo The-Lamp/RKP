@@ -6,13 +6,13 @@ function toggleMenu() {
 
 function showInterface() {
     document.getElementById('second-interface').style.display = 'block';
-    document.querySelector('main').style.display = 'none';
+    document.getElementById('dashboard').style.display = 'none';
     toggleMenu();
 }
 
 function closeInterface() {
     document.getElementById('second-interface').style.display = 'none';
-    document.querySelector('main').style.display = 'block';
+    document.getElementById('dashboard').style.display = 'block';
 }
 
 // Android back button handling
