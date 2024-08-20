@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hacker Dashboard</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <div id="menu-icon" onclick="toggleMenu()">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <h1>Hacker Dashboard</h1>
+    </header>
+
+    <nav id="sidebar">
+        <span id="close-icon" onclick="toggleMenu()">×</span>
+        <ul>
+            <li><a href="#" onclick="showInterface()">Home</a></li>
+            <li><a href="#">Projects</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Contact</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <section>
+            <h2>Welcome to the Hacker Dashboard</h2>
+            <p>This is where all your hacking animations and sections will go.</p>
+        </section>
+    </main>
+
+    <div id="second-interface">
+        <span id="close-second-interface" onclick="closeInterface()">×</span>
+        <h2>Second Interface</h2>
+        <p>This is the second interface. Click the "X" button to go back to the dashboard.</p>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
