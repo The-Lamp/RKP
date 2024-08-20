@@ -192,3 +192,17 @@ section:before {
     from { opacity: 0; }
     to { opacity: 1; }
 }
+
+.feature-box {
+    margin-top: 15px;
+    background: rgba(0, 255, 0, 0.1);
+    padding: 20px;
+    border-radius: 10px;
+    border: 2px solid #00ff00;
+    animation: hacker-flicker 1.5s infinite;
+    transition: transform 0.3s ease;
+}
+
+.feature-box:hover {
+    transform: scale(1.05);
+}
