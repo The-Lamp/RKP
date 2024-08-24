@@ -43,10 +43,35 @@
         }
     
     #countdown {
-            font-size: 3rem;
-            margin-top: 20px;
-            color: #FFC107; /* Yellow color */
-        }
+    font-size: 4rem;
+    margin-top: 20px;
+    color: #FFC107; /* Yellow color */
+    background: linear-gradient(45deg, #FFC107, #FF5722);
+    -webkit-background-clip: text;
+    color: transparent;
+    animation: glow 1s infinite alternate, pulse 1.5s infinite;
+}
+
+@keyframes glow {
+    from {
+        text-shadow: 0 0 10px #FFC107, 0 0 20px #FF5722, 0 0 30px #FF9800, 0 0 40px #FF5722;
+    }
+    to {
+        text-shadow: 0 0 20px #FF5722, 0 0 30px #FF9800, 0 0 40px #FFC107, 0 0 50px #FF5722;
+    }
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.1);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
 
         @keyframes fadeIn {
             to {
@@ -266,19 +291,23 @@
     <script>
         // Countdown function
         function startCountdown() {
-            const countdownElement = document.getElementById('countdown');
-            let timeLeft = 3;
+    const countdownElement = document.getElementById('countdown');
+    let timeLeft = 3;
 
-            const countdownInterval = setInterval(() => {
-                if (timeLeft > 0) {
-                    countdownElement.textContent = timeLeft;
-                    timeLeft--;
-                } else if (timeLeft === 0) {
-                    countdownElement.textContent = 'Go!!';
-                    clearInterval(countdownInterval);
-                }
-            }, 1000);
+    const countdownInterval = setInterval(() => {
+        if (timeLeft > 0) {
+            countdownElement.textContent = timeLeft;
+            countdownElement.style.transform = "scale(1.5)";
+            setTimeout(() => {
+                countdownElement.style.transform = "scale(1)";
+            }, 200); // Smooth shrinking effect
+            timeLeft--;
+        } else if (timeLeft === 0) {
+            countdownElement.textContent = 'Go!!';
+            clearInterval(countdownInterval);
         }
+    }, 1000);
+}
 
         // Start countdown when the page loads
         window.onload = function() {
