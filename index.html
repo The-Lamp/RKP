@@ -8,15 +8,78 @@
 
     <style>
         body {
-            background-color: #1a1a1a;
+            margin: 0;
+            background-color: #000;
+            color: #fff;
+            font-family: 'Courier New', monospace;
+            overflow: hidden;
+        }
+
+        .countdown-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 100vh;
-            margin: 0;
-            font-family: 'Arial', sans-serif;
+            height: 100px;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 9999;
+        }
+        
+        .countdown-circle {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            border: 5px solid rgba(255, 255, 255, 0.5);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            background: radial-gradient(circle, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.5));
+            animation: rotate 3s linear infinite;
         }
 
+        @keyframes rotate {
+            from {
+                transform: rotate(0deg);
+            }
+            to {
+                transform: rotate(360deg);
+            }
+        }
+        
+        .countdown-text {
+            font-size: 3em;
+            color: #42f5ef;
+            text-shadow: 0 0 10px #42f5ef;
+        }
+        
+        .hacking-code {
+            position: absolute;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: -1;
+        }
+
+        .code {
+            font-size: 14px;
+            color: #0f0;
+            animation: typing 2s steps(40, end) infinite;
+            white-space: nowrap;
+        }
+
+        @keyframes typing {
+            from { 
+                width: 0; 
+            }
+            to { 
+                width: 100%; 
+            }
+            
         .container {
     perspective: 1000px;  /* Add depth perception */
     transform-style: preserve-3d; 
