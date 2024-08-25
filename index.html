@@ -22,42 +22,6 @@
     transform-style: preserve-3d; 
 }
 
-        .circle {
-    display: flex; /* Use Flexbox to align items */
-    justify-content: center; /* Horizontally center */
-    align-items: center; /* Vertically center */
-    width: 120px;
-    height: 120px;
-    background-color: rgba(0, 0, 0, 0.6);
-    border-radius: 50%;
-    border: 4px solid rgba(255, 255, 255, 0.2);
-    position: relative;
-    box-shadow: 0 0 20px rgba(0, 200, 255, 0.7), 0 0 30px rgba(0, 200, 255, 0.5);
-}
-
-.circle::before {
-        content: none; /* Removes the extra circle */
-    }
-
-@keyframes pulse {
-    0% {
-        transform: scale(1);
-        opacity: 1;
-    }
-    100% {
-        transform: scale(1.2);
-        opacity: 0;
-    }
-}
-
-.number {
-    font-size: 3em;
-    color: #00e5ff;
-    text-shadow: 0 0 10px #00e5ff, 0 0 20px rgba(0, 200, 255, 0.7);
-    margin: 0; /* Remove default margin */
-    line-height: 1; /* Align properly inside flexbox */
-}
-
         .springs {
             display: flex;
             justify-content: space-between;
@@ -70,15 +34,13 @@
 }
     
     #countdown {
-    position: relative;
-    width: 150px;
-    height: 150px;
-    background: radial-gradient(circle at center, #212121, #000);
-    border-radius: 50%;
-    box-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    font-size: 4rem;
+    margin-top: 20px;
+    color: #FFC107; /* Yellow color */
+    background: linear-gradient(45deg, #FFC107, #FF5722);
+    -webkit-background-clip: text;
+    color: transparent;
+    animation: glow 1s infinite alternate, pulse 1.5s infinite;
 }
 
 @keyframes glow {
@@ -293,8 +255,6 @@
         <div class="spring"></div>
         <div class="spring opposite"></div>
     </div>
-        <div id="countdown">
-</div>
     
     <!-- Countdown ko yaha shift kiya -->
     <p id="countdown"></p>
@@ -322,19 +282,26 @@
 
     <!-- JavaScript for Countdown and Interactions -->
     <script>
-        let countdownNumber = 3; // Starting number
-const numberElement = document.querySelector('.number');
+        // Countdown function
+        function startCountdown() {
+    const countdownElement = document.getElementById('countdown');
+    let timeLeft = 3;
 
-const countdownInterval = setInterval(() => {
-    numberElement.textContent = countdownNumber;
-    countdownNumber--;
+    const countdownInterval = setInterval(() => {
+        if (timeLeft > 0) {
+            countdownElement.textContent = timeLeft;
+            countdownElement.style.transform = "scale(1.5)";
+            setTimeout(() => {
+                countdownElement.style.transform = "scale(1)";
+            }, 200); // Smooth shrinking effect
+            timeLeft--;
+        } else if (timeLeft === 0) {
+            countdownElement.textContent = 'Go!!';
+            clearInterval(countdownInterval);
+        }
+    }, 1000);
+}
 
-    if (countdownNumber < 0) {
-        clearInterval(countdownInterval);
-        // Add any action to perform after countdown ends
-    }
-}, 1000); // Countdown interval is 1 second
-    
         // Start countdown when the page loads
         window.onload = function() {
             startCountdown();
