@@ -18,12 +18,9 @@
         }
 
         .container {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            opacity: 0;
-            animation: fadeIn 2s forwards;
-        }
+    perspective: 1000px;  /* Add depth perception */
+    transform-style: preserve-3d; 
+}
 
         .springs {
             display: flex;
@@ -33,14 +30,8 @@
         }
 
         .spring {
-            width: 10px;
-            height: 150px;
-            background: linear-gradient(135deg, #0d47a1, #42a5f5);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
-            border-radius: 5px;
-            animation: springMove 2s infinite ease-in-out, springRotate 3s infinite ease-in-out;
-            transform-origin: top;
-        }
+    animation: springMove 2s cubic-bezier(0.68, -0.55, 0.27, 1.55) infinite, springRotate 3s cubic-bezier(0.68, -0.55, 0.27, 1.55) infinite;
+}
     
     #countdown {
     font-size: 4rem;
@@ -101,14 +92,19 @@
         }
 
         .device {
-            background-color: #0d47a1;
-            width: 300px;
-            padding: 25px;
-            border-radius: 20px;
-            position: relative;
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
-            animation: slideInFromLeft 1.5s ease-out;
-        }
+    background-color: #0d47a1;
+    width: 300px;
+    padding: 25px;
+    border-radius: 20px;
+    position: relative;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+    transform: rotateY(15deg) rotateX(10deg);  /* 3D rotation */
+    transition: transform 0.5s ease-in-out;
+}
+
+.device:hover {
+    transform: rotateY(-15deg) rotateX(-10deg) scale(1.05);  /* Add hover effect for interactivity */
+}
 
         @keyframes slideInFromLeft {
             0% {
@@ -140,20 +136,14 @@
 }
 
         .plus {
-            position: absolute;
-            width: 20px;
-            height: 20px;
-            background-color: #1a1a1a;
-            color: white;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-size: 18px;
-            border-radius: 50%;
-            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.5);
-            animation: rotatePlus 2s infinite linear, plusBounce 1.5s infinite ease-in-out;
-            cursor: pointer;
-        }
+    background: linear-gradient(135deg, #ff4081, #ffca28);
+    transition: background 0.5s ease-in-out, transform 0.5s ease-in-out;
+}
+
+.plus:hover {
+    background: linear-gradient(135deg, #ffca28, #ff4081);
+    transform: scale(1.2) rotate(45deg);
+}
 
         @keyframes rotatePlus {
             0% { transform: rotate(0deg); }
@@ -199,34 +189,26 @@
         }
 
         .click-text {
-            position: absolute;
-            left: 50%;
-            transform: translateX(-50%);
-            top: -50px;
-            background: linear-gradient(45deg, #ff4081, #ffca28);
-            color: white;
-            padding: 10px;
-            border-radius: 15px;
-            font-weight: bold;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
-            font-family: 'Arial', sans-serif;
-            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
-            transform: perspective(500px) rotateX(15deg);
-        }
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7), 4px 4px 10px rgba(255, 255, 255, 0.5);
+}
 
         .power-button {
-            background: radial-gradient(circle, #ffca28, #ff9800);
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            cursor: pointer;
-            transition: transform 0.2s ease-in-out;
-            box-shadow: inset 0px 0px 10px rgba(0, 0, 0, 0.5), 0px 5px 15px rgba(0, 0, 0, 0.5);
-            animation: rotatePowerButton 3s infinite linear;
-        }
+    background: radial-gradient(circle, #ffca28, #ff9800);
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: transform 0.2s ease-in-out, box-shadow 0.3s ease-in-out;
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.5), inset 0px -5px 10px rgba(255, 255, 255, 0.5);
+}
+
+.power-button:hover {
+    transform: scale(1.1) translateY(-5px);
+    box-shadow: 0px 10px 20px rgba(255, 165, 0, 0.8), inset 0px -5px 15px rgba(255, 255, 255, 0.7);
+}
 
         .power-icon {
             width: 25px;
