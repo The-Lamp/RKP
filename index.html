@@ -371,6 +371,20 @@
             clearInterval(countdownInterval);
         }
     }, 1000);
+
+            // Countdown logic
+        let countdownNumber = 3;
+        const countdownElement = document.getElementById('countdown');
+
+        const countdownInterval = setInterval(() => {
+            countdownNumber--;
+            countdownElement.textContent = countdownNumber;
+
+            if (countdownNumber === 0) {
+                clearInterval(countdownInterval);
+                // Redirect or perform action when countdown ends
+            }
+        }, 1000);
 }
 
         // Start countdown when the page loads
