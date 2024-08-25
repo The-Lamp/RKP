@@ -23,17 +23,17 @@
 }
 
         .circle {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        width: 120px;
-        height: 120px;
-        background-color: rgba(0, 0, 0, 0.6);
-        border-radius: 50%;
-        border: 4px solid rgba(255, 255, 255, 0.2);
-        position: relative;
-        box-shadow: 0 0 20px rgba(0, 200, 255, 0.7), 0 0 30px rgba(0, 200, 255, 0.5);
-    }
+    display: flex; /* Use Flexbox to align items */
+    justify-content: center; /* Horizontally center */
+    align-items: center; /* Vertically center */
+    width: 120px;
+    height: 120px;
+    background-color: rgba(0, 0, 0, 0.6);
+    border-radius: 50%;
+    border: 4px solid rgba(255, 255, 255, 0.2);
+    position: relative;
+    box-shadow: 0 0 20px rgba(0, 200, 255, 0.7), 0 0 30px rgba(0, 200, 255, 0.5);
+}
 
 .circle::before {
         content: none; /* Removes the extra circle */
@@ -51,11 +51,12 @@
 }
 
 .number {
-        font-size: 3em;
-        color: #00e5ff;
-        text-shadow: 0 0 10px #00e5ff, 0 0 20px rgba(0, 200, 255, 0.7);
-        position: absolute;
-    }
+    font-size: 3em;
+    color: #00e5ff;
+    text-shadow: 0 0 10px #00e5ff, 0 0 20px rgba(0, 200, 255, 0.7);
+    margin: 0; /* Remove default margin */
+    line-height: 1; /* Align properly inside flexbox */
+}
 
         .springs {
             display: flex;
@@ -293,9 +294,6 @@
         <div class="spring opposite"></div>
     </div>
         <div id="countdown">
-    <div class="circle">
-        <div class="number">3</div>
-    </div>
 </div>
     
     <!-- Countdown ko yaha shift kiya -->
