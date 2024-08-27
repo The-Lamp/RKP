@@ -192,6 +192,15 @@
     text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7), 4px 4px 10px rgba(255, 255, 255, 0.5);
 }
 
+        .brand-logo {
+    width: 80px;  /* Tumhe jo size chahiye uske hisab se change kar sakte ho */
+    position: absolute;
+    top: 20px;  /* Tumhe jo position chahiye uske hisab se adjust kar sakte ho */
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 2; /* Isse ensure hoga ki logo baaki elements ke upar rahe */
+}
+        
         .power-button {
     background: radial-gradient(circle, #ffca28, #ff9800);
     width: 60px;
@@ -260,6 +269,7 @@
     <p id="countdown"></p>
     
     <div class="device">
+        <img src="your-logo-path.png" alt="Brand Logo" class="brand-logo">
         <div class="plus">+</div>
         <div class="plus">+</div>
         <div class="plus">+</div>
