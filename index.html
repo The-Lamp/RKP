@@ -193,19 +193,29 @@
 }
 
         .logo-container {
+    posi.logo-container {
     position: absolute;
-    top: 50px;  /* Adjust karo iske hisaab se */
-    right: 50px;  /* Adjust karo iske hisaab se */
-    width: 100px;  /* Adjust karo size ke hisaab se */
-    height: 100px;  /* Adjust karo size ke hisaab se */
-    z-index: 10; /* Ensure karo ki logo baaki elements ke upar dikhai de */
+    top: 40px;  /* Adjusted position */
+    right: 40px;  /* Adjusted position */
+    width: 150px;  /* Increased size */
+    height: 150px;  /* Increased size */
+    z-index: 10; /* Ensures logo is on top of other elements */
+    perspective: 1000px;  /* Adding perspective for 3D effect */
 }
 
 .circle-logo {
     width: 100%;
     height: 100%;
-    border-radius: 50%;  /* Isse image ko circle shape mil jayega */
-    object-fit: cover;  /* Isse image ke aspect ratio maintain hote hue circle me fit ho jayegi */
+    border-radius: 50%;  /* Circle shape */
+    object-fit: cover;  /* Image fits without stretching */
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5), inset 0 0 10px rgba(255, 255, 255, 0.5); /* 3D shadow effect */
+    transition: transform 0.5s ease, box-shadow 0.5s ease;  /* Smooth animation on hover */
+    transform: rotateX(10deg) rotateY(10deg);  /* Slight 3D tilt effect */
+}
+
+.logo-container:hover .circle-logo {
+    transform: rotateX(360deg) rotateY(360deg);  /* 3D spin on hover */
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.8), inset 0 0 20px rgba(255, 255, 255, 0.8);  /* Enhanced shadow on hover */
 }
         
         .power-button {
