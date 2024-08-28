@@ -237,6 +237,23 @@
             100% { transform: rotate(360deg); }
         }
 
+        /* CSS for 3D Cursor Effect */
+.cursor {
+    position: fixed;
+    width: 20px;
+    height: 20px;
+    background: radial-gradient(circle, rgba(255, 165, 0, 1), rgba(255, 69, 0, 0.7));
+    border-radius: 50%;
+    pointer-events: none;
+    transform: translate(-50%, -50%) scale(1);
+    transition: transform 0.1s ease;
+    z-index: 9999;
+}
+
+.cursor-grow {
+    transform: translate(-50%, -50%) scale(3);
+}
+        
         /* Fire Animation */
         .fire {
             position: absolute;
@@ -368,6 +385,24 @@ setInterval(drawMatrixRain, 50);
 window.addEventListener('resize', () => {
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
+});
+
+        // JavaScript for 3D Cursor Effect
+const cursor = document.createElement('div');
+cursor.classList.add('cursor');
+document.body.appendChild(cursor);
+
+document.addEventListener('mousemove', (e) => {
+    cursor.style.left = e.pageX + 'px';
+    cursor.style.top = e.pageY + 'px';
+});
+
+document.addEventListener('mousedown', () => {
+    cursor.classList.add('cursor-grow');
+});
+
+document.addEventListener('mouseup', () => {
+    cursor.classList.remove('cursor-grow');
 });
     </script>
 </body>
