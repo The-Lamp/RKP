@@ -237,21 +237,70 @@
             100% { transform: rotate(360deg); }
         }
 
-        /* CSS for 3D Cursor Effect */
+        /* Updated CSS for Click Animation */
 .cursor {
     position: fixed;
-    width: 20px;
-    height: 20px;
-    background: radial-gradient(circle, rgba(255, 165, 0, 1), rgba(255, 69, 0, 0.7));
+    width: 30px;
+    height: 30px;
+    background: radial-gradient(circle, rgba(255, 255, 255, 1), rgba(0, 150, 255, 0.7), rgba(0, 150, 255, 0.3));
     border-radius: 50%;
     pointer-events: none;
     transform: translate(-50%, -50%) scale(1);
-    transition: transform 0.1s ease;
+    transition: transform 0.1s ease, background 0.3s ease;
     z-index: 9999;
+    box-shadow: 0 0 20px rgba(0, 150, 255, 0.6), 0 0 40px rgba(0, 150, 255, 0.4);
 }
 
 .cursor-grow {
-    transform: translate(-50%, -50%) scale(3);
+    transform: translate(-50%, -50%) scale(4);
+    background: radial-gradient(circle, rgba(255, 255, 255, 1), rgba(255, 0, 150, 0.7), rgba(255, 0, 150, 0.3));
+    box-shadow: 0 0 30px rgba(255, 0, 150, 0.6), 0 0 60px rgba(255, 0, 150, 0.4);
+}
+
+.cursor-trail {
+    background: radial-gradient(circle, rgba(0, 255, 255, 1), rgba(0, 150, 255, 0.7), rgba(0, 150, 255, 0.3));
+    transform: translate(-50%, -50%) scale(0.8);
+    animation: cursorTrailAnim 0.6s ease-out forwards;
+    box-shadow: 0 0 15px rgba(0, 150, 255, 0.5), 0 0 30px rgba(0, 150, 255, 0.3);
+}
+
+@keyframes cursorTrailAnim {
+    0% {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(0.8);
+    }
+    100% {
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(2);
+    }
+}
+
+/* Ripple effect on click */
+.cursor-ripple {
+    position: absolute;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.4);
+    transform: translate(-50%, -50%) scale(0);
+    animation: ripple 0.6s ease-out forwards;
+    pointer-events: none;
+    z-index: 1000;
+}
+
+@keyframes ripple {
+    to {
+        transform: translate(-50%, -50%) scale(10);
+        opacity: 0;
+    }
+}
+
+/* Media query for mobile devices - Disable cursor animations */
+@media (max-width: 768px) {
+    .cursor,
+    .cursor-grow,
+    .cursor-trail,
+    .cursor-ripple {
+        display: none;
+    }
 }
         
         /* Fire Animation */
@@ -387,23 +436,75 @@ window.addEventListener('resize', () => {
     canvas.height = window.innerHeight;
 });
 
-        // JavaScript for 3D Cursor Effect
-const cursor = document.createElement('div');
-cursor.classList.add('cursor');
-document.body.appendChild(cursor);
+        // Improved JavaScript for Click Animation
 
-document.addEventListener('mousemove', (e) => {
-    cursor.style.left = e.pageX + 'px';
-    cursor.style.top = e.pageY + 'px';
-});
+// Function to detect if the user is on a mobile device
+function isMobileDevice() {
+    return /Mobi|Android|iPhone/i.test(navigator.userAgent);
+}
 
-document.addEventListener('mousedown', () => {
-    cursor.classList.add('cursor-grow');
-});
+// If not a mobile device, then enable cursor effect
+if (!isMobileDevice()) {
+    const cursor = document.createElement('div');
+    cursor.classList.add('cursor');
+    document.body.appendChild(cursor);
 
-document.addEventListener('mouseup', () => {
-    cursor.classList.remove('cursor-grow');
-});
+    let mouseX = 0, mouseY = 0;
+    let cursorX = 0, cursorY = 0;
+
+    document.addEventListener('mousemove', (e) => {
+        cursor.style.display = 'block'; // Show cursor only on non-mobile devices
+        mouseX = e.pageX;
+        mouseY = e.pageY;
+    });
+
+    function animateCursor() {
+        cursorX += (mouseX - cursorX) * 0.15;
+        cursorY += (mouseY - cursorY) * 0.15;
+        cursor.style.left = cursorX + 'px';
+        cursor.style.top = cursorY + 'px';
+
+        requestAnimationFrame(animateCursor);
+    }
+
+    animateCursor();
+
+    document.addEventListener('mousedown', (e) => {
+        cursor.classList.add('cursor-grow');
+        createCursorTrail(cursorX, cursorY);
+        createRippleEffect(e.pageX, e.pageY); // Trigger ripple effect on click
+    });
+
+    document.addEventListener('mouseup', () => {
+        cursor.classList.remove('cursor-grow');
+    });
+
+    function createCursorTrail(x, y) {
+        const trail = document.createElement('div');
+        trail.classList.add('cursor-trail');
+        trail.style.left = `${x}px`;
+        trail.style.top = `${y}px`;
+        document.body.appendChild(trail);
+
+        setTimeout(() => {
+            document.body.removeChild(trail);
+        }, 600); // Remove the trail after animation ends
+    }
+
+    function createRippleEffect(x, y) {
+        const ripple = document.createElement('div');
+        ripple.classList.add('cursor-ripple');
+        ripple.style.width = '25px';
+        ripple.style.height = '25px';
+        ripple.style.left = `${x}px`;
+        ripple.style.top = `${y}px`;
+        document.body.appendChild(ripple);
+
+        setTimeout(() => {
+            document.body.removeChild(ripple);
+        }, 600); // Remove the ripple after animation ends
+    }
+}
     </script>
 </body>
 </html>
