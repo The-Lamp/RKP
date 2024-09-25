@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="click and view the lamp dashboard">
+    <meta name="author" content="The Lamp">
+    <title>The Lamp</title>
+
+    <!-- Canonical Link -->
+    <link rel="canonical" href="https://the-lamp.github.io/Dashboard/">
+
+    <!-- Open Graph Meta Tags for Social Media -->
+    <meta property="og:title" content="The Lamp">
+    <meta property="og:description" content="click and View the lamp dashboard">
+    <meta property="og:image" content="https://www.yourwebsite.com/image.jpg">
+    <meta property="og:url" content="https://the-lamp.github.io/Dashboard/">
+    <meta property="og:type" content="website">
+
+    <!-- Robots Meta Tag -->
+    <meta name="robots" content="index, follow">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            width: 90%;
+            margin: 0 auto;
+        }
+
+        header h1 {
+            text-align: center;
+            margin-top: 20px;
+            color: #333;
+            font-size: 3rem;
+            text-shadow: 2px 2px 5px #aaa;
+        }
+
+        @import url('https://fonts.googleapis.com/css2?family=Anton&display=swap'); /* Custom font import */
+
+header h1 {
+    font-family: 'Anton', sans-serif; /* Updated font for glitch effect */
+    font-size: 3rem;
+    color: white;
+    position: relative;
+    animation: glitch 1s infinite;
+}
+
+header h1::before, header h1::after {
+    content: attr(data-text);
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: black;
+    overflow: hidden;
+    clip-path: inset(0);
+}
+
+header h1::before {
+    color: #f0f;
+    z-index: -1;
+    animation: glitch 2s infinite;
+}
+
+header h1::after {
+    color: #0ff;
+    z-index: -2;
+    animation: glitch2 1.5s infinite;
+}
+
+@keyframes glitch {
+    0% {
+        transform: translate(0);
+    }
+    20% {
+        transform: translate(-2px, -2px);
+    }
+    40% {
+        transform: translate(-2px, 2px);
+    }
+    60% {
+        transform: translate(2px, -2px);
+    }
+    80% {
+        transform: translate(2px, 2px);
+    }
+    100% {
+        transform: translate(0);
+    }
+}
+
+@keyframes glitch2 {
+    0% {
+        transform: translate(0);
+    }
+    20% {
+        transform: translate(2px, 2px);
+    }
+    40% {
+        transform: translate(2px, -2px);
+    }
+    60% {
+        transform: translate(-2px, 2px);
+    }
+    80% {
+        transform: translate(-2px, -2px);
+    }
+    100% {
+        transform: translate(0);
+    }
+}
+
+        /* Updated CSS for Click Animation */
+.cursor {
+    position: fixed;
+    width: 30px;
+    height: 30px;
+    background: radial-gradient(circle, rgba(255, 255, 255, 1), rgba(0, 150, 255, 0.7), rgba(0, 150, 255, 0.3));
+    border-radius: 50%;
+    pointer-events: none;
+    transform: translate(-50%, -50%) scale(1);
+    transition: transform 0.1s ease, background 0.3s ease;
+    z-index: 9999;
+    box-shadow: 0 0 20px rgba(0, 150, 255, 0.6), 0 0 40px rgba(0, 150, 255, 0.4);
+}
+
+.cursor-grow {
+    transform: translate(-50%, -50%) scale(4);
+    background: radial-gradient(circle, rgba(255, 255, 255, 1), rgba(255, 0, 150, 0.7), rgba(255, 0, 150, 0.3));
+    box-shadow: 0 0 30px rgba(255, 0, 150, 0.6), 0 0 60px rgba(255, 0, 150, 0.4);
+}
+
+.cursor-trail {
+    background: radial-gradient(circle, rgba(0, 255, 255, 1), rgba(0, 150, 255, 0.7), rgba(0, 150, 255, 0.3));
+    transform: translate(-50%, -50%) scale(0.8);
+    animation: cursorTrailAnim 0.6s ease-out forwards;
+    box-shadow: 0 0 15px rgba(0, 150, 255, 0.5), 0 0 30px rgba(0, 150, 255, 0.3);
+}
+
+@keyframes cursorTrailAnim {
+    0% {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(0.8);
+    }
+    100% {
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(2);
+    }
+}
+
+/* Ripple effect on click */
+.cursor-ripple {
+    position: absolute;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.4);
+    transform: translate(-50%, -50%) scale(0);
+    animation: ripple 0.6s ease-out forwards;
+    pointer-events: none;
+    z-index: 1000;
+}
+
+@keyframes ripple {
+    to {
+        transform: translate(-50%, -50%) scale(10);
+        opacity: 0;
+    }
+}
+
+/* Media query for mobile devices - Disable cursor animations */
+@media (max-width: 768px) {
+    .cursor,
+    .cursor-grow,
+    .cursor-trail,
+    .cursor-ripple {
+        display: none;
+    }
+}
+        
+        /* Section Styling */
+        main section {
+    background: linear-gradient(145deg, #ffba63, #ff6363);
+    margin: 30px 0;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 
+                0 10px 20px rgba(0, 0, 0, 0.2), 
+                0 15px 40px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+main section:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.1),
+                0 20px 40px rgba(0, 0, 0, 0.2),
+                0 30px 60px rgba(0, 0, 0, 0.3);
+}
+        
+        main section h2 {
+            font-size: 2rem;
+            color: #fff;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);
+        }
+
+        main section p {
+            font-size: 1.2rem;
+            color: #fff;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+        }
+
+        main section button {
+            padding: 10px 20px;
+            background-color: #fff;
+            border: none;
+            border-radius: 8px;
+            color: #ff6363;
+            font-size: 1.2rem;
+            box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.3);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+        }
+
+        main section button:hover {
+            background-color: #ff4747;
+            color: #fff;
+            transform: translateY(-5px);
+            box-shadow: 0px 12px 20px rgba(0, 0, 0, 0.5);
+        }
+
+        footer {
+            background: linear-gradient(145deg, #1e2a38, #2e3b50);
+            padding: 50px 0;
+            box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.3);
+            border-radius: 15px;
+            position: relative;
+            margin-top: 50px;
+        }
+
+        .contact-container {
+            width: 80%;
+            margin: 0 auto;
+            color: #fff;
+            text-align: center;
+        }
+
+        .contact-container h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.7);
+        }
+
+        #contactForm input, #contactForm textarea {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 8px;
+            border: none;
+            outline: none;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        #contactForm button {
+            padding: 10px 20px;
+            background-color: #ff6363;
+            border: none;
+            border-radius: 8px;
+            color: #fff;
+            font-size: 1.2rem;
+            box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.3);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+        }
+
+        #contactForm button:hover {
+            background-color: #ff4747;
+            transform: translateY(-5px);
+            box-shadow: 0px 12px 20px rgba(0, 0, 0, 0.5);
+        }
+
+        .social-icons {
+            margin-top: 30px;
+        }
+
+        .social-icons a {
+            color: #fff;
+            font-size: 2rem;
+            margin: 0 15px;
+            display: inline-block;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.6);
+        }
+
+        .social-icons a:hover {
+            transform: scale(1.2);
+            box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.5);
+        }
+
+        .social-icons a i {
+            display: block;
+            transition: transform 0.3s ease;
+        }
+
+        .social-icons a:hover i {
+            transform: rotate(360deg);
+        }
+
+        .glitch {
+            background: linear-gradient(135deg, #ff6363, #ffba63);
+            width: 100%;
+            height: 5px;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            animation: glitch 1.5s infinite;
+        }
+
+        @keyframes glitch {
+            0%, 100% {
+                transform: translateX(0);
+            }
+            50% {
+                transform: translateX(-5px);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1 data-text="The Lamp">The Lamp</h1>
+        </header>
+        
+        <main>
+            <section id="interests" data-url="https://the-lamp.github.io/My-Interests/">
+                <h2>My Interests</h2>
+                <p>See What My Interests are??</p>
+                <button onclick="window.location.href=this.parentElement.getAttribute('data-url')">CLICK HERE</button>
+            </section>
+
+            <section id="book" data-url="https://the-lamp.github.io/My-books/">
+                <h2>My First Book</h2>
+                <p>मेरी लिखी हुई पहली किताब "शिकायतें" को ज़रूर पढ़ें</p>
+                <button onclick="window.location.href=this.parentElement.getAttribute('data-url')">CLICK HERE</button>
+            </section>
+
+            <section id="language" data-url="https://the-lamp.github.io/Language-Skills/">
+                <h2>Language Skills</h2>
+                <p>Find out which languages I know?</p>
+                <button onclick="window.location.href=this.parentElement.getAttribute('data-url')">CLICK HERE</button>
+            </section>
+
+            <section id="slogans" data-url="https://the-lamp.github.io/My-slogans/">
+                <h2>My slogans</h2>
+                <p>These words are deeply impactful in my life.</p>
+                <button onclick="window.location.href=this.parentElement.getAttribute('data-url')">CLICK HERE</button>
+            </section>
+
+            <section id="aims" data-url="https://the-lamp.github.io/My-Aim/">
+                <h2>My Aims</h2>
+                <p>यहाँ CLICK करो और मेरे लक्ष्यों के बारे में जानो, लेकिन ध्यान रखना, ये लक्ष्यों से ज्यादा एक बुरा सपना है! 💻💣</p>
+                <button onclick="window.location.href=this.parentElement.getAttribute('data-url')">CLICK HERE</button>
+            </section>
+
+            <section id="chatbot" data-url="https://the-lamp.github.io/chatbot/">
+                <h2>My Own Chat AI</h2>
+                <p>Chat with my Own Chat AI, here I will virtually Talk to you.</p>
+                <button onclick="window.location.href=this.parentElement.getAttribute('data-url')">CLICK HERE</button>
+            </section>
+        </main>
+
+        <footer>
+    <div class="contact-container">
+        <h2>Contact Us</h2>
+        <form id="contactForm">
+            <input type="text" name="name" id="name" placeholder="Your Name" required>
+            <input type="email" name="email" id="email" placeholder="Your Email" required>
+            <textarea name="message" id="message" placeholder="Your Message" required></textarea>
+            <button type="submit">Send Message</button>
+        </form>
+        <div class="social-icons">
+            <a id="facebook" target="_blank"><i class="fab fa-facebook-f"></i></a>
+            <a id="telegram" target="_blank"><i class="fab fa-telegram"></i></a>
+            <a id="snapchat" target="_blank"><i class="fab fa-snapchat"></i></a>
+            <a id="instagram" target="_blank"><i class="fab fa-instagram"></i></a>
+        </div>
+            </div>
+        </footer>
+
+        <div class="glitch"></div>
+    </div>
+
+    <div id="second-interface" style="display: none;"></div>
+    
+    <!-- Include FontAwesome for icons -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/js/all.min.js"></script>
+
+    <script>
+    // Function to detect mobile device
+    function isMobileDevice() {
+        return /Mobi|Android/i.test(navigator.userAgent);
+    }
+
+    // Set links based on device type
+    window.onload = function() {
+        if (isMobileDevice()) {
+            document.getElementById('facebook').href = "https://linktw.in/qQqCcq"; // Mobile link
+            document.getElementById('telegram').href = "https://t.me/Darkk_haxx"; // Mobile link
+            document.getElementById('snapchat').href = "https://www.snapchat.com/m"; // Mobile link
+            document.getElementById('instagram').href = "https://linktw.in/ruFtUA"; // Mobile link
+        } else {
+            document.getElementById('facebook').href = "https://www.facebook.com/profile.php?id=100085397063673"; // Desktop link
+            document.getElementById('telegram').href = "https://t.me/Darkk_haxx"; // Desktop link
+            document.getElementById('snapchat').href = "https://www.snapchat.com"; // Desktop link
+            document.getElementById('instagram').href = "https://www.instagram.com/cyb_rahul?igsh=ZGUzMzM3NWJiOQ=="; // Desktop link
+        }
+    };
+
+        document.querySelectorAll('main section').forEach(section => {
+    section.onclick = function() {
+        window.location.href = section.getAttribute('data-url');
+    };
+});
+
+        // Improved JavaScript for Click Animation
+
+// Function to detect if the user is on a mobile device
+function isMobileDevice() {
+    return /Mobi|Android|iPhone/i.test(navigator.userAgent);
+}
+
+// If not a mobile device, then enable cursor effect
+if (!isMobileDevice()) {
+    const cursor = document.createElement('div');
+    cursor.classList.add('cursor');
+    document.body.appendChild(cursor);
+
+    let mouseX = 0, mouseY = 0;
+    let cursorX = 0, cursorY = 0;
+
+    document.addEventListener('mousemove', (e) => {
+        cursor.style.display = 'block'; // Show cursor only on non-mobile devices
+        mouseX = e.pageX;
+        mouseY = e.pageY;
+    });
+
+    function animateCursor() {
+        cursorX += (mouseX - cursorX) * 0.15;
+        cursorY += (mouseY - cursorY) * 0.15;
+        cursor.style.left = cursorX + 'px';
+        cursor.style.top = cursorY + 'px';
+
+        requestAnimationFrame(animateCursor);
+    }
+
+    animateCursor();
+
+    document.addEventListener('mousedown', (e) => {
+        cursor.classList.add('cursor-grow');
+        createCursorTrail(cursorX, cursorY);
+        createRippleEffect(e.pageX, e.pageY); // Trigger ripple effect on click
+    });
+
+    document.addEventListener('mouseup', () => {
+        cursor.classList.remove('cursor-grow');
+    });
+
+    function createCursorTrail(x, y) {
+        const trail = document.createElement('div');
+        trail.classList.add('cursor-trail');
+        trail.style.left = `${x}px`;
+        trail.style.top = `${y}px`;
+        document.body.appendChild(trail);
+
+        setTimeout(() => {
+            document.body.removeChild(trail);
+        }, 600); // Remove the trail after animation ends
+    }
+
+    function createRippleEffect(x, y) {
+        const ripple = document.createElement('div');
+        ripple.classList.add('cursor-ripple');
+        ripple.style.width = '25px';
+        ripple.style.height = '25px';
+        ripple.style.left = `${x}px`;
+        ripple.style.top = `${y}px`;
+        document.body.appendChild(ripple);
+
+        setTimeout(() => {
+            document.body.removeChild(ripple);
+        }, 600); // Remove the ripple after animation ends
+    }
+}
+        </script>
+</body>
+</html>
