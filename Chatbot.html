@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Your website description here. Keep it short and relevant to your content.">
+    <meta name="author" content="Your Name or Brand">
+    <title>Your Website Title</title>
+
+    <!-- Canonical Link -->
+    <link rel="canonical" href="https://www.yourwebsite.com/">
+
+    <!-- Open Graph Meta Tags for Social Media -->
+    <meta property="og:title" content="Your Website Title">
+    <meta property="og:description" content="Your website description here.">
+    <meta property="og:image" content="https://www.yourwebsite.com/image.jpg">
+    <meta property="og:url" content="https://www.yourwebsite.com/">
+    <meta property="og:type" content="website">
+
+    <!-- Robots Meta Tag -->
+    <meta name="robots" content="index, follow">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Poppins:wght@400;600&family=Raleway:wght@500;700&display=swap" rel="stylesheet">
+    <style>
+        html, body {
+            height: 100%;
+            margin: 0;
+            overflow-x: hidden;
+            font-family: 'Poppins', sans-serif;
+            background-color: #121212;
+            color: white;
+        }
+
+        body {
+            background: linear-gradient(to right, #1f1c2c, #928dab);
+            text-align: center;
+            padding: 0;
+            overflow-y: auto;
+        }
+
+        .content {
+            min-height: 100vh;
+            padding-bottom: 60px;
+            box-sizing: border-box;
+            perspective: 1000px;
+        }
+
+        h1 {
+            margin-top: 50px;
+            font-size: 3em;
+            animation: fadeInUp 1.5s ease-out;
+            text-shadow: 4px 4px 10px rgba(0, 0, 0, 0.6);
+            transform: rotateY(20deg);
+            transition: transform 0.5s ease;
+        }
+
+        h1:hover {
+            transform: rotateY(0deg) scale(1.05);
+        }
+
+        p {
+            font-size: 1.3em;
+            margin: 20px auto;
+            width: 80%;
+            max-width: 800px;
+            animation: fadeInUp 1.5s ease-out;
+            line-height: 1.6;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.6);
+        }
+
+        h2 {
+            font-size: 2.2em;
+            margin-top: 30px;
+            font-weight: 600;
+            animation: fadeInUp 2s ease-out;
+            text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.5);
+            transform: rotateX(15deg);
+            transition: transform 0.5s ease;
+        }
+
+        h2:hover {
+            transform: rotateX(0deg);
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+            animation: fadeInUp 2s ease-out;
+            margin: 0 auto;
+            width: 80%;
+            max-width: 600px;
+        }
+
+        li {
+            font-size: 1.3em;
+            margin: 15px 0;
+            padding: 15px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+            transition: background 0.3s, transform 0.3s, box-shadow 0.3s;
+            backdrop-filter: blur(10px);
+        }
+
+        li:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-8px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
+        }
+
+        /* Updated CSS for Click Animation */
+.cursor {
+    position: fixed;
+    width: 30px;
+    height: 30px;
+    background: radial-gradient(circle, rgba(255, 255, 255, 1), rgba(0, 150, 255, 0.7), rgba(0, 150, 255, 0.3));
+    border-radius: 50%;
+    pointer-events: none;
+    transform: translate(-50%, -50%) scale(1);
+    transition: transform 0.1s ease, background 0.3s ease;
+    z-index: 9999;
+    box-shadow: 0 0 20px rgba(0, 150, 255, 0.6), 0 0 40px rgba(0, 150, 255, 0.4);
+}
+
+.cursor-grow {
+    transform: translate(-50%, -50%) scale(4);
+    background: radial-gradient(circle, rgba(255, 255, 255, 1), rgba(255, 0, 150, 0.7), rgba(255, 0, 150, 0.3));
+    box-shadow: 0 0 30px rgba(255, 0, 150, 0.6), 0 0 60px rgba(255, 0, 150, 0.4);
+}
+
+.cursor-trail {
+    background: radial-gradient(circle, rgba(0, 255, 255, 1), rgba(0, 150, 255, 0.7), rgba(0, 150, 255, 0.3));
+    transform: translate(-50%, -50%) scale(0.8);
+    animation: cursorTrailAnim 0.6s ease-out forwards;
+    box-shadow: 0 0 15px rgba(0, 150, 255, 0.5), 0 0 30px rgba(0, 150, 255, 0.3);
+}
+
+@keyframes cursorTrailAnim {
+    0% {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(0.8);
+    }
+    100% {
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(2);
+    }
+}
+
+/* Ripple effect on click */
+.cursor-ripple {
+    position: absolute;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.4);
+    transform: translate(-50%, -50%) scale(0);
+    animation: ripple 0.6s ease-out forwards;
+    pointer-events: none;
+    z-index: 1000;
+}
+
+@keyframes ripple {
+    to {
+        transform: translate(-50%, -50%) scale(10);
+        opacity: 0;
+    }
+}
+
+/* Media query for mobile devices - Disable cursor animations */
+@media (max-width: 768px) {
+    .cursor,
+    .cursor-grow,
+    .cursor-trail,
+    .cursor-ripple {
+        display: none;
+    }
+}
+        
+        .chat-button {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            padding: 15px 30px;
+            font-size: 1.5em;
+            font-family: 'Raleway', monospace;
+            color: white;
+            background: linear-gradient(45deg, #ff5733, #c70039);
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            animation: bounce 2s infinite, pulse 2s infinite;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
+        }
+
+        .chat-button:hover {
+            background: linear-gradient(45deg, #c70039, #900c3f);
+            transform: scale(1.1) translateX(-50%);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-15px); }
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5em;
+            }
+
+            p {
+                font-size: 1.2em;
+                width: 90%;
+            }
+
+            h2 {
+                font-size: 1.8em;
+            }
+
+            .chat-button {
+                font-size: 1.2em;
+                padding: 12px 25px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 2em;
+            }
+
+            p {
+                font-size: 1em;
+                width: 95%;
+            }
+
+            h2 {
+                font-size: 1.5em;
+            }
+
+            .chat-button {
+                font-size: 1em;
+                padding: 10px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="content">
+        <h1>Virtual RKP</h1>
+        <p>Meet My AI, designed to help you with Talk My Virtual Assistant.</p>
+        
+        <h2>Features</h2>
+        <ul>
+            <li>Feature 1: ChatData Safety</li>
+            <li>Feature 2: Ask any questions about me</li>
+            <li>Feature 3: Instant response everytime</li>
+            <li>Feature 4: Natural and Human Style language understanding</li>
+        </ul>
+    </div>
+    
+    <button class="chat-button" onclick="window.location.href='https://character.ai/chat/Nb0aQ5e1UNFgj7ol5bO_pyOme7bZsbpvXtk16xiSR-A';">
+        Chat with Virtual RKP
+    </button>
+
+    <script>
+        // Improved JavaScript for Click Animation
+
+// Function to detect if the user is on a mobile device
+function isMobileDevice() {
+    return /Mobi|Android|iPhone/i.test(navigator.userAgent);
+}
+
+// If not a mobile device, then enable cursor effect
+if (!isMobileDevice()) {
+    const cursor = document.createElement('div');
+    cursor.classList.add('cursor');
+    document.body.appendChild(cursor);
+
+    let mouseX = 0, mouseY = 0;
+    let cursorX = 0, cursorY = 0;
+
+    document.addEventListener('mousemove', (e) => {
+        cursor.style.display = 'block'; // Show cursor only on non-mobile devices
+        mouseX = e.pageX;
+        mouseY = e.pageY;
+    });
+
+    function animateCursor() {
+        cursorX += (mouseX - cursorX) * 0.15;
+        cursorY += (mouseY - cursorY) * 0.15;
+        cursor.style.left = cursorX + 'px';
+        cursor.style.top = cursorY + 'px';
+
+        requestAnimationFrame(animateCursor);
+    }
+
+    animateCursor();
+
+    document.addEventListener('mousedown', (e) => {
+        cursor.classList.add('cursor-grow');
+        createCursorTrail(cursorX, cursorY);
+        createRippleEffect(e.pageX, e.pageY); // Trigger ripple effect on click
+    });
+
+    document.addEventListener('mouseup', () => {
+        cursor.classList.remove('cursor-grow');
+    });
+
+    function createCursorTrail(x, y) {
+        const trail = document.createElement('div');
+        trail.classList.add('cursor-trail');
+        trail.style.left = `${x}px`;
+        trail.style.top = `${y}px`;
+        document.body.appendChild(trail);
+
+        setTimeout(() => {
+            document.body.removeChild(trail);
+        }, 600); // Remove the trail after animation ends
+    }
+
+    function createRippleEffect(x, y) {
+        const ripple = document.createElement('div');
+        ripple.classList.add('cursor-ripple');
+        ripple.style.width = '25px';
+        ripple.style.height = '25px';
+        ripple.style.left = `${x}px`;
+        ripple.style.top = `${y}px`;
+        document.body.appendChild(ripple);
+
+        setTimeout(() => {
+            document.body.removeChild(ripple);
+        }, 600); // Remove the ripple after animation ends
+    }
+}
+    </script>
+</body>
+</html>
