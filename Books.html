@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Books and Poems</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f5f5f5;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+            animation: fadeIn 2s ease-in-out;
+        }
+
+        .container {
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .box {
+            width: 100%;
+            max-width: 400px;
+            background-color: #ffffff;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            margin-bottom: 30px;
+            padding: 20px;
+            border-left: 6px solid #004488;
+            transform: translateY(20px);
+            opacity: 0;
+            animation: slideUp 0.5s ease-in-out forwards;
+            animation-delay: 0.5s;
+        }
+
+        .box:nth-child(2) {
+            animation-delay: 1s;
+        }
+
+        .box h1 {
+            font-size: 26px;
+            color: #212121;
+            margin-bottom: 10px;
+            animation: textFade 1.5s ease-in;
+        }
+
+        .details p {
+            margin: 5px 0;
+            font-size: 16px;
+            color: #333;
+            line-height: 1.5;
+        }
+
+        .toc {
+            background-color: #f0f0f0;
+            padding: 15px;
+            border-radius: 6px;
+            margin-top: 20px;
+            border-left: 4px solid #3399cc;
+            transition: background-color 0.3s ease;
+        }
+
+        .toc:hover {
+            background-color: #e0e0e0;
+        }
+
+        .toc h2 {
+            font-size: 18px;
+            color: #004488;
+            margin-bottom: 10px;
+            animation: textFade 1.5s ease-in;
+        }
+
+        .toc ul {
+            padding-left: 20px;
+        }
+
+        .toc ul li {
+            font-size: 16px;
+            color: #333;
+            margin-bottom: 5px;
+            transition: transform 0.2s ease;
+        }
+
+        .toc ul li:hover {
+            transform: scale(1.05);
+            color: #007bff;
+        }
+
+        .actions {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+            animation: textFade 2s ease-in-out;
+        }
+
+        .actions a {
+            text-decoration: none;
+            font-size: 16px;
+            padding: 10px 20px;
+            border-radius: 4px;
+            text-align: center;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        .actions a.view {
+            background-color: #007bff;
+            color: #ffffff;
+        }
+
+        .actions a.download {
+            background-color: #dc3545;
+            color: #ffffff;
+        }
+
+        .actions a.view:hover {
+            background-color: #0056b3;
+            transform: scale(1.05);
+        }
+
+        .actions a.download:hover {
+            background-color: #c82333;
+            transform: scale(1.05);
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes textFade {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        /* Adding a smooth hover effect on the whole box */
+        .box:hover {
+            transform: scale(1.03);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+        }
+    </style>
+    <script>
+        // Function to handle the popup message
+        function showPopup(event, link) {
+            event.preventDefault(); // Prevent the default action of the link
+            const message = "Thanks for using this!";
+            if (confirm(message)) {
+                window.location.href = link; // Redirect to the link if "OK" is clicked
+            }
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        
+        <!-- Box 1: शिकायतेँ -->
+        <div class="box">
+            <h1>शिकायतेँ</h1>
+            <div class="details">
+                <p><strong>लेखक:</strong> Rahul Kumar Puri</p>
+                <p><strong>प्रकाशन तिथि:</strong> 06/04/2024</p>
+                <p><strong>पुनः प्रकाशन तिथि:</strong> 18/08/2024</p>
+                <p><strong>प्रकाशक:</strong> The Lamp</p>
+            </div>
+            <div class="toc">
+                <h2>सामग्री</h2>
+                <ul>
+                    <li>अध्याय 1: पागलपन और आत्महत्या</li>
+                    <li>अध्याय 2: इससे निपटने के उपाय</li>
+                    <li>अध्याय 3: माता-पिता के लिए सुझाव</li>
+                </ul>
+            </div>
+            <div class="actions">
+                <a href="https://drive.google.com/file/d/1-E_OzFqQkVlil36_t8zzisoWH5BPdaOI/view?usp=drivesdk" class="view" target="_blank" onclick="showPopup(event, this.href)">View My Book</a>
+                <a href="https://drive.usercontent.google.com/u/0/uc?id=1-E_OzFqQkVlil36_t8zzisoWH5BPdaOI&export=download" class="download" target="_blank" onclick="showPopup(event, this.href)">Download My Book</a>
+            </div>
+        </div>
+
+        <!-- Box 2: वास्तविकता और भ्रम -->
+        <div class="box">
+            <h1>वास्तविकता और भ्रम</h1>
+            <div class="details">
+                <p><strong>लेखक:</strong> Rahul Kumar Puri</p>
+                <p><strong>प्रकाशन तिथि:</strong> 26/09/2024</p>
+                <p><strong>प्रकाशक:</strong> The Lamp</p>
+            </div>
+            <div class="toc">
+                <h2>सामग्री</h2>
+                <ul>
+                    <li>अध्याय 1: ख्वाब और हकीकत</li>
+                    <li>अध्याय 2: जीवन की चुनौतियाँ</li>
+                    <li>अध्याय 3: मनोविज्ञान के रंग</li>
+                </ul>
+            </div>
+            <div class="actions">
+                <a href="https://www.yourwebsite.com/viewPoem" class="view" target="_blank" onclick="showPopup(event, this.href)">View My Book</a>
+                <a href="https://www.yourwebsite.com/downloadPoem" class="download" target="_blank" onclick="showPopup(event, this.href)">Download My Book</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
