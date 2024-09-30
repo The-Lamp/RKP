@@ -547,18 +547,18 @@ if (!isMobileDevice()) {
 
          const messaging = firebase.messaging();
 
-// User se permission maango notification receive karne ke liye
-messaging.requestPermission().then(() => {
-  console.log('Notification permission granted.');
-
-  // Token get karo, jo uniquely identify karta hai device ko
-  return messaging.getToken({ vapidKey: 'YOUR_PUBLIC_VAPID_KEY' });
-}).then((token) => {
-  console.log('FCM Token:', token);
-  // Save this token to your database or send it to your server for later use
-}).catch((err) => {
-  console.log('Unable to get permission to notify.', err);
-});
+messaging.getToken({ vapidKey: 'BAjnCSYInGqyHNSvAUVYATzKabVtWO54w4wRAnDRdQi6tscd-Sg3W7yzhH0Dgxz_JK6f7pQAours6smwCMVv_WE' })
+  .then((currentToken) => {
+    if (currentToken) {
+      console.log("FCM Token: ", currentToken);
+      // Save this token to your backend or database
+    } else {
+      console.log('No token available.');
+    }
+  })
+  .catch((err) => {
+    console.log('An error occurred while retrieving token.', err);
+  });
     </script>
 </body>
 </html>
