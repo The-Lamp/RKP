@@ -544,6 +544,21 @@ if (!isMobileDevice()) {
   // Initialize Firebase
   const app = initializeApp(firebaseConfig);
   const analytics = getAnalytics(app);
+
+         const messaging = firebase.messaging();
+
+// User se permission maango notification receive karne ke liye
+messaging.requestPermission().then(() => {
+  console.log('Notification permission granted.');
+
+  // Token get karo, jo uniquely identify karta hai device ko
+  return messaging.getToken({ vapidKey: 'YOUR_PUBLIC_VAPID_KEY' });
+}).then((token) => {
+  console.log('FCM Token:', token);
+  // Save this token to your database or send it to your server for later use
+}).catch((err) => {
+  console.log('Unable to get permission to notify.', err);
+});
     </script>
 </body>
 </html>
