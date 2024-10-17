@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Your website description here. Keep it short and relevant to your content.">
+    <meta name="author" content="Your Name or Brand">
+    <title>Your Website Title</title>
+
+    <!-- Canonical Link -->
+    <link rel="canonical" href="https://www.yourwebsite.com/">
+
+    <!-- Open Graph Meta Tags for Social Media -->
+    <meta property="og:title" content="Your Website Title">
+    <meta property="og:description" content="Your website description here.">
+    <meta property="og:image" content="https://www.yourwebsite.com/image.jpg">
+    <meta property="og:url" content="https://www.yourwebsite.com/">
+    <meta property="og:type" content="website">
+
+    <!-- Robots Meta Tag -->
+    <meta name="robots" content="index, follow">
+    
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap');
+
+        body {
+            font-family: 'Orbitron', sans-serif;
+            background: #0f0f0f;
+            color: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            height: 100vh;
+            margin: 0;
+            padding: 20px;
+            overflow-y: auto;
+        }
+
+        .container {
+            width: 350px;
+            text-align: center;
+            background: rgba(0, 0, 0, 0.8);
+            border: 2px solid #00ff99;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 0 20px rgba(0, 255, 153, 0.5);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .container::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 300%;
+            height: 300%;
+            background: conic-gradient(#00ff99, transparent, #00ff99);
+            animation: rotateBackground 6s linear infinite;
+            z-index: -1;
+        }
+
+        @keyframes rotateBackground {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        .title {
+            font-size: 2.2em;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            color: #00ff99;
+            letter-spacing: 2px;
+        }
+
+        .languages {
+            font-size: 1.2em;
+            line-height: 2;
+            color: #e0e0e0;
+        }
+
+        .language {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            padding: 12px;
+            margin: 8px 0;
+            cursor: pointer;
+            transition: background 0.3s ease, transform 0.3s ease;
+        }
+
+        .language:hover {
+            background: rgba(0, 255, 153, 0.2);
+            transform: scale(1.05);
+        }
+
+        .percentage {
+            color: #00ff99;
+            font-weight: bold;
+        }
+
+        .pending {
+            color: #ff4500;
+            font-weight: bold;
+        }
+
+        .note {
+            margin-top: 30px;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            font-size: 1em;
+            color: #ffffff;
+            text-align: left;
+            line-height: 1.5;
+            border-left: 3px solid #00ff99;
+        }
+
+        .note span {
+            color: #00ff99;
+        }
+
+        .note .pending-text {
+            color: #ff4500;
+        }
+
+        /* Updated CSS for Click Animation */
+.cursor {
+    position: fixed;
+    width: 30px;
+    height: 30px;
+    background: radial-gradient(circle, rgba(255, 255, 255, 1), rgba(0, 150, 255, 0.7), rgba(0, 150, 255, 0.3));
+    border-radius: 50%;
+    pointer-events: none;
+    transform: translate(-50%, -50%) scale(1);
+    transition: transform 0.1s ease, background 0.3s ease;
+    z-index: 9999;
+    box-shadow: 0 0 20px rgba(0, 150, 255, 0.6), 0 0 40px rgba(0, 150, 255, 0.4);
+}
+
+.cursor-grow {
+    transform: translate(-50%, -50%) scale(4);
+    background: radial-gradient(circle, rgba(255, 255, 255, 1), rgba(255, 0, 150, 0.7), rgba(255, 0, 150, 0.3));
+    box-shadow: 0 0 30px rgba(255, 0, 150, 0.6), 0 0 60px rgba(255, 0, 150, 0.4);
+}
+
+.cursor-trail {
+    background: radial-gradient(circle, rgba(0, 255, 255, 1), rgba(0, 150, 255, 0.7), rgba(0, 150, 255, 0.3));
+    transform: translate(-50%, -50%) scale(0.8);
+    animation: cursorTrailAnim 0.6s ease-out forwards;
+    box-shadow: 0 0 15px rgba(0, 150, 255, 0.5), 0 0 30px rgba(0, 150, 255, 0.3);
+}
+
+@keyframes cursorTrailAnim {
+    0% {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(0.8);
+    }
+    100% {
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(2);
+    }
+}
+
+/* Ripple effect on click */
+.cursor-ripple {
+    position: absolute;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.4);
+    transform: translate(-50%, -50%) scale(0);
+    animation: ripple 0.6s ease-out forwards;
+    pointer-events: none;
+    z-index: 1000;
+}
+
+@keyframes ripple {
+    to {
+        transform: translate(-50%, -50%) scale(10);
+        opacity: 0;
+    }
+}
+
+/* Media query for mobile devices - Disable cursor animations */
+@media (max-width: 768px) {
+    .cursor,
+    .cursor-grow,
+    .cursor-trail,
+    .cursor-ripple {
+        display: none;
+    }
+}
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="title">Language Skills</div>
+        <div class="languages">
+            <div class="language">Hindi ➡️ <span class="percentage">(90%)</span></div>
+            <div class="language">English ➡️ <span class="percentage">(55%)</span></div>
+            <div class="language">Avadhi ➡️ (Bhojpuri) <span class="percentage">(99%)</span></div>
+            <div class="language">Maithili ➡️ <span class="percentage">(85%)</span></div>
+            <div class="language">Spanish ➡️ <span class="pending">(pending)</span></div>
+            <div class="language">Mandarin (中文) ➡️ <span class="pending">(pending)</span></div>
+        </div>
+
+        <div class="note">
+            <strong>Note:</strong> यहाँ प्रतिशत % , का मतलब है कि वह language मुझे कितनी आती है. और <span class="pending-text">Pending</span> का मतलब है कि मैंने वह language अभी तक नहीं सीखी है, लेकिन future में सीखने का इरादा है।"
+        </div>
+    </div>
+
+    <script>
+        // Improved JavaScript for Click Animation
+
+// Function to detect if the user is on a mobile device
+function isMobileDevice() {
+    return /Mobi|Android|iPhone/i.test(navigator.userAgent);
+}
+
+// If not a mobile device, then enable cursor effect
+if (!isMobileDevice()) {
+    const cursor = document.createElement('div');
+    cursor.classList.add('cursor');
+    document.body.appendChild(cursor);
+
+    let mouseX = 0, mouseY = 0;
+    let cursorX = 0, cursorY = 0;
+
+    document.addEventListener('mousemove', (e) => {
+        cursor.style.display = 'block'; // Show cursor only on non-mobile devices
+        mouseX = e.pageX;
+        mouseY = e.pageY;
+    });
+
+    function animateCursor() {
+        cursorX += (mouseX - cursorX) * 0.15;
+        cursorY += (mouseY - cursorY) * 0.15;
+        cursor.style.left = cursorX + 'px';
+        cursor.style.top = cursorY + 'px';
+
+        requestAnimationFrame(animateCursor);
+    }
+
+    animateCursor();
+
+    document.addEventListener('mousedown', (e) => {
+        cursor.classList.add('cursor-grow');
+        createCursorTrail(cursorX, cursorY);
+        createRippleEffect(e.pageX, e.pageY); // Trigger ripple effect on click
+    });
+
+    document.addEventListener('mouseup', () => {
+        cursor.classList.remove('cursor-grow');
+    });
+
+    function createCursorTrail(x, y) {
+        const trail = document.createElement('div');
+        trail.classList.add('cursor-trail');
+        trail.style.left = `${x}px`;
+        trail.style.top = `${y}px`;
+        document.body.appendChild(trail);
+
+        setTimeout(() => {
+            document.body.removeChild(trail);
+        }, 600); // Remove the trail after animation ends
+    }
+
+    function createRippleEffect(x, y) {
+        const ripple = document.createElement('div');
+        ripple.classList.add('cursor-ripple');
+        ripple.style.width = '25px';
+        ripple.style.height = '25px';
+        ripple.style.left = `${x}px`;
+        ripple.style.top = `${y}px`;
+        document.body.appendChild(ripple);
+
+        setTimeout(() => {
+            document.body.removeChild(ripple);
+        }, 600); // Remove the ripple after animation ends
+    }
+}
+    </script>
+</body>
+
+</html>
