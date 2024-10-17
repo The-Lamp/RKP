@@ -69,38 +69,3 @@
                 font-size: 14px;
             }
         }
-
-
-
-
-
-
-/* Footer Links */
-
-
-.footer-links-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
-    padding: 10px 0;
-}
-
-.footer-links {
-    flex: 1 1 30%;
-    margin: 10px;
-    text-align: center;
-    font-size: 16px;
-    color: white;
-    text-decoration: none;
-}
-
-.footer-links-container a:hover {
-    color: #ffcc00; /* Optional hover effect */
-}
-
-@media (max-width: 768px) {
-    .footer-links {
-        flex: 1 1 100%;
-        font-size: 14px;
-    }
-}
