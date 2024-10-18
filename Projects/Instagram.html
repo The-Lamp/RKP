@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Cyb Rahul | Advanced Stylish Website</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            text-align: center;
+            perspective: 1500px;
+            overflow: hidden; /* Ensure no overflow on small screens */
+        }
+        .container {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 50px;
+            border-radius: 20px;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.7);
+            transform: rotateY(25deg) rotateX(10deg);
+            transition: transform 0.8s ease, box-shadow 0.8s ease;
+            max-width: 90vw;
+            width: 500px;
+        }
+        .container:hover {
+            transform: rotateY(0deg) rotateX(0deg);
+            box-shadow: 0 20px 50px rgba(255, 255, 255, 0.2);
+        }
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            background: linear-gradient(45deg, #ff416c, #ff4b2b, #ff7e5f);
+            -webkit-background-clip: text;
+            color: transparent;
+            text-shadow: 2px 2px 15px rgba(255, 100, 100, 0.7);
+        }
+        p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+        }
+        .btn-group {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+        a {
+            font-size: 1.2rem;
+            padding: 12px 25px;
+            background: linear-gradient(45deg, #6a82fb, #fc5c7d);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            transition: 0.3s ease;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+        }
+        a:hover {
+            background: linear-gradient(45deg, #ff4b2b, #ff416c);
+            transform: scale(1.1);
+        }
+        .extra-content {
+            margin-top: 40px;
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+        .container:hover h1 {
+            transform: translateZ(40px);
+        }
+        a:hover {
+            box-shadow: 0 15px 30px rgba(255, 255, 255, 0.3);
+            transform: scale(1.2) rotate(3deg);
+        }
+
+        /* Mobile Friendly Adjustments */
+        @media (max-width: 768px) {
+            body {
+                justify-content: center;
+                align-items: center;
+                height: 100vh; /* Ensure container stays centered */
+                padding: 20px;
+            }
+            .container {
+                max-width: 100vw;
+                width: 90%;
+                padding: 30px;
+                transform: none; /* Remove rotation on mobile */
+            }
+            h1 {
+                font-size: 2rem;
+            }
+            p {
+                font-size: 1.1rem;
+            }
+            .btn-group {
+                flex-direction: column;
+                gap: 15px;
+            }
+            a {
+                font-size: 1.3rem;
+                padding: 10px 20px;
+                width: 100%;
+            }
+            .extra-content {
+                font-size: 1rem;
+                margin-top: 30px;
+            }
+        }
+
+        /* Larger screens (Desktop and Tablets) */
+        @media (min-width: 769px) {
+            a {
+                background: linear-gradient(45deg, #fc5c7d, #ff416c);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Welcome to Cyb Rahul's World</h1>
+        <p>Follow us on Instagram for more updates and content.</p>
+
+        <div class="btn-group">
+            <a id="link1" href="#" target="_blank">Follow @cyb_rahul</a>
+            <a id="link2" href="#" target="_blank">Follow @thelamp.india</a>
+        </div>
+
+        <div class="extra-content">
+            <p>Extra Material: Keep hustling and exploring the world of tech and creativity.</p>
+        </div>
+    </div>
+
+    <script>
+        // Function to detect if the user is on mobile or desktop
+        function isMobile() {
+            return /Mobi|Android/i.test(navigator.userAgent);
+        }
+
+        // Set different links based on device type
+        if (isMobile()) {
+            // Mobile-specific links
+            document.getElementById('link1').href = "https://mobile-instagram.com/cyb_rahul"; // Replace with your mobile-specific link
+            document.getElementById('link2').href = "https://mobile-instagram.com/thelamp.india"; // Replace with your mobile-specific link
+        } else {
+            // Desktop-specific links
+            document.getElementById('link1').href = "https://www.instagram.com/cyb_rahul";
+            document.getElementById('link2').href = "https://www.instagram.com/thelamp.india";
+        }
+    </script>
+</body>
+</html>
