@@ -1,526 +1,190 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-     <meta charset="UTF-8">
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="starting dashboard interface of the lamp">
-    <meta name="author" content="The Lamp">
     <title>The Lamp</title>
-
-    <!-- Canonical Link -->
-    <link rel="canonical" href="https://the-lamp.github.io/The-Lamp-Community/">
-
-    <!-- Open Graph Meta Tags for Social Media -->
-    <meta property="og:title" content="The Lamp">
-    <meta property="og:description" content="starting dashboard interface of the lamp">
-    <meta property="og:image" content="https://www.yourwebsite.com/image.jpg">
-    <meta property="og:url" content="https://the-lamp.github.io/The-Lamp-Community/">
-    <meta property="og:type" content="website">
-
-    <!-- Robots Meta Tag -->
-    <meta name="robots" content="index, follow">
-    
-    <meta http-equiv="refresh" content="5;url=Dashboard.html"> <!-- Meta Refresh Tag -->
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
     <style>
         body {
-            background-color: #1a1a1a;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
             margin: 0;
-            font-family: 'Arial', sans-serif;
-        }
-
-        .container {
-    perspective: 1000px;  /* Add depth perception */
-    transform-style: preserve-3d; 
-}
-
-        .springs {
+            overflow: hidden;
             display: flex;
-            justify-content: space-between;
-            width: 120px;
+            align-items: center;
+            justify-content: center;
+            background-color: #f0f0f0;
+            height: 100vh;
+        }
+
+        .runner-container {
             position: relative;
-        }
-
-        .spring {
-    animation: springMove 2s cubic-bezier(0.68, -0.55, 0.27, 1.55) infinite, springRotate 3s cubic-bezier(0.68, -0.55, 0.27, 1.55) infinite;
-}
-
-        #matrixCanvas {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: -1;  /* Ensures the canvas is behind other elements */
-    pointer-events: none;  /* Prevents canvas from blocking clicks */
-    background-color: black;
-}
-    
-    #countdown {
-    font-size: 4rem;
-    margin-top: 20px;
-    color: #FFC107; /* Yellow color */
-    background: linear-gradient(45deg, #FFC107, #FF5722);
-    -webkit-background-clip: text;
-    color: transparent;
-    animation: glow 1s infinite alternate, pulse 1.5s infinite;
-}
-
-@keyframes glow {
-    from {
-        text-shadow: 0 0 10px #FFC107, 0 0 20px #FF5722, 0 0 30px #FF9800, 0 0 40px #FF5722;
-    }
-    to {
-        text-shadow: 0 0 20px #FF5722, 0 0 30px #FF9800, 0 0 40px #FFC107, 0 0 50px #FF5722;
-    }
-}
-
-@keyframes pulse {
-    0% {
-        transform: scale(1);
-    }
-    50% {
-        transform: scale(1.1);
-    }
-    100% {
-        transform: scale(1);
-    }
-}
-
-        @keyframes fadeIn {
-            to {
-                opacity: 1;
-            }
-        }
-
-        @keyframes springMove {
-            0%, 100% { transform: scaleY(1) translateX(0); }
-            25% { transform: scaleY(0.8) translateX(20px); }
-            75% { transform: scaleY(0.8) translateX(-20px); }
-        }
-
-        @keyframes springRotate {
-            0%, 100% { transform: rotate(0deg); }
-            50% { transform: rotate(10deg); }
-        }
-
-        .spring.opposite {
-            animation: springMoveOpposite 2s infinite ease-in-out, springRotate 3s infinite ease-in-out;
-        }
-
-        @keyframes springMoveOpposite {
-            0%, 100% { transform: scaleY(1) translateX(0); }
-            25% { transform: scaleY(0.8) translateX(-20px); }
-            75% { transform: scaleY(0.8) translateX(20px); }
-        }
-
-        .device {
-    background-color: #0d47a1;
-    width: 300px;
-    padding: 25px;
-    border-radius: 20px;
-    position: relative;
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
-    transform: rotateY(15deg) rotateX(10deg);  /* 3D rotation */
-    transition: transform 0.5s ease-in-out;
-}
-
-.device:hover {
-    transform: rotateY(-15deg) rotateX(-10deg) scale(1.05);  /* Add hover effect for interactivity */
-}
-
-        @keyframes slideInFromLeft {
-            0% {
-                transform: translateX(-100%);
-            }
-            100% {
-                transform: translateX(0);
-            }
-        }
-
-        .screen {
-    background-color: #212121;
-    color: white;
-    padding: 20px;
-    border-radius: 15px;
-    text-align: center;
-    box-shadow: 0 0 20px rgba(255, 255, 255, 0.5), inset 0 0 10px rgba(0, 0, 0, 0.7);
-    border: 2px solid #0d47a1;
-    animation: neonGlow 1.5s infinite alternate;
-}
-
-@keyframes neonGlow {
-    from {
-        box-shadow: 0 0 5px #42a5f5, 0 0 10px #42a5f5, 0 0 15px #42a5f5;
-    }
-    to {
-        box-shadow: 0 0 20px #42a5f5, 0 0 30px #42a5f5, 0 0 40px #42a5f5;
-    }
-}
-
-        .plus {
-    background: linear-gradient(135deg, #ff4081, #ffca28);
-    transition: background 0.5s ease-in-out, transform 0.5s ease-in-out;
-}
-
-.plus:hover {
-    background: linear-gradient(135deg, #ffca28, #ff4081);
-    transform: scale(1.2) rotate(45deg);
-}
-
-        @keyframes rotatePlus {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-
-        @keyframes plusBounce {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.2); }
-        }
-
-        .plus:nth-child(1) {
-            top: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-        }
-
-        .plus:nth-child(2) {
-            right: -10px;
-            top: 50%;
-            transform: translateY(-50%);
-        }
-
-        .plus:nth-child(3) {
-            bottom: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-        }
-
-        .plus:nth-child(4) {
-            left: -10px;
-            top: 50%;
-            transform: translateY(-50%);
-        }
-
-        .button-container {
-            margin-top: 30px;
-            position: relative;
+            width: 100vw;
+            height: 100vh;
+            overflow: hidden;
             display: flex;
-            justify-content: space-between;
-            opacity: 0;
-            animation: fadeIn 2s 1s forwards;
+            align-items: center;
+            justify-content: flex-start;
         }
 
-        .click-text {
-    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7), 4px 4px 10px rgba(255, 255, 255, 0.5);
-}
-    
-        .power-button {
-    background: radial-gradient(circle, #ffca28, #ff9800);
-    width: 60px;
-    height: 60px;
-    border-radius: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    cursor: pointer;
-    transition: transform 0.2s ease-in-out, box-shadow 0.3s ease-in-out;
-    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.5), inset 0px -5px 10px rgba(255, 255, 255, 0.5);
-}
-
-.power-button:hover {
-    transform: scale(1.1) translateY(-5px);
-    box-shadow: 0px 10px 20px rgba(255, 165, 0, 0.8), inset 0px -5px 15px rgba(255, 255, 255, 0.7);
-}
-
-        .power-icon {
-            width: 25px;
-            height: 25px;
-            background-color: #212121;
-            clip-path: polygon(50% 0%, 75% 25%, 60% 40%, 60% 100%, 40% 100%, 40% 40%, 25% 25%);
-        }
-
-        .power-button:active {
-            transform: scale(0.9);
-        }
-
-        @keyframes rotatePowerButton {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-
-        /* Updated CSS for Click Animation */
-.cursor {
-    position: fixed;
-    width: 30px;
-    height: 30px;
-    background: radial-gradient(circle, rgba(255, 255, 255, 1), rgba(0, 150, 255, 0.7), rgba(0, 150, 255, 0.3));
-    border-radius: 50%;
-    pointer-events: none;
-    transform: translate(-50%, -50%) scale(1);
-    transition: transform 0.1s ease, background 0.3s ease;
-    z-index: 9999;
-    box-shadow: 0 0 20px rgba(0, 150, 255, 0.6), 0 0 40px rgba(0, 150, 255, 0.4);
-}
-
-.cursor-grow {
-    transform: translate(-50%, -50%) scale(4);
-    background: radial-gradient(circle, rgba(255, 255, 255, 1), rgba(255, 0, 150, 0.7), rgba(255, 0, 150, 0.3));
-    box-shadow: 0 0 30px rgba(255, 0, 150, 0.6), 0 0 60px rgba(255, 0, 150, 0.4);
-}
-
-.cursor-trail {
-    background: radial-gradient(circle, rgba(0, 255, 255, 1), rgba(0, 150, 255, 0.7), rgba(0, 150, 255, 0.3));
-    transform: translate(-50%, -50%) scale(0.8);
-    animation: cursorTrailAnim 0.6s ease-out forwards;
-    box-shadow: 0 0 15px rgba(0, 150, 255, 0.5), 0 0 30px rgba(0, 150, 255, 0.3);
-}
-
-@keyframes cursorTrailAnim {
-    0% {
-        opacity: 1;
-        transform: translate(-50%, -50%) scale(0.8);
-    }
-    100% {
-        opacity: 0;
-        transform: translate(-50%, -50%) scale(2);
-    }
-}
-
-/* Ripple effect on click */
-.cursor-ripple {
-    position: absolute;
-    border-radius: 50%;
-    background: rgba(255, 255, 255, 0.4);
-    transform: translate(-50%, -50%) scale(0);
-    animation: ripple 0.6s ease-out forwards;
-    pointer-events: none;
-    z-index: 1000;
-}
-
-@keyframes ripple {
-    to {
-        transform: translate(-50%, -50%) scale(10);
-        opacity: 0;
-    }
-}
-
-/* Media query for mobile devices - Disable cursor animations */
-@media (max-width: 768px) {
-    .cursor,
-    .cursor-grow,
-    .cursor-trail,
-    .cursor-ripple {
-        display: none;
-    }
-}
-        
-        /* Fire Animation */
-        .fire {
+        .runner {
             position: absolute;
-            width: 20px;
-            height: 20px;
-            background: orange;
-            clip-path: polygon(50% 0%, 61% 32%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 32%);
-            animation: fire 0.5s ease-out forwards;
+            bottom: 50%;
+            left: -10%;
+            width: 90px; /* Runner size reduced */
+            height: auto;
+            opacity: 0.9;
+            filter: drop-shadow(5px 5px 10px rgba(0, 0, 0, 0.4));
         }
 
-        @keyframes fire {
-            0% {
-                transform: scale(0);
-                opacity: 1;
-            }
-            100% {
-                transform: scale(1.5);
-                opacity: 0;
-            }
+        .shadow {
+            position: absolute;
+            bottom: 45%;
+            left: -10%;
+            width: 90px;
+            height: 20px;
+            background: radial-gradient(ellipse at center, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0) 80%);
+            transform-origin: center;
+            opacity: 0.7;
         }
+
+        /* 12 Wind Lines for general wind effect */
+        .wind-line {
+            position: absolute;
+            top: 50%;
+            width: 0;
+            height: 3px;
+            background-color: rgba(255, 255, 255, 0.8);
+            border-radius: 50%;
+            opacity: 0.8;
+        }
+
+        /* Positioning the wind lines at varying distances */
+        .wind-line-1 { left: -5%; }
+        .wind-line-2 { left: -10%; }
+        .wind-line-3 { left: -15%; }
+        .wind-line-4 { left: -20%; }
+        .wind-line-5 { left: -25%; }
+        .wind-line-6 { left: -30%; }
+        .wind-line-7 { left: -35%; }
+        .wind-line-8 { left: -40%; }
+        .wind-line-9 { left: -45%; }
+        .wind-line-10 { left: -50%; }
+        .wind-line-11 { left: -55%; }
+        .wind-line-12 { left: -60%; }
+
+        /* Special Wind Lines directly behind the runner */
+        .special-wind-line {
+            position: absolute;
+            bottom: 52%;
+            width: 0;
+            height: 2px;
+            background-color: rgba(255, 255, 255, 1);
+            border-radius: 50%;
+            opacity: 0.9;
+        }
+
+        /* 9-10 Special wind lines behind the runner */
+        .special-wind-line-1 { left: 0%; }
+        .special-wind-line-2 { left: -2%; }
+        .special-wind-line-3 { left: -4%; }
+        .special-wind-line-4 { left: -6%; }
+        .special-wind-line-5 { left: -8%; }
+        .special-wind-line-6 { left: -10%; }
+        .special-wind-line-7 { left: -12%; }
+        .special-wind-line-8 { left: -14%; }
+        .special-wind-line-9 { left: -16%; }
+        .special-wind-line-10 { left: -18%; }
     </style>
 </head>
-    <canvas id="matrixCanvas"></canvas>
+
 <body>
+    <div class="runner-container">
+        <!-- Runner -->
+        <img src="assets/img/runner.png" alt="Running Silhouette" class="runner">
+        <div class="shadow"></div>
 
-    <div class="container">
-    <div class="springs">
-        <div class="spring"></div>
-        <div class="spring opposite"></div>
-    </div>
-    <!-- Countdown ko yaha shift kiya -->
-    <p id="countdown"></p>
-    
-    <div class="device">
-        <div class="plus">+</div>
-        <div class="plus">+</div>
-        <div class="plus">+</div>
-        <div class="plus">+</div>
-        <div class="screen">
-            <p>I'm 🇷‌🇦‌🇭‌🇺‌🇱‌ᴘᴜʀɪ</p>
-            <p> स्वागत है आपका, मेरे पर्सनल डैशबोर्ड पर❗</p>
-        </div>
-        <div class="button-container">
-            <div class="click-text">Ｈ么ＣＫ卄Ｒ☣</div>
-            <div class="power-button left-button">
-                <div class="power-icon"></div>
-            </div>
-            <div class="power-button right-button">
-                <div class="power-icon"></div>
-            </div>
-        </div>
-    </div>
-</div>
+        <!-- 12 General Wind Lines -->
+        <div class="wind-line wind-line-1"></div>
+        <div class="wind-line wind-line-2"></div>
+        <div class="wind-line wind-line-3"></div>
+        <div class="wind-line wind-line-4"></div>
+        <div class="wind-line wind-line-5"></div>
+        <div class="wind-line wind-line-6"></div>
+        <div class="wind-line wind-line-7"></div>
+        <div class="wind-line wind-line-8"></div>
+        <div class="wind-line wind-line-9"></div>
+        <div class="wind-line wind-line-10"></div>
+        <div class="wind-line wind-line-11"></div>
+        <div class="wind-line wind-line-12"></div>
 
-    <!-- JavaScript for Countdown and Interactions -->
+        <!-- 9-10 Special Wind Lines Behind Runner -->
+        <div class="special-wind-line special-wind-line-1"></div>
+        <div class="special-wind-line special-wind-line-2"></div>
+        <div class="special-wind-line special-wind-line-3"></div>
+        <div class="special-wind-line special-wind-line-4"></div>
+        <div class="special-wind-line special-wind-line-5"></div>
+        <div class="special-wind-line special-wind-line-6"></div>
+        <div class="special-wind-line special-wind-line-7"></div>
+        <div class="special-wind-line special-wind-line-8"></div>
+        <div class="special-wind-line special-wind-line-9"></div>
+        <div class="special-wind-line special-wind-line-10"></div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.0/gsap.min.js"></script>
     <script>
-        // Countdown function
-        function startCountdown() {
-    const countdownElement = document.getElementById('countdown');
-    let timeLeft = 3;
-
-    const countdownInterval = setInterval(() => {
-        if (timeLeft > 0) {
-            countdownElement.textContent = timeLeft;
-            countdownElement.style.transform = "scale(1.5)";
-            setTimeout(() => {
-                countdownElement.style.transform = "scale(1)";
-            }, 200); // Smooth shrinking effect
-            timeLeft--;
-        } else if (timeLeft === 0) {
-            countdownElement.textContent = 'Go!!';
-            clearInterval(countdownInterval);
-        }
-    }, 1000);
-}
-
-        // Start countdown when the page loads
-        window.onload = function() {
-            startCountdown();
-        };
-
-        document.querySelectorAll('.power-button').forEach(button => {
-            button.addEventListener('click', () => {
-                // Button click animation
-                const fire = document.createElement('div');
-                fire.className = 'fire';
-                fire.style.left = `${Math.random() * window.innerWidth}px`;
-                fire.style.top = `${Math.random() * window.innerHeight}px`;
-                document.body.appendChild(fire);
-
-                // Remove fire animation after it finishes
-                setTimeout(() => {
-                    document.body.removeChild(fire);
-                }, 500);
-            });
-        });
-        // Matrix Rain Effect
-const canvas = document.getElementById('matrixCanvas');
-const ctx = canvas.getContext('2d');
-
-canvas.width = window.innerWidth;
-canvas.height = window.innerHeight;
-
-const matrixChars = "♈♉♎♍♌♋♊♏♐♑⚠⚠⚠S®S®S®S®S®S®S®⚠⚠⚠$%^&*()*&^%+-/~{[|`]".split("");
-const fontSize = 16;
-const columns = Math.floor(canvas.width / fontSize);
-const drops = Array(columns).fill(1);
-
-function drawMatrixRain() {
-    ctx.fillStyle = "rgba(0, 0, 0, 0.05)";
-    ctx.fillRect(0, 0, canvas.width, canvas.height);
-
-    ctx.fillStyle = "#0F0";
-    ctx.font = `${fontSize}px monospace`;
-
-    drops.forEach((drop, i) => {
-        const text = matrixChars[Math.floor(Math.random() * matrixChars.length)];
-        ctx.fillText(text, i * fontSize, drop * fontSize);
-
-        if (drop * fontSize > canvas.height && Math.random() > 0.975) {
-            drops[i] = 0;
-        }
-        drops[i]++;
-    });
-}
-
-setInterval(drawMatrixRain, 50);
-
-window.addEventListener('resize', () => {
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
+        // GSAP animation for runner and shadow
+        gsap.to(".runner", {
+    x: "120vw",
+    ease: "power1.inOut",
+    duration: 8,
+    onComplete: () => {
+        window.location.href = "dashboard.html"; // Immediate redirect
+    },
+    clearProps: "all" // Ensures all properties are cleared after animation
 });
 
-        // Improved JavaScript for Click Animation
+        gsap.to(".shadow", {
+            x: "120vw",
+            scaleX: 1.1,
+            ease: "power1.inOut",
+            duration: 8
+        });
 
-// Function to detect if the user is on a mobile device
-function isMobileDevice() {
-    return /Mobi|Android|iPhone/i.test(navigator.userAgent);
-}
+        // Bounce effect for runner
+        gsap.to(".runner", {
+            keyframes: [
+                { y: -15, duration: 0.2, ease: "power1.inOut" },
+                { y: 0, duration: 0.2, ease: "power1.inOut" }
+            ],
+            repeat: -1,
+            duration: 0.4
+        });
 
-// If not a mobile device, then enable cursor effect
-if (!isMobileDevice()) {
-    const cursor = document.createElement('div');
-    cursor.classList.add('cursor');
-    document.body.appendChild(cursor);
+        // General Wind Line animations
+        const windLines = 12;  // Total 12 wind lines
+        for (let i = 1; i <= windLines; i++) {
+            gsap.to(`.wind-line-${i}`, {
+                width: `${10 + i * 2}vw`, // Increasing width for each wind line
+                x: "120vw",
+                duration: 1.2 + i * 0.1, // Slightly different duration for variation
+                repeat: -1,
+                ease: "linear"
+            });
+        }
 
-    let mouseX = 0, mouseY = 0;
-    let cursorX = 0, cursorY = 0;
-
-    document.addEventListener('mousemove', (e) => {
-        cursor.style.display = 'block'; // Show cursor only on non-mobile devices
-        mouseX = e.pageX;
-        mouseY = e.pageY;
-    });
-
-    function animateCursor() {
-        cursorX += (mouseX - cursorX) * 0.15;
-        cursorY += (mouseY - cursorY) * 0.15;
-        cursor.style.left = cursorX + 'px';
-        cursor.style.top = cursorY + 'px';
-
-        requestAnimationFrame(animateCursor);
-    }
-
-    animateCursor();
-
-    document.addEventListener('mousedown', (e) => {
-        cursor.classList.add('cursor-grow');
-        createCursorTrail(cursorX, cursorY);
-        createRippleEffect(e.pageX, e.pageY); // Trigger ripple effect on click
-    });
-
-    document.addEventListener('mouseup', () => {
-        cursor.classList.remove('cursor-grow');
-    });
-
-    function createCursorTrail(x, y) {
-        const trail = document.createElement('div');
-        trail.classList.add('cursor-trail');
-        trail.style.left = `${x}px`;
-        trail.style.top = `${y}px`;
-        document.body.appendChild(trail);
-
-        setTimeout(() => {
-            document.body.removeChild(trail);
-        }, 600); // Remove the trail after animation ends
-    }
-
-    function createRippleEffect(x, y) {
-        const ripple = document.createElement('div');
-        ripple.classList.add('cursor-ripple');
-        ripple.style.width = '25px';
-        ripple.style.height = '25px';
-        ripple.style.left = `${x}px`;
-        ripple.style.top = `${y}px`;
-        document.body.appendChild(ripple);
-
-        setTimeout(() => {
-            document.body.removeChild(ripple);
-        }, 600); // Remove the ripple after animation ends
-    }
-}
+        // Special Wind Lines animations (directly behind runner)
+        const specialWindLines = 10;  // Total 9-10 wind lines
+        for (let i = 1; i <= specialWindLines; i++) {
+            gsap.to(`.special-wind-line-${i}`, {
+                width: `${5 + i * 1.5}vw`,
+                x: "120vw",
+                duration: 1.5,
+                repeat: -1,
+                ease: "linear"
+            });
+        }
     </script>
 </body>
+
 </html>
