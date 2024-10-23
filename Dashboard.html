@@ -68,6 +68,38 @@
         "template": "{{wf {\"path\":\"symbol\",\"type\":\"PlainText\"} }} {{wf {\"path\":\"amount\",\"type\":\"CommercePrice\"} }} {{wf {\"path\":\"currencyCode\",\"type\":\"PlainText\"} }}",
         "hideDecimalForWholeNumbers": false
       };
+
+      /* For the section container */
+.section .wrapper {
+    max-width: 1200px;  /* Adjust this as per your requirement */
+    margin: 0 auto; /* Center the container */
+    padding: 20px;  /* Add some padding */
+}
+
+/* For the 3-column layout */
+.posts-3-columns {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+/* For each post card */
+.post-card {
+    width: 30%;  /* Adjust width, so three posts fit in one row */
+    margin-bottom: 20px;
+}
+
+@media screen and (max-width: 768px) {
+    .post-card {
+        width: 48%; /* For tablets, two columns */
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .post-card {
+        width: 100%;  /* For mobile devices, one column */
+    }
+}
     </script>
   </head>
   <body>
