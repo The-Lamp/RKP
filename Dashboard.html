@@ -53,6 +53,12 @@
     }
   }
 
+      .inner-circle-button img {
+    width: 100%; /* Image ko box ke andar full width dene ke liye */
+    height: 100%; /* Box ke height ke hisaab se fit karne ke liye */
+    object-fit: cover; /* Isse image box ke andar fit rahega without distortion */
+}
+
   /* Apply animation to the arrow */
   .animated-arrow {
     animation: moveArrow 1.5s infinite;
