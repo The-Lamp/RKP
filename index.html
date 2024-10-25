@@ -76,18 +76,33 @@
     transform: rotateY(45deg) rotateX(10deg) translateZ(50px); /* 3D Rotation */
 }
 
-.brand-name {
-    position: absolute;
-    top: 45%;
-    left: 15%;
-    font-size: 3em;
-    font-family: 'Arial Black', sans-serif;
-    color: rgba(255, 255, 255, 0.1); /* Transparent white color */
-    text-shadow: 0px 0px 10px #f0f, 0px 0px 20px rgba(240, 0, 240, 0.5); /* Neon Effect */
-    transform: rotateY(45deg) rotateX(10deg) translateZ(100px); /* 3D Rotation with depth */
-    transform-origin: 50% 50%;
-    mix-blend-mode: screen; /* Transparent effect */
-}
+  /* Text behind and in front */
+        .brand-name {
+            position: absolute;
+            top: 45%;
+            left: 15%;
+            font-size: 5em;
+            font-family: 'Arial Black', sans-serif;
+            color: rgba(255, 255, 255, 0.1); /* Transparent white color */
+            text-shadow: 0px 0px 10px #f0f, 0px 0px 20px rgba(240, 0, 240, 0.5); /* Neon Effect */
+            transform: rotateY(45deg) rotateX(10deg) translateZ(100px); /* 3D Rotation with depth */
+            transform-origin: 50% 50%;
+            mix-blend-mode: screen; /* Transparent effect */
+            z-index: 2; /* Behind the image */
+        }
+
+        /* Text in front of the image */
+        .brand-name-front {
+            position: absolute;
+            top: 45%;
+            left: 15%;
+            font-size: 5em;
+            font-family: 'Arial Black', sans-serif;
+            color: rgba(255, 255, 255, 1); /* Full white color */
+            text-shadow: 0px 0px 10px #f0f, 0px 0px 20px rgba(240, 0, 240, 0.5); /* Neon Effect */
+            z-index: 10; /* In front of the image */
+            transform: rotateY(0deg) rotateX(0deg);
+        }
 
         /* Positioning the wind lines at varying distances */
         .wind-line-1 { left: -5%; }
