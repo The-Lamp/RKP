@@ -60,41 +60,30 @@
         }
 
          /* 3D Logo and Brand Name Styling */
-        .logo, .brand-name {
-            position: absolute;
-            opacity: 0;
-            transition: transform 0.3s ease, opacity 0.3s ease;
-            transform-style: preserve-3d;
-            perspective: 1000px; /* Adds 3D effect */
-        }
+.logo, .brand-name {
+    position: absolute;
+    opacity: 0;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    transform-style: preserve-3d;
+    perspective: 1000px; /* Adds 3D effect */
+}
 
-        .logo {
-            top: 30%;
-            left: 15%;
-            width: 120px;
-            filter: drop-shadow(0px 0px 20px #f0f); /* Neon Glow */
-            transform: rotateY(45deg) rotateX(10deg) translateZ(50px); /* 3D Rotation */
-        }
+.logo {
+    top: 30%;
+    left: 15%;
+    width: 120px;
+    filter: drop-shadow(0px 0px 20px #f0f); /* Neon Glow */
+    transform: rotateY(45deg) rotateX(10deg) translateZ(50px); /* 3D Rotation */
+}
 
-        .brand-name {
-            top: 45%;
-            left: 15%;
-            font-size: 3em;
-            font-family: 'Arial Black', sans-serif;
-            color: #f0f;
-            text-shadow: 0px 0px 10px #f0f, 0px 0px 20px #f0f; /* Neon Text Effect */
-            transform: rotateY(30deg) rotateX(10deg) translateZ(50px);
-        }
-
-/* Mobile-friendly adjustments */
-@media (max-width: 768px) {
-    .logo {
-        width: 60px;
-    }
-
-    .brand-name {
-        font-size: 1.5em;
-    }
+.brand-name {
+    top: 45%;
+    left: 15%;
+    font-size: 3em;
+    font-family: 'Arial Black', sans-serif;
+    color: #f0f;
+    text-shadow: 0px 0px 10px #f0f, 0px 0px 20px #f0f; /* Neon Text Effect */
+    transform: rotateY(30deg) rotateX(10deg) translateZ(50px);
 }
 
         /* Positioning the wind lines at varying distances */
