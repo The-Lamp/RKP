@@ -59,6 +59,28 @@
             opacity: 0.8;
         }
 
+         /* Logo and Brand Name styling */
+        .logo, .brand-name {
+            position: absolute;
+            opacity: 0;
+            transform: scale(0.5);
+            transition: transform 0.3s ease, opacity 0.3s ease;
+        }
+
+        .logo {
+            top: 30%;
+            left: 10%;
+            width: 100px;
+        }
+
+        .brand-name {
+            top: 40%;
+            left: 10%;
+            font-size: 2em;
+            font-family: Arial, sans-serif;
+            color: #333;
+        }
+
         /* Positioning the wind lines at varying distances */
         .wind-line-1 { left: -5%; }
         .wind-line-2 { left: -10%; }
