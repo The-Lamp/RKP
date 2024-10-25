@@ -59,33 +59,32 @@
             opacity: 0.8;
         }
 
-         /* Container to horizontally align logo and brand name */
-.logo-brand-container {
-    position: absolute;
-    top: 40%;
-    left: 10%;
-    display: flex;
-    align-items: center;
-    opacity: 0;
-    transform-style: preserve-3d;
-    perspective: 1000px;
-    transition: transform 0.3s ease, opacity 0.3s ease;
-}
+         /* 3D Logo and Brand Name Styling */
+        .logo, .brand-name {
+            position: absolute;
+            opacity: 0;
+            transition: transform 0.3s ease, opacity 0.3s ease;
+            transform-style: preserve-3d;
+            perspective: 1000px; /* Adds 3D effect */
+        }
 
-.logo {
-    width: 80px;
-    filter: drop-shadow(0px 0px 15px #f0f) brightness(1.2); /* Enhanced Neon Glow */
-    transform: rotateY(45deg) rotateX(10deg) translateZ(30px); /* Advanced 3D Rotation */
-    margin-right: 15px;
-}
+        .logo {
+            top: 30%;
+            left: 15%;
+            width: 120px;
+            filter: drop-shadow(0px 0px 20px #f0f); /* Neon Glow */
+            transform: rotateY(45deg) rotateX(10deg) translateZ(50px); /* 3D Rotation */
+        }
 
-.brand-name {
-    font-size: 2.5em;
-    font-family: 'Arial Black', sans-serif;
-    color: #f0f;
-    text-shadow: 0px 0px 10px #f0f, 0px 0px 15px #f0f, 0px 0px 30px rgba(240, 0, 240, 0.5); /* Multi-layer Neon Effect */
-    transform: rotateY(40deg) rotateX(10deg) translateZ(30px);
-}
+        .brand-name {
+            top: 45%;
+            left: 15%;
+            font-size: 3em;
+            font-family: 'Arial Black', sans-serif;
+            color: #f0f;
+            text-shadow: 0px 0px 10px #f0f, 0px 0px 20px #f0f; /* Neon Text Effect */
+            transform: rotateY(30deg) rotateX(10deg) translateZ(50px);
+        }
 
 /* Mobile-friendly adjustments */
 @media (max-width: 768px) {
@@ -228,37 +227,28 @@
             });
         }
 
-        // Enhanced 3D animation for logo and brand name reveal
-gsap.timeline()
-    .to(".logo-brand-container", {
-        delay: 1.5,
-        opacity: 1,
-        x: "10vw",
-        ease: "power2.out",
-        duration: 1.5
-    })
-    .to(".logo", {
-        rotationY: 0,
-        rotationX: 0,
-        scale: 1.3,
-        duration: 1.2,
-        ease: "elastic.out(1, 0.7)"
-    }, "-=1.2")
-    .to(".brand-name", {
-        rotationY: 0,
-        rotationX: 0,
-        scale: 1.3,
-        duration: 1.2,
-        ease: "elastic.out(1, 0.7)"
-    }, "-=1.0")
-    .fromTo(".brand-name", {
-        textShadow: "0px 0px 10px #f0f, 0px 0px 15px #f0f",
-    }, {
-        textShadow: "0px 0px 15px #ff0, 0px 0px 30px #f0f, 0px 0px 40px rgba(240, 0, 240, 0.5)",
-        repeat: -1,
-        yoyo: true,
-        duration: 0.8
-    });
+         // Logo and brand name reveal animations with 3D effect
+        gsap.to(".logo", {
+            delay: 1,
+            opacity: 1,
+            scale: 1.2,
+            rotationY: 0,
+            rotationX: 0,
+            transformOrigin: "50% 50%",
+            ease: "elastic.out(1, 0.7)",
+            duration: 1.5
+        });
+
+        gsap.to(".brand-name", {
+            delay: 2.5,
+            opacity: 1,
+            scale: 1.2,
+            rotationY: 0,
+            rotationX: 0,
+            transformOrigin: "50% 50%",
+            ease: "elastic.out(1, 0.7)",
+            duration: 1.5
+        });
     </script>
     <script src="js/js-jquery-3.5.1.min.dc5e7f18c8.js" type="text/javascript" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
     <script src="js/js-engage-template.43cf288cb.js" type="text/javascript"></script>
