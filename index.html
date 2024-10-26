@@ -156,23 +156,34 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.0/gsap.min.js"></script>
     <script>
-        // GSAP animation for runner and shadow
-        gsap.to(".runner", {
+        // Determine the duration based on device type
+let duration;
+if (window.innerWidth < 768) {
+    duration = 6; // Mobile devices
+} else if (window.innerWidth >= 768 && window.innerWidth <= 1024) {
+    duration = 9; // Tablets
+} else {
+    duration = 12; // Desktops
+}
+
+// GSAP animation for runner with conditional duration
+gsap.to(".runner", {
     x: "120vw",
     ease: "power1.inOut",
-    duration: 12,
+    duration: duration, // Use the conditional duration here
     onComplete: () => {
         window.location.href = "Dashboard.html"; // Immediate redirect
     },
     clearProps: "all" // Ensures all properties are cleared after animation
 });
 
-        gsap.to(".shadow", {
-            x: "120vw",
-            scaleX: 1.1,
-            ease: "power1.inOut",
-            duration: 12
-        });
+// GSAP animation for shadow with the same conditional duration
+gsap.to(".shadow", {
+    x: "120vw",
+    scaleX: 1.1,
+    ease: "power1.inOut",
+    duration: duration // Use the conditional duration here
+});
 
         // Bounce effect for runner
         gsap.to(".runner", {
