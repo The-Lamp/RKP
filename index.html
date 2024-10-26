@@ -59,21 +59,13 @@
             opacity: 0.8;
         }
 
-         /* 3D Logo and Brand Name Styling */
+         /* 3D Brand Name Styling */
 .logo, .brand-name {
     position: absolute;
     opacity: 0;
     transition: transform 0.3s ease, opacity 0.3s ease;
     transform-style: preserve-3d;
     perspective: 1000px; /* Adds 3D effect */
-}
-
-.logo {
-    top: 30%;
-    left: 15%;
-    width: 120px;
-    filter: drop-shadow(0px 0px 20px #f0f); /* Neon Glow */
-    transform: rotateY(45deg) rotateX(10deg) translateZ(50px); /* 3D Rotation */
 }
 
 .brand-name {
@@ -127,8 +119,7 @@
 
 <body>
     <div class="runner-container">
-        <!-- 3D Logo and Brand Name -->
-<img src="images/1000011942.png" alt="Logo" class="logo">
+        <!-- 3D Brand Name -->
 <div class="brand-name">The Lamp</div>
 
         <!-- Runner -->
@@ -217,17 +208,6 @@
         }
 
          // Logo and brand name reveal animations with 3D effect
-gsap.to(".logo", {
-    delay: 1,
-    opacity: 1,
-    scale: 1.2,
-    rotationY: 0,
-    rotationX: 0,
-    transformOrigin: "50% 50%",
-    ease: "elastic.out(1, 0.7)",
-    duration: 1.5
-});
-
 gsap.to(".brand-name", {
     delay: 2.5,
     opacity: 1,
