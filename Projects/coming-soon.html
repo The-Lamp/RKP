@@ -179,6 +179,15 @@
         }
 
         const timer = setInterval(countdown, 1000);
+
+        // If mobile or tablet is detected, adjust viewport to desktop
+function isMobileOrTablet() {
+    return /Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+}
+
+if (isMobileOrTablet()) {
+    document.querySelector("meta[name=viewport]").setAttribute("content", "width=1024");
+}
     </script>
 </body>
 </html>
