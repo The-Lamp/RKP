@@ -32,6 +32,41 @@
         window.dataLayer = window.dataLayer || [];function gtag(){dataLayer.push(arguments);}gtag('js', new Date());gtag('config', 'G-L0G9SL23Y7', {'anonymize_ip': false});
     </script>
     <style>
+        /* Default styles for larger screens */
+.content-container {
+    display: flex;
+    align-items: flex-start;
+}
+
+.text-content {
+    flex: 1;
+    padding-right: 20px;
+}
+
+.image-content {
+    flex: 1;
+}
+
+/* For smaller screens (mobile) */
+@media (max-width: 768px) {
+    .content-container {
+        display: block;
+    }
+
+    .text-content {
+        padding-right: 0;
+    }
+
+    .image-content {
+        margin-top: 20px;
+    }
+}
+
+.responsive-image {
+    width: 100%;
+    height: auto;
+}
+        
         .drop-cap:first-letter {
           float: left;
           font-size: 6rem;
