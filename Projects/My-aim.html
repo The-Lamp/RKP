@@ -147,7 +147,8 @@ button.english-mode {
     </div>
 
    <!-- Aims Section -->
-<div class="aim" id="aim-1">One day I will completely destroy you and on that day I will be happy.</div>
+<div class="aim" id="aim-1">Do not share your dreams with anyone because if your dreams are not fulfilled, people will mock you. People do not care about you; they only enjoy watching you fail.
+I could have shared all my dreams with you, but I chose not to. My request to all of you is to keep your dreams within your imagination. Reveal them to the world only when you have fully achieved them.</div>
     
 <!-- JavaScript for Language Toggle & Matrix Animation -->
 <script>
@@ -195,27 +196,17 @@ langToggle.addEventListener('click', function () {
 
     if (isEnglish) {
         // Switch to Hindi
-        aims[0].textContent = 'Ek din mai tumhe poori tarah se barbad kar doonga aur us din mere dil ko chain milega.';
-        aims[1].textContent = 'Mai apni puri khandan mein sabse ameer insaan banana chahta hu.';
-        aims[2].textContent = 'sabse jyada powerful hacker banana chahhta hu (specially Android aur IOT field me)';
-        aims[3].textContent = 'Mai apni ek aisi pahchan banana chahta hu jo logon ki nazar meri taraf khiche aur Ek popularity mere pas ho.';
-        aims[4].textContent = 'Ek din mai Shahid Kapoor se is tarah milna chahta hoon ki wo mujhe apna barabar ya mujhse bhi bada samjhe.';
-        aims[5].textContent = 'Mai business Field mein "The Lamp" ke naam se ek cybersecurity bussiness karna chahta hu jisase aam janta ko bhi fayda pahuche.';
-        aims[6].textContent = 'This time, mai kuchh bhi nahi hu lekin intjar hai jab (....) ko uski asali jagah dikha pau chahe iske liye uske (....) ko bhi use karna pare ya kisi aur game ke through.';
-
+        aims[0].textContent = 'अपने सपनों के बारे में किसी को भी मत बताइए, क्योंकि अगर आपका सपना पूरा नहीं हुआ, तो लोग आपका मजाक उड़ाएंगे। लोगों को आपकी परवाह नहीं होती; उन्हें बस आपको गिरते हुए देखना अच्छा लगता है।
+मैं भी आपको अपने सपनों के बारे में सब कुछ बता सकता था, लेकिन मैंने ऐसा नहीं किया। आप सबसे मेरी यही विनती है कि अपने सपनों को अपनी कल्पनाओं तक ही सीमित रखें। जब आप उन्हें पूरी तरह से हासिल कर लें, तभी उन्हें दुनिया के सामने लाएं';
+        
         langToggle.textContent = 'Switch to English';
         langToggle.classList.remove('english-mode'); // Remove English mode class
         langToggle.classList.add('hindi-mode'); // Add Hindi mode class
     } else {
         // Switch to English
-        aims[0].textContent = 'One day I will completely destroy you and on that day I will be happy.';
-        aims[1].textContent = 'My second aim is to become the richest person in my all-generation life.';
-        aims[2].textContent = 'Become the most powerful and bad hacker (especially in Android and IoT field).';
-        aims[3].textContent = 'I’ll craft a public persona that captures attention and achieve worldwide fame.';
-        aims[4].textContent = 'One day, I want to meet Shahid Kapoor in such a way that they see me as their equal or even greater.';
-        aims[5].textContent = 'I will build my cybersecurity empire that dominates my business industry with the brand name "The Lamp".';
-        aims[6].textContent = 'I am nothing right now, but I’m waiting for the moment when I can show her real place, even if I have to use her (....) or play some other game to do it.';
-
+        aims[0].textContent = 'Do not share your dreams with anyone because if your dreams are not fulfilled, people will mock you. People do not care about you; they only enjoy watching you fail.
+I could have shared all my dreams with you, but I chose not to. My request to all of you is to keep your dreams within your imagination. Reveal them to the world only when you have fully achieved them.';
+        
         langToggle.textContent = 'Switch to Hindi';
         langToggle.classList.remove('hindi-mode'); // Remove Hindi mode class
         langToggle.classList.add('english-mode'); // Add English mode class
