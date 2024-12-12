@@ -55,9 +55,48 @@
             transform: scale(1.1);
             transition: transform 0.2s;
         }
+        .message {
+            position: fixed;
+            bottom: 90px;
+            right: 20px;
+            background-color: rgba(0, 0, 0, 0.7);
+            color: #fff;
+            padding: 10px 15px;
+            border-radius: 5px;
+            font-size: 14px;
+            display: none;
+            z-index: 200;
+        }
+        .top-banner {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background-color: #333;
+            color: #fff;
+            display: flex;
+            align-items: center;
+            padding: 10px 20px;
+            z-index: 300;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+        .top-banner img {
+            height: 30px;
+            margin-right: 10px;
+        }
+        .top-banner span {
+            font-size: 20px;
+            font-weight: bold;
+        }
     </style>
 </head>
 <body>
+    <!-- Top Banner -->
+    <div class="top-banner">
+        <img src="../../images/brand-logo.png" alt="Brand Logo">
+        <span>The Lamp</span>
+    </div>
+
+    <!-- Viewer -->
     <div class="viewer">
         <div class="page"><img src="../../images/1.jpg" alt="Page 1"></div>
         <div class="page"><img src="../../images/2.jpg" alt="Page 2"></div>
@@ -86,9 +125,15 @@
         <div class="page"><img src="../../images/25.jpg" alt="Page 25"></div>
         <div class="page"><img src="../../images/26.jpg" alt="Page 26"></div>
     </div>
+
+    <!-- Download Logo -->
     <div class="download-logo" onclick="redirectToDownload()">
         <img src="../../images/Download.png" alt="Download">
     </div>
+
+    <!-- Download Message -->
+    <div class="message" id="downloadMessage">Wait, This PDF is downloading...</div>
+
     <script>
         // Smooth scrolling enhancement
         let isScrolling = false;
@@ -111,7 +156,12 @@
 
         // Redirect function for download logo
         function redirectToDownload() {
-            window.location.href = "https://drive.usercontent.google.com/u/0/uc?id=1-E_OzFqQkVlil36_t8zzisoWH5BPdaOI&export=download"; // Replace with your desired relative link
+            const message = document.getElementById('downloadMessage');
+            message.style.display = 'block'; // Show the message
+            setTimeout(() => {
+                message.style.display = 'none'; // Hide after 3 seconds
+                window.location.href = "https://drive.usercontent.google.com/u/0/uc?id=1-E_OzFqQkVlil36_t8zzisoWH5BPdaOI&export=download"; // Replace with your desired link
+            }, 3000);
         }
     </script>
 </body>
