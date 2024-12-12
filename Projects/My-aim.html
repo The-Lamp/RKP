@@ -3,216 +3,51 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Aims - Hacker Vibes</title>
+    <title>My Aim</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500&family=VT323&family=Cutive+Mono&family=Rajdhani:wght@500&display=swap');
-        @import url('https://fonts.googleapis.com/css2?family=Kumar+One+Outline&family=Rakkas&display=swap');
-
         body {
             margin: 0;
             padding: 0;
-            background: radial-gradient(circle, #000000, #1a1a1a);
-            color: #f2f2f2;
-            font-family: 'VT323', monospace;
-            overflow-x: hidden;
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(to right, #1e3c72, #2a5298);
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
         }
-
-        h1 {
+        .container {
+            max-width: 800px;
             text-align: center;
-            margin-top: 50px;
-            font-size: 4.5rem;
-            color: #00ff6a;
-            font-family: 'Orbitron', sans-serif;
-            letter-spacing: 5px;
-            animation: glitch 1.5s infinite;
-            text-shadow: 2px 2px 20px rgba(0, 255, 106, 0.9);
+            background: rgba(255, 255, 255, 0.1);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
         }
-
-        @keyframes glitch {
-            0% { text-shadow: 2px 2px 10px rgba(0, 255, 106, 1), -2px -2px 10px rgba(255, 0, 0, 0.8); }
-            20% { text-shadow: 2px 2px 20px rgba(0, 255, 106, 0.8), 5px 5px 30px rgba(255, 0, 0, 0.6); }
-            40% { text-shadow: -5px -5px 30px rgba(255, 0, 0, 0.8), -3px -3px 15px rgba(0, 255, 106, 1); }
-            60% { text-shadow: 0px 0px 40px rgba(0, 255, 106, 1), 0px 0px 50px rgba(255, 0, 0, 1); }
-            80% { text-shadow: 2px 2px 50px rgba(255, 0, 0, 1), -5px -5px 50px rgba(0, 255, 106, 1); }
-            100% { text-shadow: 5px 5px 10px rgba(0, 255, 106, 0.9); }
+        h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            color: #ffdf00;
         }
-
-        /* Hacker Terminal Snippet Style for Aims */
-        .aim {
-            margin: 30px auto;
-            padding: 20px;
-            width: 90%;
-            max-width: 900px;
-            background: #0d0d0d;
-            border-left: 3px solid #00ff6a;
-            color: #00ff6a;
-            font-family: 'Cutive Mono', monospace;
-            font-size: 1.5rem;
-            position: relative;
-            box-shadow: 0 0 20px rgba(0, 255, 106, 0.8);
-            overflow: hidden;
+        p {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            margin-bottom: 20px;
         }
-
-        .aim::before {
-            content: '>>> ';
-            color: #ff00ff;
-        }
-
-        .aim:hover {
-            background: #111111;
-            box-shadow: 0 0 30px rgba(0, 255, 106, 1), 0 0 15px rgba(255, 0, 0, 0.7);
-        }
-
-        /* Matrix Background Animation */
-        .matrix {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
-            background: rgba(0, 0, 0, 0.8);
-        }
-
-        canvas {
-            position: absolute;
-            top: 0;
-            left: 0;
-        }
-
-        /* Button Styles */
-        #language-toggle {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            z-index: 1000;
-        }
-
-        button {
-    padding: 12px 25px;
-    background-color: red; /* Initial color red */
-    color: white; /* Set initial text color to white */
-    cursor: pointer;
-    font-size: 1rem;
-    border: none;
-    border-radius: 5px;
-    transition: background-color 0.3s, color 0.3s, box-shadow 0.3s;
-    animation: neon-light 1.5s infinite alternate;
-    text-transform: uppercase;
-}
-
-button:hover {
-    background-color: #f2f2f2;
-    color: red; /* Change text color on hover to red */
-    box-shadow: 0 0 20px rgba(0, 255, 106, 1), 0 0 30px rgba(255, 0, 0, 0.8);
-    animation: neon-glow 1s infinite alternate;
-}
-
-/* Specific styles for the button in Hindi mode */
-button.hindi-mode {
-    background-color: green; /* Green background when in Hindi mode */
-    color: white; /* White text in Hindi mode */
-}
-
-/* Specific styles for the button in English mode */
-button.english-mode {
-    background-color: red; /* Red background when in English mode */
-    color: white; /* White text in English mode */
-}
-
-        @keyframes neon-light {
-            0% { box-shadow: 0 0 5px #00ff6a, 0 0 10px #ff00ff; }
-            100% { box-shadow: 0 0 20px #00ff6a, 0 0 30px #ff00ff; }
-        }
-
-        @keyframes neon-glow {
-            0% { box-shadow: 0 0 30px #00ff6a, 0 0 50px #ff00ff; }
-            100% { box-shadow: 0 0 60px #00ff6a, 0 0 80px #ff00ff; }
+        footer {
+            margin-top: 20px;
+            font-size: 0.9rem;
+            color: #ccc;
         }
     </style>
 </head>
 <body>
-
-    <!-- Matrix Background -->
-    <div class="matrix">
-        <canvas id="matrix"></canvas>
+    <div class="container">
+        <h1>My Aim</h1>
+        <p>Apne sapne kisi ke saath share mat kariye, kyunki agar aapke sapne pure nahi hote, toh log aapka mazak udayenge. Log aapke baare me nahi sochte, unhe sirf aapko girta dekhne ka maza aata hai. Main apne sare sapne aapke saath share kar sakta tha, lekin maine nahi kiya. Mera aapse bas ek nivedan hai ki apne sapno ko apne andar hi rakhiye. Jab tak aap unhe poori tarah se hasil na kar lein, unhe duniya ke samne mat layiye.</p>
+        <p>Ab zara main apne sapno ki bhi baat kar loon. To asal mein mujhe khud bhi nahi pata ki main wo sab kar paunga ya nahi jo maine socha hai, lekin jab tak zinda hoon, mere andar un sapno ko paane ki khwahish zarur rahegi.</p>
+        <footer>&mdash; Designed for inspiration</footer>
     </div>
-
-    <!-- Header Section -->
-    <h1>My Aims</h1>
-
-    <!-- Language Toggle Button -->
-    <div id="language-toggle">
-        <button id="toggle-lang">Switch to Hindi</button>
-    </div>
-
-   <!-- Aims Section -->
-<div class="aim" id="aim-1">Do not share your dreams with anyone because if your dreams are not fulfilled, people will mock you. People do not care about you; they only enjoy watching you fail.
-I could have shared all my dreams with you, but I chose not to. My request to all of you is to keep your dreams within your imagination. Reveal them to the world only when you have fully achieved them.</div>
-    
-<!-- JavaScript for Language Toggle & Matrix Animation -->
-<script>
-    // Matrix Effect
-    const canvas = document.getElementById('matrix');
-    const ctx = canvas.getContext('2d');
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
-
-    const matrixLetters = Array(256).join(1).split('');
-    const font_size = 16;
-
-    function drawMatrix() {
-        ctx.fillStyle = 'rgba(0, 0, 0, 0.05)';
-        ctx.fillRect(0, 0, canvas.width, canvas.height);
-        ctx.fillStyle = '#00ff6a'; 
-        matrixLetters.forEach((yPos, index) => {
-            const text = String.fromCharCode(65 + Math.random() * 33);
-            const xPos = index * font_size;
-            ctx.fillText(text, xPos, yPos);
-            if (yPos > canvas.height && Math.random() > 0.975) {
-                matrixLetters[index] = 0;
-            }
-            matrixLetters[index] += font_size;
-        });
-    }
-    setInterval(drawMatrix, 50);
-
-   // Language Toggle Functionality
-let langToggle = document.getElementById('toggle-lang');
-let isEnglish = true;
-
-langToggle.classList.add('english-mode'); // Set default class to English mode
-
-langToggle.addEventListener('click', function () {
-    let aims = [
-        document.getElementById('aim-1'),
-        document.getElementById('aim-2'),
-        document.getElementById('aim-3'),
-        document.getElementById('aim-4'),
-        document.getElementById('aim-5'),
-        document.getElementById('aim-6'),
-        document.getElementById('aim-7')
-    ];
-
-    if (isEnglish) {
-        // Switch to Hindi
-        aims[0].textContent = 'अपने सपनों के बारे में किसी को भी मत बताइए, क्योंकि अगर आपका सपना पूरा नहीं हुआ, तो लोग आपका मजाक उड़ाएंगे। लोगों को आपकी परवाह नहीं होती; उन्हें बस आपको गिरते हुए देखना अच्छा लगता है।
-मैं भी आपको अपने सपनों के बारे में सब कुछ बता सकता था, लेकिन मैंने ऐसा नहीं किया। आप सबसे मेरी यही विनती है कि अपने सपनों को अपनी कल्पनाओं तक ही सीमित रखें। जब आप उन्हें पूरी तरह से हासिल कर लें, तभी उन्हें दुनिया के सामने लाएं';
-        
-        langToggle.textContent = 'Switch to English';
-        langToggle.classList.remove('english-mode'); // Remove English mode class
-        langToggle.classList.add('hindi-mode'); // Add Hindi mode class
-    } else {
-        // Switch to English
-        aims[0].textContent = 'Do not share your dreams with anyone because if your dreams are not fulfilled, people will mock you. People do not care about you; they only enjoy watching you fail.
-I could have shared all my dreams with you, but I chose not to. My request to all of you is to keep your dreams within your imagination. Reveal them to the world only when you have fully achieved them.';
-        
-        langToggle.textContent = 'Switch to Hindi';
-        langToggle.classList.remove('hindi-mode'); // Remove Hindi mode class
-        langToggle.classList.add('english-mode'); // Add English mode class
-    }
-    isEnglish = !isEnglish;
-});
-</script>
 </body>
 </html>
