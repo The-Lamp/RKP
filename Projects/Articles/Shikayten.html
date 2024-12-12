@@ -129,35 +129,39 @@
     <!-- Download Message -->
     <div class="message" id="downloadMessage">Wait, This PDF is downloading...</div>
 
-    <script>
-        // Smooth scrolling enhancement
-        let isScrolling = false;
-        document.querySelector('.viewer').addEventListener('wheel', (e) => {
-            e.preventDefault();
-            if (isScrolling) return;
-            isScrolling = true;
+<script>
+    // Smooth scrolling enhancement
+    let isScrolling = false;
+    document.querySelector('.viewer').addEventListener('wheel', (e) => {
+        e.preventDefault();
+        if (isScrolling) return;
+        isScrolling = true;
 
-            const delta = e.deltaY > 0 ? 1 : -1;
-            const viewer = e.currentTarget;
-            viewer.scrollBy({
-                top: delta * window.innerHeight,
-                behavior: 'smooth'
-            });
-
-            setTimeout(() => {
-                isScrolling = false;
-            }, 600); // Prevent rapid scrolling
+        const delta = e.deltaY > 0 ? 1 : -1;
+        const viewer = e.currentTarget;
+        viewer.scrollBy({
+            top: delta * window.innerHeight,
+            behavior: 'smooth'
         });
 
-        // Redirect function for download logo
-        function redirectToDownload() {
-            const message = document.getElementById('downloadMessage');
-            message.style.display = 'block'; // Show the message
-            setTimeout(() => {
-                message.style.display = 'none'; // Hide after 3 seconds
-                window.location.href = "https://drive.usercontent.google.com/u/0/uc?id=1-E_OzFqQkVlil36_t8zzisoWH5BPdaOI&export=download"; // Replace with your desired link
-            }, 3000);
-        }
-    </script>
+        setTimeout(() => {
+            isScrolling = false;
+        }, 600); // Prevent rapid scrolling
+    });
+
+    // Redirect function for download logo
+    function redirectToDownload() {
+        const message = document.getElementById('downloadMessage');
+        message.style.display = 'block'; // Show the message immediately
+
+        // Start the download immediately
+        window.location.href = "https://drive.usercontent.google.com/u/0/uc?id=1-E_OzFqQkVlil36_t8zzisoWH5BPdaOI&export=download"; // Replace with your desired link
+
+        // Hide the message after 3 seconds
+        setTimeout(() => {
+            message.style.display = 'none'; // Hide after 3 seconds
+        }, 3000);
+    }
+</script>
 </body>
 </html>
