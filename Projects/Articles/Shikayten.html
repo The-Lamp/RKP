@@ -9,6 +9,7 @@
             margin: 0;
             font-family: Arial, sans-serif;
             overflow: hidden;
+            background-color: #f0f0f0;
         }
         .viewer {
             display: flex;
@@ -16,6 +17,10 @@
             height: 100vh;
             scroll-snap-type: y mandatory;
             overflow-y: scroll;
+            scrollbar-width: none; /* For Firefox */
+        }
+        .viewer::-webkit-scrollbar {
+            display: none; /* For Chrome, Safari, and Edge */
         }
         .page {
             flex: 0 0 100vh;
@@ -23,11 +28,32 @@
             display: flex;
             justify-content: center;
             align-items: center;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 5px;
         }
         .page img {
             max-width: 100%;
             max-height: 100%;
             object-fit: cover;
+        }
+        .download-logo {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 60px;
+            height: 60px;
+            cursor: pointer;
+            z-index: 100;
+        }
+        .download-logo img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+        .download-logo:hover {
+            transform: scale(1.1);
+            transition: transform 0.2s;
         }
     </style>
 </head>
@@ -38,17 +64,33 @@
         <div class="page"><img src="image3.jpg" alt="Page 3"></div>
         <div class="page"><img src="image4.jpg" alt="Page 4"></div>
     </div>
+    <div class="download-logo" onclick="redirectToDownload()">
+        <img src="download-icon.png" alt="Download">
+    </div>
     <script>
-        // Optional: Add smooth scrolling for better user experience
+        // Smooth scrolling enhancement
+        let isScrolling = false;
         document.querySelector('.viewer').addEventListener('wheel', (e) => {
             e.preventDefault();
+            if (isScrolling) return;
+            isScrolling = true;
+            
             const delta = e.deltaY > 0 ? 1 : -1;
             const viewer = e.currentTarget;
             viewer.scrollBy({
                 top: delta * window.innerHeight,
                 behavior: 'smooth'
             });
+
+            setTimeout(() => {
+                isScrolling = false;
+            }, 600); // Prevent rapid scrolling
         });
+
+        // Redirect function for download logo
+        function redirectToDownload() {
+            window.location.href = "https://example.com/download"; // Replace with your desired link
+        }
     </script>
 </body>
 </html>
