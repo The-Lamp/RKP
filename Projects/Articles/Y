@@ -1,1 +1,54 @@
-
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PDF Viewer Style Website</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            overflow: hidden;
+        }
+        .viewer {
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+            scroll-snap-type: y mandatory;
+            overflow-y: scroll;
+        }
+        .page {
+            flex: 0 0 100vh;
+            scroll-snap-align: start;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .page img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: cover;
+        }
+    </style>
+</head>
+<body>
+    <div class="viewer">
+        <div class="page"><img src="image1.jpg" alt="Page 1"></div>
+        <div class="page"><img src="image2.jpg" alt="Page 2"></div>
+        <div class="page"><img src="image3.jpg" alt="Page 3"></div>
+        <div class="page"><img src="image4.jpg" alt="Page 4"></div>
+    </div>
+    <script>
+        // Optional: Add smooth scrolling for better user experience
+        document.querySelector('.viewer').addEventListener('wheel', (e) => {
+            e.preventDefault();
+            const delta = e.deltaY > 0 ? 1 : -1;
+            const viewer = e.currentTarget;
+            viewer.scrollBy({
+                top: delta * window.innerHeight,
+                behavior: 'smooth'
+            });
+        });
+    </script>
+</body>
+</html>
