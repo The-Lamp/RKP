@@ -8,37 +8,83 @@
         body {
             margin: 0;
             padding: 0;
-            font-family: 'Arial', sans-serif;
-            background: linear-gradient(to right, #1e3c72, #2a5298);
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(to right, #141e30, #243b55);
             color: white;
             display: flex;
             justify-content: center;
             align-items: center;
             height: 100vh;
+            overflow: hidden;
         }
         .container {
             max-width: 800px;
             text-align: center;
             background: rgba(255, 255, 255, 0.1);
-            padding: 30px;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            padding: 30px 40px;
+            border-radius: 15px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+            animation: fadeIn 1.5s ease-out;
+            backdrop-filter: blur(10px);
         }
         h1 {
-            font-size: 3rem;
+            font-size: 3.5rem;
             margin-bottom: 20px;
             text-transform: uppercase;
             color: #ffdf00;
+            animation: slideDown 1s ease-out;
         }
         p {
             font-size: 1.2rem;
             line-height: 1.8;
             margin-bottom: 20px;
+            color: #f1f1f1;
+            animation: fadeIn 2s ease-out;
         }
         footer {
             margin-top: 20px;
             font-size: 0.9rem;
             color: #ccc;
+        }
+        /* Button Style */
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            margin-top: 20px;
+            font-size: 1rem;
+            color: #fff;
+            background: #ff4500;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            text-transform: uppercase;
+            transition: 0.3s ease;
+        }
+        .btn:hover {
+            background: #ff6347;
+            box-shadow: 0 5px 15px rgba(255, 69, 0, 0.5);
+        }
+
+        /* Keyframes for animations */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: scale(0.9);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+        @keyframes slideDown {
+            from {
+                transform: translateY(-50px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
         }
     </style>
 </head>
@@ -47,6 +93,7 @@
         <h1>My Aim</h1>
         <p>Apne sapne kisi ke saath share mat kariye, kyunki agar aapke sapne pure nahi hote, toh log aapka mazak udayenge. Log aapke baare me nahi sochte, unhe sirf aapko girta dekhne ka maza aata hai. Main apne sare sapne aapke saath share kar sakta tha, lekin maine nahi kiya. Mera aapse bas ek nivedan hai ki apne sapno ko apne andar hi rakhiye. Jab tak aap unhe poori tarah se hasil na kar lein, unhe duniya ke samne mat layiye.</p>
         <p>Ab zara main apne sapno ki bhi baat kar loon. To asal mein mujhe khud bhi nahi pata ki main wo sab kar paunga ya nahi jo maine socha hai, lekin jab tak zinda hoon, mere andar un sapno ko paane ki khwahish zarur rahegi.</p>
+        <button class="btn">Stay Inspired</button>
         <footer>&mdash; Designed for inspiration</footer>
     </div>
 </body>
