@@ -162,6 +162,50 @@
             message.style.display = 'none'; // Hide after 3 seconds
         }, 3000);
     }
+
+    // Variable to track if auto-scrolling has been done
+let autoScrollCompleted = false;
+
+// Function to check for inactivity on page 1 and auto-scroll
+function checkAndScroll() {
+    const viewer = document.querySelector('.viewer');
+    const firstPage = viewer.firstElementChild;
+
+    // Check if user is on the first page
+    const isOnFirstPage = firstPage.getBoundingClientRect().top === 0;
+
+    // If on first page, start a 3-second timer to auto-scroll
+    if (isOnFirstPage && !autoScrollCompleted) {
+        setTimeout(() => {
+            // Recheck if user is still on the first page and hasn't scrolled
+            const isStillOnFirstPage = firstPage.getBoundingClientRect().top === 0;
+
+            if (isStillOnFirstPage && !autoScrollCompleted) {
+                // Perform smooth auto-scroll to the second page
+                viewer.scrollBy({
+                    top: window.innerHeight,
+                    behavior: 'smooth',
+                });
+
+                // Mark auto-scrolling as completed
+                autoScrollCompleted = true;
+            }
+        }, 3000); // 3-second delay
+    }
+}
+
+// Add scroll event listener to track user scrolling
+document.querySelector('.viewer').addEventListener('scroll', () => {
+    const firstPage = document.querySelector('.viewer').firstElementChild;
+
+    // Reset autoScrollCompleted if user scrolls up to the first page
+    if (firstPage.getBoundingClientRect().top === 0 && autoScrollCompleted) {
+        autoScrollCompleted = false;
+    }
+});
+
+// Run the check when the page loads
+checkAndScroll();
 </script>
 </body>
 </html>
