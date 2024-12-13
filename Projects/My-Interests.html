@@ -256,17 +256,6 @@
             </div>
         </div>
 
-        <div class="interest-card card-hacking">
-            <div class="interest-content">
-                <div class="interest-icon">👨🏽‍💻</div>
-                <div class="interest-title">Hacking</div>
-                <button class="click-button">Click Here</button>
-            </div>
-            <div class="interest-backside">
-                Mai ek ethical hacker hu. isliye mai galat kam jaise bank account hacking ya baki chhije nahi karta 🤣😝. Mai bas hacking se logo ki madad aur personal needs pura karna chahta hu.
-            </div>
-        </div>
-
          <div class="interest-card card-song">
             <div class="interest-content">
                 <div class="interest-icon">🎶</div>
@@ -324,77 +313,5 @@
             </div>
         </div>
     </div>
-
-    <script>
-        // Improved JavaScript for Click Animation
-
-// Function to detect if the user is on a mobile device
-function isMobileDevice() {
-    return /Mobi|Android|iPhone/i.test(navigator.userAgent);
-}
-
-// If not a mobile device, then enable cursor effect
-if (!isMobileDevice()) {
-    const cursor = document.createElement('div');
-    cursor.classList.add('cursor');
-    document.body.appendChild(cursor);
-
-    let mouseX = 0, mouseY = 0;
-    let cursorX = 0, cursorY = 0;
-
-    document.addEventListener('mousemove', (e) => {
-        cursor.style.display = 'block'; // Show cursor only on non-mobile devices
-        mouseX = e.pageX;
-        mouseY = e.pageY;
-    });
-
-    function animateCursor() {
-        cursorX += (mouseX - cursorX) * 0.15;
-        cursorY += (mouseY - cursorY) * 0.15;
-        cursor.style.left = cursorX + 'px';
-        cursor.style.top = cursorY + 'px';
-
-        requestAnimationFrame(animateCursor);
-    }
-
-    animateCursor();
-
-    document.addEventListener('mousedown', (e) => {
-        cursor.classList.add('cursor-grow');
-        createCursorTrail(cursorX, cursorY);
-        createRippleEffect(e.pageX, e.pageY); // Trigger ripple effect on click
-    });
-
-    document.addEventListener('mouseup', () => {
-        cursor.classList.remove('cursor-grow');
-    });
-
-    function createCursorTrail(x, y) {
-        const trail = document.createElement('div');
-        trail.classList.add('cursor-trail');
-        trail.style.left = `${x}px`;
-        trail.style.top = `${y}px`;
-        document.body.appendChild(trail);
-
-        setTimeout(() => {
-            document.body.removeChild(trail);
-        }, 600); // Remove the trail after animation ends
-    }
-
-    function createRippleEffect(x, y) {
-        const ripple = document.createElement('div');
-        ripple.classList.add('cursor-ripple');
-        ripple.style.width = '25px';
-        ripple.style.height = '25px';
-        ripple.style.left = `${x}px`;
-        ripple.style.top = `${y}px`;
-        document.body.appendChild(ripple);
-
-        setTimeout(() => {
-            document.body.removeChild(ripple);
-        }, 600); // Remove the ripple after animation ends
-    }
-}
-    </script>
 </body>
 </html>
