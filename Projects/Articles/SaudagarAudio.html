@@ -200,6 +200,30 @@
       }
     });
 
+    // Forward/Backward Functionality
+const forwardButton = document.querySelector(".control-btn:nth-child(3)");
+const backwardButton = document.querySelector(".control-btn:nth-child(1)");
+
+forwardButton.addEventListener("click", () => {
+  audio.currentTime += 5; // Move 5 seconds forward
+  updatePoemLine(audio.currentTime); // Update Poem Line
+});
+
+backwardButton.addEventListener("click", () => {
+  audio.currentTime = Math.max(0, audio.currentTime - 5); // Move 5 seconds backward
+  updatePoemLine(audio.currentTime); // Update Poem Line
+});
+
+// Function to Update Poem Line
+function updatePoemLine(currentTime) {
+  const currentLine = poemLines.find(line => currentTime >= line.start && currentTime <= line.end);
+  if (currentLine) {
+    poemLineElement.textContent = currentLine.text;
+  } else {
+    poemLineElement.textContent = "Click Play to Begin the Journey...";
+  }
+}
+
     // Update Progress Bar and Poem Line
     audio.addEventListener("timeupdate", () => {
       const currentTime = audio.currentTime;
