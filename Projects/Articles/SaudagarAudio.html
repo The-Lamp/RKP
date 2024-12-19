@@ -15,29 +15,27 @@
       color: #ffffff;
       display: flex;
       flex-direction: column;
-      align-items: center;
-      justify-content: center;
+      justify-content: space-between;
       min-height: 100vh;
       overflow: hidden;
     }
 
-    /* Container */
-    .container {
+    /* Header Container */
+    .header-container {
       text-align: center;
-      padding: 20px;
+      margin-top: 20px;
     }
 
     /* Logo */
     .logo {
-      width: 120px;
+      width: 100px;
       height: auto;
-      margin-bottom: 20px;
       animation: fadeIn 1.5s ease-in-out;
     }
 
-    /* Header Styling */
+    /* Header Title */
     .header h1 {
-      font-size: 3rem;
+      font-size: 2.5rem;
       margin: 10px 0;
       color: #f3a712;
       animation: fadeIn 2s ease-in-out;
@@ -45,16 +43,50 @@
 
     /* Poem Section */
     .poem-container {
-      margin: 40px 0;
+      text-align: center;
+      margin: 40px 20px;
+      flex-grow: 1;
     }
 
     .poem-line {
-      font-size: 2.2rem;
+      font-size: 2rem;
       font-style: italic;
       color: #e4e4e4;
       margin-bottom: 20px;
-      animation: fadeIn 1s ease-in-out;
       min-height: 50px;
+      animation: fadeIn 1s ease-in-out;
+    }
+
+    /* Highlight Effect */
+    .highlight {
+      background: linear-gradient(to right, #f3a712, #d98a00);
+      color: #1e1e2f;
+      padding: 2px 8px;
+      border-radius: 5px;
+      animation: highlight 1s linear forwards;
+    }
+
+    @keyframes highlight {
+      0% { background-size: 0% 100%; }
+      100% { background-size: 100% 100%; }
+    }
+
+    /* Progress Bar */
+    .progress-bar-container {
+      width: 90%;
+      height: 10px;
+      background: #555;
+      border-radius: 5px;
+      margin: 20px auto;
+      position: relative;
+    }
+
+    .progress-bar {
+      height: 100%;
+      width: 0%;
+      background: #f3a712;
+      border-radius: 5px;
+      transition: width 0.2s ease;
     }
 
     /* Play Button Styles */
@@ -96,10 +128,10 @@
 
     /* Footer */
     .footer {
-      margin-top: 30px;
+      text-align: center;
       color: #aaaaaa;
       font-size: 0.9rem;
-      text-align: center;
+      margin: 20px 0;
     }
 
     .footer span {
@@ -120,27 +152,28 @@
   </style>
 </head>
 <body>
-  <div class="container">
-    <!-- Logo -->
-    <img src="../../images/the-lamp-high-resolution-logo-black-transparent.png" alt="Poetic Symphony Logo" class="logo">
-
-    <!-- Header -->
+  <!-- Header Section -->
+  <div class="header-container">
+    <img src="logo.png" alt="Poetic Symphony Logo" class="logo">
     <header class="header">
       <h1>Poetic Symphony</h1>
     </header>
-
-    <!-- Poem Section -->
-    <section class="poem-container">
-      <div id="poem-line" class="poem-line">"Click Play to Begin the Journey..."</div>
-      <button id="play-btn" class="play-btn">🔊 Play Poem</button>
-      <button id="replay-btn" class="replay-btn">🔄 Replay Poem</button>
-    </section>
-
-    <!-- Footer -->
-    <footer class="footer">
-      <p>&copy; 2024 Poetic Symphony. Voice by <span>Rahul Kumar Puri</span>.</p>
-    </footer>
   </div>
+
+  <!-- Poem Section -->
+  <div class="poem-container">
+    <div id="poem-line" class="poem-line">"Click Play to Begin the Journey..."</div>
+    <button id="play-btn" class="play-btn">🔊 Play Poem</button>
+    <div class="progress-bar-container">
+      <div id="progress-bar" class="progress-bar"></div>
+    </div>
+    <button id="replay-btn" class="replay-btn">🔄 Replay Poem</button>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <p>&copy; 2024 Poetic Symphony. Voice by <span>Rahul Kumar Puri</span>.</p>
+  </footer>
 
   <script>
     // Poem Lines with Timestamps
@@ -165,6 +198,7 @@
     const poemLineElement = document.getElementById("poem-line");
     const playButton = document.getElementById("play-btn");
     const replayButton = document.getElementById("replay-btn");
+    const progressBar = document.getElementById("progress-bar");
 
     // Audio Object
     const audio = new Audio("VID_20241219_071638_559.mp3"); // Replace with your actual audio file URL.
@@ -176,8 +210,12 @@
       // Update the line based on current audio time
       const currentLine = poemLines.find(line => currentTime >= line.start && currentTime <= line.end);
       if (currentLine) {
-        poemLineElement.textContent = currentLine.text;
+        poemLineElement.innerHTML = `<span class="highlight">${currentLine.text}</span>`;
       }
+
+      // Update Progress Bar
+      const progress = (currentTime / audio.duration) * 100;
+      progressBar.style.width = `${progress}%`;
     });
 
     // Show Replay Button When Poem Ends
