@@ -3,176 +3,154 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="A poetic experience with synchronized audio and visuals.">
+  <meta name="description" content="Spotify-inspired poetry player">
   <title>Poetic Symphony</title>
   <style>
     /* General Reset */
     body, html {
       margin: 0;
       padding: 0;
-      font-family: 'Georgia', serif;
-      background: linear-gradient(to bottom, #1e1e2f, #3a3a5a);
+      font-family: 'Arial', sans-serif;
+      background: #121212;
       color: #ffffff;
       display: flex;
       flex-direction: column;
-      justify-content: space-between;
+      align-items: center;
+      justify-content: center;
       min-height: 100vh;
       overflow: hidden;
     }
 
-    /* Header Container */
-    .header-container {
+    /* Container */
+    .container {
+      width: 90%;
+      max-width: 500px;
       text-align: center;
-      margin-top: 20px;
+      background: #181818;
+      border-radius: 20px;
+      padding: 20px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
     }
 
-    /* Logo */
-    .logo {
-      width: 100px;
-      height: auto;
-      animation: fadeIn 1.5s ease-in-out;
+    /* Banner Image */
+    .banner {
+      width: 100%;
+      border-radius: 15px;
+      overflow: hidden;
+      margin-bottom: 20px;
     }
 
-    /* Header Title */
-    .header h1 {
-      font-size: 2.5rem;
-      margin: 10px 0;
-      color: #f3a712;
-      animation: fadeIn 2s ease-in-out;
+    .banner img {
+      width: 100%;
+      display: block;
     }
 
-    /* Poem Section */
-    .poem-container {
-      text-align: center;
-      margin: 40px 20px;
-      flex-grow: 1;
-    }
-
+    /* Poem Line */
     .poem-line {
-      font-size: 2rem;
+      font-size: 1.2rem;
       font-style: italic;
-      color: #e4e4e4;
+      color: #f3f3f3;
       margin-bottom: 20px;
       min-height: 50px;
-      animation: fadeIn 1s ease-in-out;
-    }
-
-    /* Highlight Effect */
-    .highlight {
-      background: linear-gradient(to right, #f3a712, #d98a00);
-      color: #1e1e2f;
-      padding: 2px 8px;
-      border-radius: 5px;
-      animation: highlight 1s linear forwards;
-    }
-
-    @keyframes highlight {
-      0% { background-size: 0% 100%; }
-      100% { background-size: 100% 100%; }
     }
 
     /* Progress Bar */
-    .progress-bar-container {
-      width: 90%;
-      height: 10px;
-      background: #555;
-      border-radius: 5px;
-      margin: 20px auto;
+    .progress-container {
       position: relative;
+      width: 100%;
+      height: 10px;
+      background: #404040;
+      border-radius: 5px;
+      margin: 20px 0;
     }
 
-    .progress-bar {
+    .progress {
       height: 100%;
-      width: 0%;
-      background: #f3a712;
+      width: 0;
+      background: #1db954;
       border-radius: 5px;
       transition: width 0.2s ease;
     }
 
-    /* Play Button Styles */
-    .play-btn {
-      background: #f3a712;
-      color: #ffffff;
-      border: none;
-      padding: 10px 25px;
-      margin: 20px auto;
-      cursor: pointer;
-      font-size: 1.2rem;
-      border-radius: 8px;
-      transition: transform 0.3s ease, background 0.3s ease;
-      animation: bounce 1.5s infinite;
+    /* Time Display */
+    .time-container {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.9rem;
+      color: #b3b3b3;
     }
 
-    .play-btn:hover {
-      transform: scale(1.1);
-      background: #d98a00;
-    }
-
-    /* Replay Button */
-    .replay-btn {
-      background: #4CAF50;
-      color: #ffffff;
-      border: none;
-      padding: 10px 25px;
-      font-size: 1.2rem;
-      border-radius: 8px;
-      cursor: pointer;
+    /* Controls */
+    .controls {
+      display: flex;
+      justify-content: center;
+      align-items: center;
       margin-top: 20px;
-      display: none;
     }
 
-    .replay-btn:hover {
-      transform: scale(1.1);
-      background: #45a049;
+    .control-btn {
+      background: none;
+      border: none;
+      color: #ffffff;
+      font-size: 1.5rem;
+      cursor: pointer;
+      margin: 0 10px;
+      transition: transform 0.3s ease;
+    }
+
+    .control-btn:hover {
+      transform: scale(1.2);
+      color: #1db954;
+    }
+
+    .control-btn:disabled {
+      color: #404040;
+      cursor: default;
     }
 
     /* Footer */
     .footer {
-      text-align: center;
+      margin-top: 20px;
+      font-size: 0.8rem;
       color: #aaaaaa;
-      font-size: 0.9rem;
-      margin: 20px 0;
     }
 
     .footer span {
-      color: #ffffff;
+      color: #1db954;
       font-weight: bold;
-    }
-
-    /* Animations */
-    @keyframes fadeIn {
-      from { opacity: 0; }
-      to { opacity: 1; }
-    }
-
-    @keyframes bounce {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-10px); }
     }
   </style>
 </head>
 <body>
-  <!-- Header Section -->
-  <div class="header-container">
-    <img src="logo.png" alt="Poetic Symphony Logo" class="logo">
-    <header class="header">
-      <h1>Poetic Symphony</h1>
-    </header>
-  </div>
-
-  <!-- Poem Section -->
-  <div class="poem-container">
-    <div id="poem-line" class="poem-line">"Click Play to Begin the Journey..."</div>
-    <button id="play-btn" class="play-btn">🔊 Play Poem</button>
-    <div class="progress-bar-container">
-      <div id="progress-bar" class="progress-bar"></div>
+  <div class="container">
+    <!-- Banner -->
+    <div class="banner">
+      <img src="banner.jpg" alt="Poem Banner">
     </div>
-    <button id="replay-btn" class="replay-btn">🔄 Replay Poem</button>
+
+    <!-- Poem Line -->
+    <div id="poem-line" class="poem-line">"Click Play to Begin the Journey..."</div>
+
+    <!-- Progress Bar -->
+    <div class="progress-container">
+      <div id="progress" class="progress"></div>
+    </div>
+    <div class="time-container">
+      <span id="current-time">0:00</span>
+      <span id="total-time">0:44</span>
+    </div>
+
+    <!-- Controls -->
+    <div class="controls">
+      <button class="control-btn" disabled>&lt;&lt;</button> <!-- Previous (Disabled) -->
+      <button id="play-btn" class="control-btn">▶️</button> <!-- Play/Pause -->
+      <button class="control-btn" disabled>&gt;&gt;</button> <!-- Next (Disabled) -->
+    </div>
   </div>
 
   <!-- Footer -->
   <footer class="footer">
-    <p>&copy; 2024 Poetic Symphony. Voice by <span>Rahul Kumar Puri</span>.</p>
+    &copy; 2024 Poetic Symphony. Voice by <span>Rahul Kumar Puri</span>.
   </footer>
 
   <script>
@@ -196,46 +174,50 @@
 
     // Elements
     const poemLineElement = document.getElementById("poem-line");
+    const progressBar = document.getElementById("progress");
+    const currentTimeElement = document.getElementById("current-time");
     const playButton = document.getElementById("play-btn");
-    const replayButton = document.getElementById("replay-btn");
-    const progressBar = document.getElementById("progress-bar");
 
     // Audio Object
     const audio = new Audio("VID_20241219_071638_559.mp3"); // Replace with your actual audio file URL.
 
-    // Synchronize Poem Lines with Audio
+    // Play/Pause Toggle
+    playButton.addEventListener("click", () => {
+      if (audio.paused) {
+        audio.play();
+        playButton.textContent = "⏸️";
+      } else {
+        audio.pause();
+        playButton.textContent = "▶️";
+      }
+    });
+
+    // Update Progress Bar and Poem Line
     audio.addEventListener("timeupdate", () => {
       const currentTime = audio.currentTime;
-
-      // Update the line based on current audio time
-      const currentLine = poemLines.find(line => currentTime >= line.start && currentTime <= line.end);
-      if (currentLine) {
-        poemLineElement.innerHTML = `<span class="highlight">${currentLine.text}</span>`;
-      }
+      const duration = audio.duration;
 
       // Update Progress Bar
-      const progress = (currentTime / audio.duration) * 100;
+      const progress = (currentTime / duration) * 100;
       progressBar.style.width = `${progress}%`;
+
+      // Update Current Time
+      const minutes = Math.floor(currentTime / 60);
+      const seconds = Math.floor(currentTime % 60).toString().padStart(2, "0");
+      currentTimeElement.textContent = `${minutes}:${seconds}`;
+
+      // Update Poem Line
+      const currentLine = poemLines.find(line => currentTime >= line.start && currentTime <= line.end);
+      if (currentLine) {
+        poemLineElement.textContent = currentLine.text;
+      }
     });
 
-    // Show Replay Button When Poem Ends
+    // Reset Play Button After Audio Ends
     audio.addEventListener("ended", () => {
-      setTimeout(() => {
-        replayButton.style.display = "block";
-      }, 1000); // 1 second delay
-    });
-
-    // Play Button Event
-    playButton.addEventListener("click", () => {
-      audio.play();
-      playButton.style.display = "none"; // Hide the button after clicking play
-    });
-
-    // Replay Button Event
-    replayButton.addEventListener("click", () => {
-      audio.currentTime = 0; // Restart audio
-      audio.play();
-      replayButton.style.display = "none"; // Hide replay button
+      playButton.textContent = "▶️";
+      progressBar.style.width = "0%";
+      poemLineElement.textContent = "Click Play to Begin the Journey...";
     });
   </script>
 </body>
