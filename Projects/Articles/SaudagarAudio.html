@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="A poetic experience with synchronized audio and visuals.">
+  <title>Poetic Symphony</title>
+  <style>
+    /* General Reset */
+    body, html {
+      margin: 0;
+      padding: 0;
+      font-family: 'Georgia', serif;
+      background: linear-gradient(to bottom, #1e1e2f, #3a3a5a);
+      color: #ffffff;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      overflow: hidden;
+    }
+
+    /* Container */
+    .container {
+      text-align: center;
+      padding: 20px;
+    }
+
+    /* Logo */
+    .logo {
+      width: 120px;
+      height: auto;
+      margin-bottom: 20px;
+      animation: fadeIn 1.5s ease-in-out;
+    }
+
+    /* Header Styling */
+    .header h1 {
+      font-size: 3rem;
+      margin: 10px 0;
+      color: #f3a712;
+      animation: fadeIn 2s ease-in-out;
+    }
+
+    /* Poem Section */
+    .poem-container {
+      margin: 40px 0;
+    }
+
+    .poem-line {
+      font-size: 2.2rem;
+      font-style: italic;
+      color: #e4e4e4;
+      margin-bottom: 20px;
+      animation: fadeIn 1s ease-in-out;
+      min-height: 50px;
+    }
+
+    /* Play Button Styles */
+    .play-btn {
+      background: #f3a712;
+      color: #ffffff;
+      border: none;
+      padding: 10px 25px;
+      margin: 20px auto;
+      cursor: pointer;
+      font-size: 1.2rem;
+      border-radius: 8px;
+      transition: transform 0.3s ease, background 0.3s ease;
+      animation: bounce 1.5s infinite;
+    }
+
+    .play-btn:hover {
+      transform: scale(1.1);
+      background: #d98a00;
+    }
+
+    /* Replay Button */
+    .replay-btn {
+      background: #4CAF50;
+      color: #ffffff;
+      border: none;
+      padding: 10px 25px;
+      font-size: 1.2rem;
+      border-radius: 8px;
+      cursor: pointer;
+      margin-top: 20px;
+      display: none;
+    }
+
+    .replay-btn:hover {
+      transform: scale(1.1);
+      background: #45a049;
+    }
+
+    /* Footer */
+    .footer {
+      margin-top: 30px;
+      color: #aaaaaa;
+      font-size: 0.9rem;
+      text-align: center;
+    }
+
+    .footer span {
+      color: #ffffff;
+      font-weight: bold;
+    }
+
+    /* Animations */
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- Logo -->
+    <img src="logo.png" alt="Poetic Symphony Logo" class="logo">
+
+    <!-- Header -->
+    <header class="header">
+      <h1>Poetic Symphony</h1>
+    </header>
+
+    <!-- Poem Section -->
+    <section class="poem-container">
+      <div id="poem-line" class="poem-line">"Click Play to Begin the Journey..."</div>
+      <button id="play-btn" class="play-btn">🔊 Play Poem</button>
+      <button id="replay-btn" class="replay-btn">🔄 Replay Poem</button>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <p>&copy; 2024 Poetic Symphony. Voice by <span>Rahul Kumar Puri</span>.</p>
+    </footer>
+  </div>
+
+  <script>
+    // Poem Lines with Timestamps
+    const poemLines = [
+      { text: "आज डर गया मैं,", start: 0, end: 1.5 },
+      { text: "खुद ही की परछाइयों को देखकर जैसा भ्रम सा लगा कि पीछे कोई है।", start: 1.5, end: 7 },
+      { text: "और जब पीछे देखा,", start: 7, end: 8 },
+      { text: "तो सौदागर हैं जिन्होंने अपने सौदों के हिस्सों को खोई है।", start: 8, end: 13.5 },
+      { text: "कोई दोस्ती का सौदा माँग रहा जिन्हें मैंने नज़रअंदाज़ किया।", start: 13.5, end: 18 },
+      { text: "कोई समय का सौदा माँग रहा जिसे मैंने अपनी बर्बादी में खोई है।", start: 18, end: 23 },
+      { text: "कोई खून की हिसाब माँग रही,", start: 23, end: 25.5 },
+      { text: "जो मेरे लिए खुद भूखी होकर रातों को भूखे पेट सोई है।", start: 25.5, end: 30.2 },
+      { text: "अब तो कमरे की हर दीवारें भी कहने लगी हैं", start: 30.2, end: 33.2 },
+      { text: "क्या तू सच में कर पाएगा।", start: 33.2, end: 35.1 },
+      { text: "सुना है आँधी चलती है", start: 35.1, end: 38 },
+      { text: "पर ठहर भी जाती है।", start: 38, end: 40.5 },
+      { text: "तू बता", start: 40.5, end: 42 },
+      { text: "क्या तू हमेशा के लिए आँधी लाएगा।", start: 42, end: 44 },
+    ];
+
+    // Elements
+    const poemLineElement = document.getElementById("poem-line");
+    const playButton = document.getElementById("play-btn");
+    const replayButton = document.getElementById("replay-btn");
+
+    // Audio Object
+    const audio = new Audio("VID_20241219_071638_559.mp3"); // Replace with your actual audio file URL.
+
+    // Synchronize Poem Lines with Audio
+    audio.addEventListener("timeupdate", () => {
+      const currentTime = audio.currentTime;
+
+      // Update the line based on current audio time
+      const currentLine = poemLines.find(line => currentTime >= line.start && currentTime <= line.end);
+      if (currentLine) {
+        poemLineElement.textContent = currentLine.text;
+      }
+    });
+
+    // Show Replay Button When Poem Ends
+    audio.addEventListener("ended", () => {
+      setTimeout(() => {
+        replayButton.style.display = "block";
+      }, 1000); // 1 second delay
+    });
+
+    // Play Button Event
+    playButton.addEventListener("click", () => {
+      audio.play();
+      playButton.style.display = "none"; // Hide the button after clicking play
+    });
+
+    // Replay Button Event
+    replayButton.addEventListener("click", () => {
+      audio.currentTime = 0; // Restart audio
+      audio.play();
+      replayButton.style.display = "none"; // Hide replay button
+    });
+  </script>
+</body>
+</html>
