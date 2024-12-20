@@ -170,23 +170,32 @@ if (window.innerWidth < 768) {
     duration = 12; // Desktops
 }
 
-// Reduced duration by 1 second for early redirect
+// Variable to track if redirect has been triggered
+let redirectTriggered = false;
+
 gsap.to(".runner", {
     x: "120vw",
     ease: "power1.inOut",
-    duration: duration - 1, // Subtract 1 second from the original duration
-    onComplete: () => {
-        window.location.href = "Dashboard.html";
+    duration: duration, // Runner speed remains the same
+    onUpdate: function () {
+        // Check if 75% of animation is complete and redirect hasn't been triggered
+        if (this.progress() >= 0.75 && !redirectTriggered) {
+            redirectTriggered = true; // Ensure redirect happens only once
+            // Start redirecting without interrupting animation
+            setTimeout(() => {
+                window.location.href = "Dashboard.html";
+            }, 0); // Redirect immediately after trigger
+        }
     },
     clearProps: "all"
 });
 
-// Adjust shadow animation duration similarly
+// Shadow animation remains unchanged
 gsap.to(".shadow", {
     x: "120vw",
     scaleX: 1.1,
     ease: "power1.inOut",
-    duration: duration - 1 // Subtract 1 second here as well
+    duration: duration // Shadow matches the runner's speed
 });
 
         // Bounce effect for runner
