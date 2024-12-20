@@ -35,17 +35,23 @@
         }
 
         #top-logo {
-    position: absolute;
-    top: 10px; /* Distance from top */
-    left: 10px; /* Distance from left (change to `right: 10px` for right side) */
-    z-index: 1000; /* Ensures it's above other content */
-}
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            z-index: 1000;
+        }
 
-#top-logo img {
-    max-height: 30px; /* Smaller logo height */
-    width: auto;      /* Maintain aspect ratio */
-    display: block;
-}
+        #top-logo img {
+            max-height: 30px;
+            width: auto;
+            display: block;
+        }
+
+        @media (max-width: 767px) {
+            .desktop-only {
+                display: none;
+            }
+        }
     </style>
 </head>
 <div id="top-logo">
@@ -65,15 +71,11 @@
         <div class="container w-container">
             <div class="columns w-row">
                 <div class="column-1-shop w-col w-col-6">
-  <a href="Articles/Shikayten.html" target="_blank">
-    <img src="../images/bookcoverphoto.png" loading="lazy" alt="Shikayten" class="image-37">
-  </a>
-</div>
-
-                <div class="w-col w-col-6">
-                    <a target="_blank" class="w-inline-block"><img src="../images/Screenshot (34) (1).png" loading="lazy" width="400" style="-webkit-transform:translate3d(0, 0, 0px) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-moz-transform:translate3d(0, 0, 0px) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-ms-transform:translate3d(0, 0, 0px) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);transform:translate3d(0, 0, 0px) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);transform-style:preserve-3d"
-                        alt="Avatar" data-w-id="13a16ee2-bcd5-baf3-cf39-cf7dc47c2818" class="image-40"></a>
+                    <a href="Articles/Shikayten.html" target="_blank">
+                        <img src="../images/bookcoverphoto.png" loading="lazy" alt="Shikayten" class="image-37">
+                    </a>
                 </div>
+                <div class="w-col w-col-6"></div>
             </div>
         </div>
     </div>
@@ -81,12 +83,12 @@
         <div class="container-3 w-container">
             <div class="w-row">
                 <div class="column-7 w-col w-col-6">
-  <a href="Articles/Shikayten.html" class="cta-copy w-button">
-    Read My Book
-  </a>
-                    <p class="paragraph-3">"शिकायते" is the story of a man dealing with <em>It shows how love and loss can deeply impact a person, taking them to difficult places emotionally. This isn’t just a love story; it also gives an important message about mental health and inner strength. </p>
+                    <a href="Articles/Shikayten.html" class="cta-copy w-button">Read My Book</a>
+                    <p class="paragraph-3">"शिकायते" is the story of a man dealing with <em>It shows how love and loss can deeply impact a person, taking them to difficult places emotionally. This isn’t just a love story; it also gives an important message about mental health and inner strength.</p>
                 </div>
-                <div class="w-col w-col-6"><img src="../images/girl see.svg" loading="lazy" alt="The Lamp Community" class="image-39"></div>
+                <div class="w-col w-col-6 desktop-only">
+                    <img src="../images/girl see.svg" loading="lazy" alt="The Lamp Community" class="image-39">
+                </div>
             </div>
         </div>
     </div>
@@ -94,32 +96,31 @@
         <div class="container w-container">
             <div class="columns w-row">
                 <div class="column-1-shop w-col w-col-6">
-  <a href="Articles/Reality_or_illusion.html" target="_blank">
-    <img src="../images/file.png" loading="lazy" alt="Reality Or illusion" class="image-37">
-  </a>
-</div>
-                <div class="w-col w-col-6">
-                   <a target="_blank" class="w-inline-block"><img src="../images/Screenshot (34) (1).png" loading="lazy" width="400" style="-webkit-transform:translate3d(0, 0, 0px) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-moz-transform:translate3d(0, 0, 0px) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-ms-transform:translate3d(0, 0, 0px) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);transform:translate3d(0, 0, 0px) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);transform-style:preserve-3d"
-                        alt="Avatar" data-w-id="13a16ee2-bcd5-baf3-cf39-cf7dc47c2818" class="image-40"></a>
+                    <a href="Articles/Reality_or_illusion.html" target="_blank">
+                        <img src="../images/file.png" loading="lazy" alt="Reality Or illusion" class="image-37">
+                    </a>
                 </div>
+                <div class="w-col w-col-6"></div>
             </div>
         </div>
     </div>
     <div class="section">
         <div class="container-3 w-container">
             <div class="w-row">
-                <div class="column-7 w-col w-col-6"><a href="Articles/Reality_or_illusion.html" class="cta-copy w-button">Read My Poem</a>
-                    <p class="paragraph-3">"Reality or Illusion[वास्तविकता या भ्रम]" is a reflection on people<em>who always show that i am with you</em> but in reality, its no one. the writer explores It’s My Real heartfelt journey. </p>
+                <div class="column-7 w-col w-col-6">
+                    <a href="Articles/Reality_or_illusion.html" class="cta-copy w-button">Read My Poem</a>
+                    <p class="paragraph-3">"Reality or Illusion[वास्तविकता या भ्रम]" is a reflection on people<em>who always show that i am with you</em> but in reality, its no one. the writer explores It’s My Real heartfelt journey.</p>
                 </div>
-                <div class="w-col w-col-6"><img src="../images/girl see.svg" loading="lazy" alt="The Lamp Community" class="image-39"></div>
+                <div class="w-col w-col-6 desktop-only">
+                    <img src="../images/girl see.svg" loading="lazy" alt="The Lamp Community" class="image-39">
+                </div>
             </div>
         </div>
     </div>
     <div class="section-6">
         <div class="footer-with-links">
             <div>
-                    <div class="paragraph-tiny">The Lamp &copy; 2024</div>
-                </a>
+                <div class="paragraph-tiny">The Lamp &copy; 2024</div>
             </div>
         </div>
     </div>
