@@ -63,18 +63,18 @@
             opacity: 0.8;
         }
 
-         .brand-logo {
+         /* Brand Logo*/
+.brand-logo {
     position: absolute;
-    top: 45%; /* Vertical position */
-    left: 15%; /* Horizontal position */
-    width: 250px; /* Adjust size as needed */
+    top: 40%; /* Slightly higher */
+    left: 50%; /* Centered horizontally */
+    transform: translate(-50%, -50%) scale(0.5); /* Initially small and centered */
+    width: 200px; /* Adjust size */
     height: auto;
     opacity: 0; /* Initially hidden */
-    transform: scale(0.2) rotate(-45deg) skew(10deg, 10deg); /* Starting transformation */
-    filter: blur(10px) brightness(0.7); /* Initial blur and dim effect */
-    transition: transform 1s ease-out, opacity 1s ease-out, filter 1.5s ease-out;
-             }
-
+    filter: drop-shadow(0px 0px 20px rgba(0, 0, 0, 0.5)); /* Subtle shadow effect */
+    transition: transform 0.8s ease-out, opacity 0.8s ease-out; /* Smooth and quick */
+}
         /* Positioning the wind lines at varying distances */
         .wind-line-1 { left: -5%; }
         .wind-line-2 { left: -10%; }
@@ -225,18 +225,14 @@ gsap.to(".shadow", {
             });
         }
 
-// Stylish logo animation
+// Quick and stylish logo animation
 gsap.to(".brand-logo", {
-    delay: 2.5, // Delay before animation starts
-    opacity: 1, // Gradually make it visible
-    scale: 1, // Zoom in to normal size
-    rotation: 0, // Remove rotation
-    skewX: 0, // Straighten skew
-    skewY: 0, // Straighten skew
-    filter: "blur(0px) brightness(1)", // Remove blur and brighten
-    transformOrigin: "center center", // Animation origin point
-    ease: "elastic.out(1, 0.5)", // Smooth bounce effect
-    duration: 2 // Total animation time
+    delay: 1.5, // Shorter delay
+    opacity: 1, // Make visible
+    scale: 1, // Grow to normal size
+    transformOrigin: "center center", // Center transformation
+    ease: "power1.out", // Smooth and fast ease-out animation
+    duration: 0.8 // Quick animation duration
 });
     </script>
     <script src="js/js-jquery-3.5.1.min.dc5e7f18c8.js" type="text/javascript" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
