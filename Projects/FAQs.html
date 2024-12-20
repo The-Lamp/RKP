@@ -84,10 +84,25 @@
     .section h2.active .circle {
       content: "-";
     }
+
+    #top-logo {
+    position: absolute;
+    top: 10px; /* Distance from top */
+    left: 10px; /* Distance from left (change to `right: 10px` for right side) */
+    z-index: 1000; /* Ensures it's above other content */
+}
+
+#top-logo img {
+    max-height: 30px; /* Smaller logo height */
+    width: auto;      /* Maintain aspect ratio */
+    display: block;
+}
   </style>
 </head>
 <body>
-
+<div id="top-logo">
+    <img src="../images/1000160661.png" alt="Brand Logo">
+</div>
   <div class="container">
     <h1>FAQs</h1>
     <p>कुछ सवाल जो हर कोई मुझसे हमेशा पूछता रहता है, उन्ही कुछ सवालो के जवाब</p>
