@@ -170,23 +170,23 @@ if (window.innerWidth < 768) {
     duration = 12; // Desktops
 }
 
-// GSAP animation for runner with conditional duration
+// Reduced duration by 1 second for early redirect
 gsap.to(".runner", {
     x: "120vw",
     ease: "power1.inOut",
-    duration: duration, // Use the conditional duration here
+    duration: duration - 1, // Subtract 1 second from the original duration
     onComplete: () => {
-        window.location.href = "Dashboard.html"; // Immediate redirect
+        window.location.href = "Dashboard.html";
     },
-    clearProps: "all" // Ensures all properties are cleared after animation
+    clearProps: "all"
 });
 
-// GSAP animation for shadow with the same conditional duration
+// Adjust shadow animation duration similarly
 gsap.to(".shadow", {
     x: "120vw",
     scaleX: 1.1,
     ease: "power1.inOut",
-    duration: duration // Use the conditional duration here
+    duration: duration - 1 // Subtract 1 second here as well
 });
 
         // Bounce effect for runner
