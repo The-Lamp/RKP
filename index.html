@@ -63,23 +63,16 @@
             opacity: 0.8;
         }
 
-         /* 3D Brand Name Styling */
-.logo, .brand-name {
+         /* Brand Logo*/
+.brand-logo {
     position: absolute;
-    opacity: 0;
-    transition: transform 0.3s ease, opacity 0.3s ease;
-    transform-style: preserve-3d;
-    perspective: 1000px; /* Adds 3D effect */
-}
-
-.brand-name {
     top: 45%;
     left: 15%;
-    font-size: 3em;
-    font-family: 'Arial Black', sans-serif;
-    color: #f0f;
-    text-shadow: 0px 0px 10px #f0f, 0px 0px 20px #f0f; /* Neon Text Effect */
-    transform: rotateY(30deg) rotateX(10deg) translateZ(50px);
+    width: 200px; /* Image ka size adjust karen */
+    height: auto;
+    opacity: 0; /* Shuru me image hidden hogi */
+    transform: scale(0.5) rotate(-10deg); /* Animation effect ke liye initial style */
+    transition: transform 0.3s ease, opacity 0.3s ease; /* Smooth animation effect */
 }
 
         /* Positioning the wind lines at varying distances */
