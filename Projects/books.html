@@ -33,9 +33,24 @@
           line-height: 0.65;
           margin: 0.1em 0.1em 0.2em 0;
         }
+
+        #top-logo {
+    position: absolute;
+    top: 10px; /* Distance from top */
+    left: 10px; /* Distance from left (change to `right: 10px` for right side) */
+    z-index: 1000; /* Ensures it's above other content */
+}
+
+#top-logo img {
+    max-height: 30px; /* Smaller logo height */
+    width: auto;      /* Maintain aspect ratio */
+    display: block;
+}
     </style>
 </head>
-
+<div id="top-logo">
+    <img src="../images/1000160661.png" alt="Brand Logo">
+</div>
 <body class="body-2">
     <div class="nav-section">
         <div data-animation="default" data-collapse="medium" data-duration="400" data-easing="ease" data-easing2="ease" role="banner" class="navbar w-nav">
