@@ -154,19 +154,15 @@
 
         #top-logo {
     position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    background-color: #ffffff; /* Background color */
-    padding: 10px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    z-index: 1000; /* Ensures it stays on top */
-    text-align: center;
+    top: 10px; /* Distance from top */
+    left: 10px; /* Distance from left (change to `right: 10px` for right side) */
+    z-index: 1000; /* Ensures it's above other content */
 }
 
 #top-logo img {
-    max-height: 60px; /* Adjust height of the logo */
-    width: auto;     /* Maintain aspect ratio */
+    max-height: 50px; /* Adjust the logo height */
+    width: auto;      /* Maintain aspect ratio */
+    display: block;
 }
     </style>
 </head>
