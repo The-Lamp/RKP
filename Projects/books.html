@@ -51,62 +51,66 @@
             }
         }
 
-    /* Container Styling with 3D Look */
+
+    /* Container Styling */
     .cta-container {
         font-size: 18px;
         font-weight: bold;
         display: inline-block;
-        background: linear-gradient(145deg, #e6e6e6, #ffffff);
-        padding: 12px 25px;
-        border-radius: 10px;
-        box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.15), 
-                    -5px -5px 10px rgba(255, 255, 255, 0.9);
-        transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+        background: linear-gradient(145deg, #ffffff, #d4d4d4); /* 3D gradient effect */
+        padding: 15px 25px;
+        border-radius: 12px;
+        box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2), -5px -5px 10px rgba(255, 255, 255, 0.8); /* 3D shadow */
+        transition: transform 0.2s ease, box-shadow 0.3s ease;
     }
 
     .cta-container:hover {
-        background: linear-gradient(145deg, #dcdcdc, #f2f2f2);
-        box-shadow: 3px 3px 8px rgba(0, 0, 0, 0.2), 
-                    -3px -3px 8px rgba(255, 255, 255, 0.8);
-        transform: translateY(-5px);
+        background: linear-gradient(145deg, #e0e0e0, #f3f3f3); /* Hover effect gradient */
+        transform: translateY(-5px); /* Lifting effect */
+        box-shadow: 6px 6px 12px rgba(0, 0, 0, 0.3), -6px -6px 12px rgba(255, 255, 255, 0.9);
     }
 
-    /* Link Styling with 3D Effect */
+    /* Link Styling */
     .cta-link {
         text-decoration: none;
         position: relative;
-        color: #007BFF;
-        font-weight: 600;
+        color: #007BFF; /* Default link color */
+        font-family: 'Roboto', sans-serif;
+        font-weight: 700;
         margin: 0 8px;
-        padding: 5px 10px;
-        transition: color 0.3s ease, text-shadow 0.3s ease;
+        padding: 8px 0;
+        transition: color 0.3s ease-in-out, transform 0.2s ease;
     }
 
-    /* Gradient underline effect */
+    .cta-link:hover {
+        color: #0056b3; /* Hover color */
+        transform: scale(1.1); /* Slight zoom effect */
+    }
+
     .cta-link::after {
         content: '';
         position: absolute;
         left: 0;
-        bottom: -3px;
+        bottom: -4px;
         width: 100%;
-        height: 3px;
-        background: linear-gradient(90deg, #007BFF, #0056b3);
-        transform: scaleX(1);
+        height: 4px;
+        background: linear-gradient(90deg, #007BFF, #0056b3); /* Gradient underline */
+        border-radius: 2px;
+        transform: scaleX(0);
         transform-origin: left;
         transition: transform 0.3s ease-in-out;
     }
 
-    /* Hover effects for links */
-    .cta-link:hover {
-        color: #0056b3;
-        text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+    .cta-link:hover::after {
+        transform: scaleX(1);
     }
 
-    /* Additional Styling for 'or' text */
+    /* Additional Styling for 'or' */
     .cta-container span {
-        color: #888;
-        margin: 0 5px;
+        color: #777;
+        margin: 0 10px;
         font-style: italic;
+        text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2); /* Adding depth to text */
     }
 </style>
 </head>
