@@ -1,1 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shikayten</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            overflow: hidden;
+            background-color: #f0f0f0;
+        }
+        .viewer {
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+            scroll-snap-type: y mandatory;
+            overflow-y: scroll;
+            scrollbar-width: none; /* For Firefox */
+        }
+        .viewer::-webkit-scrollbar {
+            display: none; /* For Chrome, Safari, and Edge */
+        }
+        .page {
+            flex: 0 0 100vh;
+            scroll-snap-align: start;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 5px;
+        }
+        .page img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: cover;
+        }
+        .download-logo {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 60px;
+            height: 60px;
+            cursor: pointer;
+            z-index: 100;
+        }
+        .download-logo img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+        .download-logo:hover {
+            transform: scale(1.1);
+            transition: transform 0.2s;
+        }
+        .message {
+            position: fixed;
+            bottom: 90px;
+            right: 20px;
+            background-color: rgba(0, 0, 0, 0.7);
+            color: #fff;
+            padding: 10px 15px;
+            border-radius: 5px;
+            font-size: 14px;
+            display: none;
+            z-index: 200;
+        }
+        .top-banner {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background-color: #FFC0CB;
+            color: #fff;
+            display: flex;
+            align-items: center;
+            padding: 10px 20px;
+            z-index: 300;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+        .top-banner img {
+            height: 30px;
+            margin-right: 10px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Top Banner -->
+    <div class="top-banner">
+        <img src="../../images/1000160661.png" alt="The Lamp Logo">
+    </div>
 
+    <!-- Viewer -->
+    <div class="viewer">
+        <div class="page"><img src="../../images/1.jpg" alt="Page 1"></div>
+        <div class="page"><img src="../../images/2.jpg" alt="Page 2"></div>
+        <div class="page"><img src="../../images/3.jpg" alt="Page 3"></div>
+    </div>
+
+    <!-- Download Logo -->
+    <div class="download-logo" onclick="redirectToDownload()">
+        <img src="../../images/Download.png" alt="Download">
+    </div>
+
+    <!-- Download Message -->
+    <div class="message" id="downloadMessage">Wait, This PDF is downloading...</div>
+
+<script>
+    // Smooth scrolling enhancement
+    let isScrolling = false;
+    document.querySelector('.viewer').addEventListener('wheel', (e) => {
+        e.preventDefault();
+        if (isScrolling) return;
+        isScrolling = true;
+
+        const delta = e.deltaY > 0 ? 1 : -1;
+        const viewer = e.currentTarget;
+        viewer.scrollBy({
+            top: delta * window.innerHeight,
+            behavior: 'smooth'
+        });
+
+        setTimeout(() => {
+            isScrolling = false;
+        }, 600); // Prevent rapid scrolling
+    });
+
+    // Redirect function for download logo
+    function redirectToDownload() {
+        const message = document.getElementById('downloadMessage');
+        message.style.display = 'block'; // Show the message immediately
+
+        // Start the download immediately
+        window.location.href = "https://drive.usercontent.google.com/u/0/uc?id=1-E_OzFqQkVlil36_t8zzisoWH5BPdaOI&export=download"; // Replace with your desired link
+
+        // Hide the message after 3 seconds
+        setTimeout(() => {
+            message.style.display = 'none'; // Hide after 3 seconds
+        }, 3000);
+    }
+
+    // Variable to track if auto-scrolling has been done
+let autoScrollCompleted = false;
+
+// Function to check for inactivity on page 1 and auto-scroll
+function checkAndScroll() {
+    const viewer = document.querySelector('.viewer');
+    const firstPage = viewer.firstElementChild;
+
+    // Check if user is on the first page
+    const isOnFirstPage = firstPage.getBoundingClientRect().top === 0;
+
+    // If on first page, start a 3-second timer to auto-scroll
+    if (isOnFirstPage && !autoScrollCompleted) {
+        setTimeout(() => {
+            // Recheck if user is still on the first page and hasn't scrolled
+            const isStillOnFirstPage = firstPage.getBoundingClientRect().top === 0;
+
+            if (isStillOnFirstPage && !autoScrollCompleted) {
+                // Perform smooth auto-scroll to the second page
+                viewer.scrollBy({
+                    top: window.innerHeight,
+                    behavior: 'smooth',
+                });
+
+                // Mark auto-scrolling as completed
+                autoScrollCompleted = true;
+            }
+        }, 2000); // 3-second delay
+    }
+}
+
+// Add scroll event listener to track user scrolling
+document.querySelector('.viewer').addEventListener('scroll', () => {
+    const firstPage = document.querySelector('.viewer').firstElementChild;
+
+    // Reset autoScrollCompleted if user scrolls up to the first page
+    if (firstPage.getBoundingClientRect().top === 0 && autoScrollCompleted) {
+        autoScrollCompleted = false;
+    }
+});
+
+// Run the check when the page loads
+checkAndScroll();
+</script>
+</body>
+</html>
