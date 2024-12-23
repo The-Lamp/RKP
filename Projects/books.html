@@ -52,44 +52,6 @@
                 display: none;
             }
         }
-
-        /* Modal styling */
-    .modal {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background-color: rgba(0, 0, 0, 0.5);
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
-
-    .modal-content {
-        background-color: white;
-        padding: 20px;
-        border-radius: 5px;
-        text-align: center;
-    }
-
-    .modal-content h3 {
-        margin-bottom: 20px;
-    }
-
-    .w-button {
-        margin: 10px;
-        padding: 10px 20px;
-        background-color: #007BFF;
-        color: white;
-        border: none;
-        border-radius: 5px;
-        cursor: pointer;
-    }
-
-    .w-button:hover {
-        background-color: #0056b3;
-    }
     </style>
 </head>
 <div id="top-logo">
@@ -105,16 +67,6 @@
             </div>
         </div>
     </div>
-
-    <!-- Modal -->
-<div id="modal" class="modal" style="display: none;">
-    <div class="modal-content">
-        <h3>Choose an Option</h3>
-        <button id="readOption" class="w-button">Read</button>
-        <button id="listenOption" class="w-button">Listen</button>
-        <button id="closeModal" class="w-button">Close</button>
-    </div>
-</div>
     <!-- Shikayten --> 
     <div class="hero-section">
         <div class="container w-container">
@@ -210,32 +162,5 @@
             </div>
         </div>
     </div>
-    <script>
-    // Modal functionality
-    const modal = document.getElementById("modal");
-    const readOption = document.getElementById("readOption");
-    const listenOption = document.getElementById("listenOption");
-    const closeModal = document.getElementById("closeModal");
-
-    document.querySelectorAll(".openModal").forEach(button => {
-        button.addEventListener("click", function () {
-            // Get URLs from data attributes
-            const readUrl = this.getAttribute("data-read");
-            const listenUrl = this.getAttribute("data-listen");
-
-            // Set click events for modal buttons
-            readOption.onclick = () => window.location.href = readUrl;
-            listenOption.onclick = () => window.location.href = listenUrl;
-
-            // Show modal
-            modal.style.display = "flex";
-        });
-    });
-
-    // Close modal
-    closeModal.addEventListener("click", () => {
-        modal.style.display = "none";
-    });
-    </script>
 </body>
 </html>
