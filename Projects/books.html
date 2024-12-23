@@ -50,22 +50,63 @@
                 display: none;
             }
         }
-        .cta-container {
-        font-size: 16px;
+        
+
+    /* Container Styling */
+    .cta-container {
+        font-size: 18px;
         font-weight: bold;
+        display: inline-block;
+        background: linear-gradient(90deg, #f3f3f3, #e0e0e0);
+        padding: 10px 20px;
+        border-radius: 8px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        transition: background 0.3s ease, transform 0.2s ease;
     }
 
+    .cta-container:hover {
+        background: linear-gradient(90deg, #e0e0e0, #d1d1d1);
+        transform: scale(1.05);
+    }
+
+    /* Link Styling */
     .cta-link {
         text-decoration: none;
+        position: relative;
         color: #007BFF; /* Default link color */
-        border-bottom: 2px solid transparent;
-        padding-bottom: 2px;
-        transition: color 0.3s, border-bottom-color 0.3s;
+        font-family: 'Roboto', sans-serif;
+        font-weight: 600;
+        margin: 0 5px;
+        padding: 5px 0;
+        transition: color 0.3s ease-in-out;
     }
 
     .cta-link:hover {
         color: #0056b3; /* Hover color */
-        border-bottom-color: #0056b3; /* Underline on hover */
+    }
+
+    .cta-link::after {
+        content: '';
+        position: absolute;
+        left: 0;
+        bottom: -3px;
+        width: 100%;
+        height: 3px;
+        background: linear-gradient(90deg, #007BFF, #0056b3);
+        transform: scaleX(0);
+        transform-origin: left;
+        transition: transform 0.3s ease-in-out;
+    }
+
+    .cta-link:hover::after {
+        transform: scaleX(1);
+    }
+
+    /* Additional Styling for 'or' */
+    .cta-container span {
+        color: #666;
+        margin: 0 5px;
+        font-style: italic;
     }
     </style>
 </head>
