@@ -162,5 +162,32 @@
             </div>
         </div>
     </div>
+    <script>
+    // Modal functionality
+    const modal = document.getElementById("modal");
+    const readOption = document.getElementById("readOption");
+    const listenOption = document.getElementById("listenOption");
+    const closeModal = document.getElementById("closeModal");
+
+    document.querySelectorAll(".openModal").forEach(button => {
+        button.addEventListener("click", function () {
+            // Get URLs from data attributes
+            const readUrl = this.getAttribute("data-read");
+            const listenUrl = this.getAttribute("data-listen");
+
+            // Set click events for modal buttons
+            readOption.onclick = () => window.location.href = readUrl;
+            listenOption.onclick = () => window.location.href = listenUrl;
+
+            // Show modal
+            modal.style.display = "flex";
+        });
+    });
+
+    // Close modal
+    closeModal.addEventListener("click", () => {
+        modal.style.display = "none";
+    });
+    </script>
 </body>
 </html>
