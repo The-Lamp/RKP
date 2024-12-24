@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>FAQs Page</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
   <style>
     * {
       margin: 0;
@@ -13,90 +14,116 @@
     }
 
     body {
-      font-family: 'Arial', sans-serif;
-      background-color: #d0f4f2;
+      font-family: 'Roboto', sans-serif;
+      background: linear-gradient(135deg, #89f7fe, #66a6ff);
       display: flex;
       justify-content: center;
       align-items: center;
-      height: 100vh;
-      color: #000;
+      min-height: 100vh;
+      color: #fff;
     }
 
     .container {
-      background-color: #e0f7f5;
-      border: 2px solid #000;
+      background: rgba(255, 255, 255, 0.1);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
       border-radius: 15px;
-      width: 350px;
-      padding: 30px 20px;
+      width: 400px;
+      padding: 30px;
       text-align: center;
+      backdrop-filter: blur(10px);
     }
 
     h1 {
-      font-size: 40px;
-      font-weight: 900; /* Extra bold to match the image */
-      letter-spacing: 2px;
+      font-size: 2.5rem;
+      font-weight: 700;
       margin-bottom: 20px;
-      font-family: 'Impact', 'Arial Black', sans-serif; /* A thicker font */
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      text-shadow: 2px 4px 4px rgba(0, 0, 0, 0.3);
     }
 
     p {
-      font-size: 16px;
+      font-size: 1rem;
       margin-bottom: 20px;
+      line-height: 1.6;
     }
 
     .section {
-      border-top: 1px solid #000;
-      margin: 20px 0;
-      padding-top: 10px;
+      margin-top: 15px;
+      text-align: left;
     }
 
     .section h2 {
-      font-size: 18px;
-      font-weight: bold;
+      font-size: 1.2rem;
+      font-weight: 500;
       display: flex;
       justify-content: space-between;
       align-items: center;
       cursor: pointer;
+      padding: 10px;
+      background: rgba(255, 255, 255, 0.2);
+      border-radius: 10px;
+      transition: all 0.3s ease;
     }
 
-    .section h2 .circle {
-      width: 25px;
-      height: 25px;
-      border: 2px solid #000;
+    .section h2:hover {
+      background: rgba(255, 255, 255, 0.4);
+      transform: translateY(-2px);
+    }
+
+    .circle {
+      width: 30px;
+      height: 30px;
+      border: 2px solid #fff;
       border-radius: 50%;
       display: flex;
       justify-content: center;
       align-items: center;
-      font-size: 18px;
-      line-height: 18px;
+      font-size: 1rem;
+      line-height: 1;
+      transition: background-color 0.3s ease;
+    }
+
+    .section h2.active .circle {
+      background-color: #ff6f61;
     }
 
     .section-content {
       display: none;
       margin-top: 10px;
+      font-size: 1rem;
+      line-height: 1.5;
+      padding: 10px 15px;
+      background: rgba(255, 255, 255, 0.15);
+      border-radius: 10px;
+      transition: all 0.3s ease;
     }
 
-    .section h2.active + .section-content {
-      display: block;
-    }
-
-    /* Additional styles for active sections */
-    .section h2.active .circle {
-      content: "-";
+    .section-content p {
+      margin: 0;
     }
 
     #top-logo {
-    position: absolute;
-    top: 10px; /* Distance from top */
-    left: 10px; /* Distance from left (change to `right: 10px` for right side) */
-    z-index: 1000; /* Ensures it's above other content */
-}
+      position: absolute;
+      top: 10px;
+      left: 10px;
+    }
 
-#top-logo img {
-    max-height: 30px; /* Smaller logo height */
-    width: auto;      /* Maintain aspect ratio */
-    display: block;
-}
+    #top-logo img {
+      max-height: 40px;
+      width: auto;
+    }
+
+    @media screen and (max-width: 500px) {
+      .container {
+        width: 90%;
+        padding: 20px;
+      }
+
+      h1 {
+        font-size: 2rem;
+      }
+    }
   </style>
 </head>
 <body>
@@ -117,21 +144,21 @@
     <div class="section">
       <h2>Tum kitne ghante padhai karte ho?<span class="circle">+</span></h2>
       <div class="section-content">
-        <p>Ab yaar padhai ka kya hi kahun, Ek zamana tha jab kitab se uthta hi nahi tha, aur ab kitab mujhse uthti nahi hai 🤣, Waise abhi bhi main Thora padhaakoo hoon lekin ab kuchh interesting karna hai. Ek nayi Duniya banana hai! Matlab... books ke bahar wali Duniya! 👀🗣</p>
+        <p>Ek zamana tha jab kitab se uthta hi nahi tha, aur ab kitab mujhse uthti nahi hai 🤣, Waise abhi bhi main Thora padhaakoo hoon!</p>
       </div>
     </div>
 
     <div class="section">
       <h2>Tum apne name me 'Puri' kyu likhte ho?<span class="circle">+</span></h2>
       <div class="section-content">
-        <p>Simple hai bhai, mere caste ka naam hai! Waise tumhe ek bat pata hai ki mujhe Rahul naam se kayi log nahi jaante, lekin 'Puri' sunte hi mujhe sab pehchaan lete hain 💁‍♂️ </p>
+        <p>Mere caste ka naam hai! Waise mujhe 'Puri' sunte hi log pehchaan lete hain 💁‍♂️.</p>
       </div>
     </div>
 
     <div class="section">
       <h2>Tumhari girlfriend kaun hai?<span class="circle">+</span></h2>
       <div class="section-content">
-        <p> Bhai, abhi tak to meri koi girlfriend nahi hai, lekin koshish jari hai. Ek din jarur mil jayegi, Waise tumko pata chale to mujhe bhi bata dena 🤭🙈</p>
+        <p>Abhi tak to nahi hai, lekin ek din jarur milegi. Waise tumko pata chale to mujhe bhi bata dena 🤭🙈</p>
       </div>
     </div>
   </div>
@@ -141,7 +168,6 @@
 
     sections.forEach(section => {
       section.addEventListener('click', () => {
-        // Hide all other sections
         sections.forEach(sec => {
           if (sec !== section) {
             sec.classList.remove('active');
@@ -150,7 +176,6 @@
           }
         });
 
-        // Toggle the clicked section
         section.classList.toggle('active');
         const circle = section.querySelector('.circle');
         const content = section.nextElementSibling;
@@ -164,6 +189,5 @@
       });
     });
   </script>
-  
 </body>
 </html>
