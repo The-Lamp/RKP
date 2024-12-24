@@ -21,7 +21,7 @@
       align-items: center;
       min-height: 100vh;
       color: #333;
-      perspective: 1000px; /* Added for 3D effects */
+      perspective: 1000px; /* Adds depth for 3D effect */
     }
 
     .container {
@@ -54,12 +54,12 @@
       margin-bottom: 20px;
       overflow: hidden;
       transition: transform 0.3s ease, box-shadow 0.3s ease;
-      transform-style: preserve-3d; /* Preserve 3D for child elements */
+      transform: translateZ(0); /* Normal state */
     }
 
     .faq-card:hover {
-      transform: rotateY(10deg) rotateX(5deg); /* Added 3D rotation on hover */
-      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+      transform: translateZ(20px); /* Lifts the card on hover */
+      box-shadow: 0 20px 30px rgba(0, 0, 0, 0.3); /* Increases shadow for 3D effect */
     }
 
     .faq-question {
@@ -72,7 +72,6 @@
       cursor: pointer;
       font-size: 1.2rem;
       font-weight: 500;
-      transform: translateZ(30px); /* Slight 3D elevation */
     }
 
     .faq-question .circle {
