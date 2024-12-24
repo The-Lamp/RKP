@@ -24,19 +24,16 @@
     }
 
     .container {
-      background: linear-gradient(135deg, #ffffff, #ffe8e8);
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-      border-radius: 15px;
-      width: 400px;
-      padding: 30px;
-      text-align: center;
+      width: 90%;
+      max-width: 500px;
+      padding: 20px;
     }
 
     h1 {
       font-size: 2.5rem;
       font-weight: 700;
+      text-align: center;
       margin-bottom: 20px;
-      letter-spacing: 1px;
       background: linear-gradient(to right, #ff6f91, #ff9671);
       -webkit-background-clip: text;
       color: transparent;
@@ -44,35 +41,38 @@
 
     p {
       font-size: 1rem;
+      text-align: center;
       margin-bottom: 20px;
-      line-height: 1.6;
+      color: #333;
     }
 
-    .section {
-      margin-top: 15px;
-      text-align: left;
+    .faq-card {
+      background: #fff;
+      border-radius: 15px;
+      box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+      margin-bottom: 20px;
+      overflow: hidden;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
 
-    .section h2 {
-      font-size: 1.2rem;
-      font-weight: 500;
+    .faq-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+    }
+
+    .faq-question {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      cursor: pointer;
-      padding: 10px;
-      background: linear-gradient(to right, #fc466b, #3f5efb);
-      color: #fff;
-      border-radius: 10px;
-      transition: transform 0.3s ease, background-color 0.3s ease;
-    }
-
-    .section h2:hover {
-      transform: translateY(-3px);
       background: linear-gradient(to right, #6a11cb, #2575fc);
+      color: #fff;
+      padding: 15px 20px;
+      cursor: pointer;
+      font-size: 1.2rem;
+      font-weight: 500;
     }
 
-    .circle {
+    .faq-question .circle {
       width: 30px;
       height: 30px;
       border: 2px solid #fff;
@@ -80,30 +80,20 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      font-size: 1rem;
-      line-height: 1;
-      background: rgba(255, 255, 255, 0.3);
-      transition: background-color 0.3s ease;
+      font-size: 1.2rem;
     }
 
-    .section h2.active .circle {
-      background-color: #ff9671;
-    }
-
-    .section-content {
+    .faq-answer {
       display: none;
-      margin-top: 10px;
+      padding: 20px;
       font-size: 1rem;
-      line-height: 1.5;
-      padding: 15px;
-      background: rgba(255, 255, 255, 0.8);
-      border-left: 4px solid #ff6f91;
-      border-radius: 10px;
-      transition: all 0.3s ease;
+      line-height: 1.6;
+      background: #f7f7f7;
+      color: #444;
     }
 
-    .section-content p {
-      margin: 0;
+    .faq-card.active .faq-answer {
+      display: block;
     }
 
     #top-logo {
@@ -118,13 +108,8 @@
     }
 
     @media screen and (max-width: 500px) {
-      .container {
-        width: 90%;
-        padding: 20px;
-      }
-
-      h1 {
-        font-size: 2rem;
+      .faq-question {
+        font-size: 1rem;
       }
     }
   </style>
@@ -137,57 +122,63 @@
     <h1>FAQs</h1>
     <p>कुछ सवाल जो हर कोई मुझसे हमेशा पूछता रहता है, उन्ही कुछ सवालो के जवाब</p>
 
-    <div class="section">
-      <h2>The Lamp kya hai?<span class="circle">+</span></h2>
-      <div class="section-content">
+    <div class="faq-card">
+      <div class="faq-question">
+        The Lamp kya hai? <span class="circle">+</span>
+      </div>
+      <div class="faq-answer">
         <p>Are bhai, The Lamp mere brand ka Name hai.</p>
       </div>
     </div>
 
-    <div class="section">
-      <h2>Tum kitne ghante padhai karte ho?<span class="circle">+</span></h2>
-      <div class="section-content">
+    <div class="faq-card">
+      <div class="faq-question">
+        Tum kitne ghante padhai karte ho? <span class="circle">+</span>
+      </div>
+      <div class="faq-answer">
         <p>Ek zamana tha jab kitab se uthta hi nahi tha, aur ab kitab mujhse uthti nahi hai 🤣, Waise abhi bhi main thora padhaakoo hoon!</p>
       </div>
     </div>
 
-    <div class="section">
-      <h2>Tum apne name me 'Puri' kyu likhte ho?<span class="circle">+</span></h2>
-      <div class="section-content">
+    <div class="faq-card">
+      <div class="faq-question">
+        Tum apne name me 'Puri' kyu likhte ho? <span class="circle">+</span>
+      </div>
+      <div class="faq-answer">
         <p>Mere caste ka naam hai! Waise mujhe 'Puri' sunte hi log pehchaan lete hain 💁‍♂️.</p>
       </div>
     </div>
 
-    <div class="section">
-      <h2>Tumhari girlfriend kaun hai?<span class="circle">+</span></h2>
-      <div class="section-content">
+    <div class="faq-card">
+      <div class="faq-question">
+        Tumhari girlfriend kaun hai? <span class="circle">+</span>
+      </div>
+      <div class="faq-answer">
         <p>Abhi tak to nahi hai, lekin ek din jarur milegi. Waise tumko pata chale to mujhe bhi bata dena 🤭🙈</p>
       </div>
     </div>
   </div>
 
   <script>
-    const sections = document.querySelectorAll('.section h2');
+    const faqCards = document.querySelectorAll('.faq-card');
 
-    sections.forEach(section => {
-      section.addEventListener('click', () => {
-        sections.forEach(sec => {
-          if (sec !== section) {
-            sec.classList.remove('active');
-            sec.nextElementSibling.style.display = 'none';
-            sec.querySelector('.circle').textContent = '+';
-          }
+    faqCards.forEach(card => {
+      const question = card.querySelector('.faq-question');
+      question.addEventListener('click', () => {
+        const isActive = card.classList.contains('active');
+
+        // Close all cards
+        faqCards.forEach(c => {
+          c.classList.remove('active');
+          c.querySelector('.faq-answer').style.display = 'none';
+          c.querySelector('.circle').textContent = '+';
         });
 
-        section.classList.toggle('active');
-        const circle = section.querySelector('.circle');
-        const content = section.nextElementSibling;
-        if (section.classList.contains('active')) {
-          content.style.display = 'block';
-          circle.textContent = '-';
-        } else {
-          content.style.display = 'none';
-          circle.textContent = '+';
+        // Toggle current card
+        if (!isActive) {
+          card.classList.add('active');
+          card.querySelector('.faq-answer').style.display = 'block';
+          card.querySelector('.circle').textContent = '-';
         }
       });
     });
