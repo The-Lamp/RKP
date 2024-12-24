@@ -15,31 +15,31 @@
 
     body {
       font-family: 'Roboto', sans-serif;
-      background: linear-gradient(135deg, #89f7fe, #66a6ff);
+      background: linear-gradient(to right, #ff9a9e, #fad0c4, #fbc2eb);
       display: flex;
       justify-content: center;
       align-items: center;
       min-height: 100vh;
-      color: #fff;
+      color: #333;
     }
 
     .container {
-      background: rgba(255, 255, 255, 0.1);
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+      background: linear-gradient(135deg, #ffffff, #ffe8e8);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
       border-radius: 15px;
       width: 400px;
       padding: 30px;
       text-align: center;
-      backdrop-filter: blur(10px);
     }
 
     h1 {
       font-size: 2.5rem;
       font-weight: 700;
       margin-bottom: 20px;
-      text-transform: uppercase;
-      letter-spacing: 2px;
-      text-shadow: 2px 4px 4px rgba(0, 0, 0, 0.3);
+      letter-spacing: 1px;
+      background: linear-gradient(to right, #ff6f91, #ff9671);
+      -webkit-background-clip: text;
+      color: transparent;
     }
 
     p {
@@ -61,14 +61,15 @@
       align-items: center;
       cursor: pointer;
       padding: 10px;
-      background: rgba(255, 255, 255, 0.2);
+      background: linear-gradient(to right, #fc466b, #3f5efb);
+      color: #fff;
       border-radius: 10px;
-      transition: all 0.3s ease;
+      transition: transform 0.3s ease, background-color 0.3s ease;
     }
 
     .section h2:hover {
-      background: rgba(255, 255, 255, 0.4);
-      transform: translateY(-2px);
+      transform: translateY(-3px);
+      background: linear-gradient(to right, #6a11cb, #2575fc);
     }
 
     .circle {
@@ -81,11 +82,12 @@
       align-items: center;
       font-size: 1rem;
       line-height: 1;
+      background: rgba(255, 255, 255, 0.3);
       transition: background-color 0.3s ease;
     }
 
     .section h2.active .circle {
-      background-color: #ff6f61;
+      background-color: #ff9671;
     }
 
     .section-content {
@@ -93,8 +95,9 @@
       margin-top: 10px;
       font-size: 1rem;
       line-height: 1.5;
-      padding: 10px 15px;
-      background: rgba(255, 255, 255, 0.15);
+      padding: 15px;
+      background: rgba(255, 255, 255, 0.8);
+      border-left: 4px solid #ff6f91;
       border-radius: 10px;
       transition: all 0.3s ease;
     }
@@ -110,7 +113,7 @@
     }
 
     #top-logo img {
-      max-height: 40px;
+      max-height: 50px;
       width: auto;
     }
 
@@ -144,7 +147,7 @@
     <div class="section">
       <h2>Tum kitne ghante padhai karte ho?<span class="circle">+</span></h2>
       <div class="section-content">
-        <p>Ek zamana tha jab kitab se uthta hi nahi tha, aur ab kitab mujhse uthti nahi hai 🤣, Waise abhi bhi main Thora padhaakoo hoon!</p>
+        <p>Ek zamana tha jab kitab se uthta hi nahi tha, aur ab kitab mujhse uthti nahi hai 🤣, Waise abhi bhi main thora padhaakoo hoon!</p>
       </div>
     </div>
 
