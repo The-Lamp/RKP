@@ -1,1 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>FAQs Page</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
+    body {
+      font-family: 'Arial', sans-serif;
+      background-color: #d0f4f2;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      color: #000;
+    }
+
+    .container {
+      background-color: #e0f7f5;
+      border: 2px solid #000;
+      border-radius: 15px;
+      width: 350px;
+      padding: 30px 20px;
+      text-align: center;
+    }
+
+    h1 {
+      font-size: 40px;
+      font-weight: 900; /* Extra bold to match the image */
+      letter-spacing: 2px;
+      margin-bottom: 20px;
+      font-family: 'Impact', 'Arial Black', sans-serif; /* A thicker font */
+    }
+
+    p {
+      font-size: 16px;
+      margin-bottom: 20px;
+    }
+
+    .section {
+      border-top: 1px solid #000;
+      margin: 20px 0;
+      padding-top: 10px;
+    }
+
+    .section h2 {
+      font-size: 18px;
+      font-weight: bold;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      cursor: pointer;
+    }
+
+    .section h2 .circle {
+      width: 25px;
+      height: 25px;
+      border: 2px solid #000;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 18px;
+      line-height: 18px;
+    }
+
+    .section-content {
+      display: none;
+      margin-top: 10px;
+    }
+
+    .section h2.active + .section-content {
+      display: block;
+    }
+
+    /* Additional styles for active sections */
+    .section h2.active .circle {
+      content: "-";
+    }
+
+    #top-logo {
+    position: absolute;
+    top: 10px; /* Distance from top */
+    left: 10px; /* Distance from left (change to `right: 10px` for right side) */
+    z-index: 1000; /* Ensures it's above other content */
+}
+
+#top-logo img {
+    max-height: 30px; /* Smaller logo height */
+    width: auto;      /* Maintain aspect ratio */
+    display: block;
+}
+  </style>
+</head>
+<body>
+<div id="top-logo">
+    <img src="../images/1000160661.png" alt="Brand Logo">
+</div>
+  <div class="container">
+    <h1>FAQs</h1>
+    <p>कुछ सवाल जो हर कोई मुझसे हमेशा पूछता रहता है, उन्ही कुछ सवालो के जवाब</p>
+
+    <div class="section">
+      <h2>The Lamp kya hai?<span class="circle">+</span></h2>
+      <div class="section-content">
+        <p>Are bhai, The Lamp mera brand Name hai Abhi popular nahi hai, lekin future mein Google se bhi jyada popular hoga 😅🤣</p>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>Tum kitne ghante padhai karte ho?<span class="circle">+</span></h2>
+      <div class="section-content">
+        <p>Ab yaar padhai ka kya hi kahun, Ek zamana tha jab kitab se uthta hi nahi tha, aur ab kitab mujhse uthti nahi hai 🤣, Waise abhi bhi main Thora padhaakoo hoon lekin ab kuchh interesting karna hai. Ek nayi Duniya banana hai! Matlab... books ke bahar wali Duniya! 👀🗣</p>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>Tum apne name me 'Puri' kyu likhte ho?<span class="circle">+</span></h2>
+      <div class="section-content">
+        <p>Simple hai bhai, mere caste ka naam hai! Waise tumhe ek bat pata hai ki mujhe Rahul naam se kayi log nahi jaante, lekin 'Puri' sunte hi mujhe sab pehchaan lete hain 💁‍♂️ </p>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>Tumhari girlfriend kaun hai?<span class="circle">+</span></h2>
+      <div class="section-content">
+        <p> Bhai, abhi tak to meri koi girlfriend nahi hai, lekin koshish jari hai. Ek din jarur mil jayegi, Waise tumko pata chale to mujhe bhi bata dena 🤭🙈</p>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const sections = document.querySelectorAll('.section h2');
+
+    sections.forEach(section => {
+      section.addEventListener('click', () => {
+        // Hide all other sections
+        sections.forEach(sec => {
+          if (sec !== section) {
+            sec.classList.remove('active');
+            sec.nextElementSibling.style.display = 'none';
+            sec.querySelector('.circle').textContent = '+';
+          }
+        });
+
+        // Toggle the clicked section
+        section.classList.toggle('active');
+        const circle = section.querySelector('.circle');
+        const content = section.nextElementSibling;
+        if (section.classList.contains('active')) {
+          content.style.display = 'block';
+          circle.textContent = '-';
+        } else {
+          content.style.display = 'none';
+          circle.textContent = '+';
+        }
+      });
+    });
+  </script>
+  
+</body>
+</html>
