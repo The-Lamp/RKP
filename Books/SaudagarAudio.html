@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Spotify-inspired poetry player">
+  <title>सौदागर</title>
+  <style>
+    /* General Reset */
+    body, html {
+      margin: 0;
+      padding: 0;
+      font-family: 'Arial', sans-serif;
+      background: #121212;
+      color: #ffffff;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      overflow: hidden;
+    }
+
+    /* Container */
+    .container {
+  width: 90%;
+  max-width: 500px;
+  margin: 20px; /* Add spacing around the container */
+  padding: 20px;
+  box-sizing: border-box;
+    }
+
+    /* Banner Image */
+    .banner {
+      width: 100%;
+      border-radius: 15px;
+      overflow: hidden;
+      margin-bottom: 20px;
+    }
+
+    .banner img {
+  width: 100%;
+  border-radius: 15px;
+  margin: auto; /* Center the image */
+}
+
+    /* Poem Line */
+    .poem-line {
+      font-size: 1.2rem;
+      font-style: italic;
+      color: #f3f3f3;
+      margin-bottom: 20px;
+      min-height: 50px;
+    }
+
+    /* Progress Bar */
+    .progress-container {
+      position: relative;
+      width: 100%;
+      height: 10px;
+      background: #404040;
+      border-radius: 5px;
+      margin: 20px 0;
+    }
+
+    .progress {
+      height: 100%;
+      width: 0;
+      background: #1db954;
+      border-radius: 5px;
+      transition: width 0.2s ease;
+    }
+
+    /* Time Display */
+    .time-container {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.9rem;
+      color: #b3b3b3;
+    }
+
+    /* Controls */
+    .controls {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-top: 20px;
+    }
+
+    .control-btn {
+      background: none;
+      border: none;
+      color: #ffffff;
+      font-size: 1.5rem;
+      cursor: pointer;
+      margin: 0 10px;
+      transition: transform 0.3s ease;
+    }
+
+    .control-btn:hover {
+      transform: scale(1.2);
+      color: #1db954;
+    }
+
+    .control-btn:disabled {
+      color: #404040;
+      cursor: default;
+    }
+
+    /* Footer */
+    .footer {
+      margin-top: 20px;
+      font-size: 0.8rem;
+      color: #aaaaaa;
+    }
+
+    .footer span {
+      color: #1db954;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- Banner -->
+    <div class="banner">
+      <img src="Saudagarbanner.jpg" alt="Poem Banner">
+    </div>
+
+    <!-- Poem Line -->
+    <div id="poem-line" class="poem-line">"Click The Play Button..."</div>
+
+    <!-- Progress Bar -->
+    <div class="progress-container">
+      <div id="progress" class="progress"></div>
+    </div>
+    <div class="time-container">
+      <span id="current-time">0:00</span>
+      <span id="total-time">0:44</span>
+    </div>
+
+    <!-- Controls -->
+    <div class="controls">
+      <button class="control-btn" disabled>&lt;&lt;</button> <!-- Previous (Disabled) -->
+      <button id="play-btn" class="control-btn">▶️</button> <!-- Play/Pause -->
+      <button class="control-btn" disabled>&gt;&gt;</button> <!-- Next (Disabled) -->
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    &copy; Voice by <span>Rahul Kumar Puri</span>.
+  </footer>
+
+  <script>
+    // Poem Lines with Timestamps
+    const poemLines = [
+      { text: "आज डर गया मैं,", start: 0, end: 1.5 },
+      { text: "खुद ही की परछाइयों को देखकर जैसा भ्रम सा लगा कि पीछे कोई है।", start: 1.5, end: 7 },
+      { text: "और जब पीछे देखा,", start: 7, end: 8 },
+      { text: "तो सौदागर हैं जिन्होंने अपने सौदों के हिस्सों को खोई है।", start: 8, end: 13.5 },
+      { text: "कोई दोस्ती का सौदा माँग रहा जिन्हें मैंने नज़रअंदाज़ किया।", start: 13.5, end: 18 },
+      { text: "कोई समय का सौदा माँग रहा जिसे मैंने अपनी बर्बादी में खोई है।", start: 18, end: 23 },
+      { text: "कोई खून की हिसाब माँग रही,", start: 23, end: 25.5 },
+      { text: "जो मेरे लिए खुद भूखी होकर रातों को भूखे पेट सोई है।", start: 25.5, end: 30.2 },
+      { text: "अब तो कमरे की हर दीवारें भी कहने लगी हैं", start: 30.2, end: 33.2 },
+      { text: "क्या तू सच में कर पाएगा।", start: 33.2, end: 35.1 },
+      { text: "सुना है आँधी चलती है", start: 35.1, end: 38 },
+      { text: "पर ठहर भी जाती है।", start: 38, end: 40.5 },
+      { text: "तू बता", start: 40.5, end: 42 },
+      { text: "क्या तू हमेशा के लिए आँधी लाएगा।", start: 42, end: 44 },
+    ];
+
+    // Elements
+    const poemLineElement = document.getElementById("poem-line");
+    const progressBar = document.getElementById("progress");
+    const currentTimeElement = document.getElementById("current-time");
+    const playButton = document.getElementById("play-btn");
+
+    // Audio Object
+    const audio = new Audio("VID_20241219_071638_559.mp3"); // Replace with your actual audio file URL.
+
+    // Play/Pause Toggle
+    playButton.addEventListener("click", () => {
+      if (audio.paused) {
+        audio.play();
+        playButton.textContent = "⏸️";
+      } else {
+        audio.pause();
+        playButton.textContent = "▶️";
+      }
+    });
+
+    // Update Progress Bar and Poem Line
+    audio.addEventListener("timeupdate", () => {
+      const currentTime = audio.currentTime;
+      const duration = audio.duration;
+
+      // Update Progress Bar
+      const progress = (currentTime / duration) * 100;
+      progressBar.style.width = `${progress}%`;
+
+      // Update Current Time
+      const minutes = Math.floor(currentTime / 60);
+      const seconds = Math.floor(currentTime % 60).toString().padStart(2, "0");
+      currentTimeElement.textContent = `${minutes}:${seconds}`;
+
+      // Update Poem Line
+      const currentLine = poemLines.find(line => currentTime >= line.start && currentTime <= line.end);
+      if (currentLine) {
+        poemLineElement.textContent = currentLine.text;
+      }
+    });
+
+    // Reset Play Button After Audio Ends
+    audio.addEventListener("ended", () => {
+      playButton.textContent = "▶️";
+      progressBar.style.width = "0%";
+      poemLineElement.textContent = "Click the play button to Replay...";
+    });
+  </script>
+</body>
+</html>
