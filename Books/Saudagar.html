@@ -113,36 +113,37 @@
 <script>
     // Enhanced single-page scroll functionality
 let isScrolling = false;
+let currentPageIndex = 0; // Track the current page index
 
 document.querySelector('.viewer').addEventListener('wheel', (e) => {
     e.preventDefault();
+
     if (isScrolling) return;
 
     const viewer = e.currentTarget;
     const pages = Array.from(viewer.children);
-    const currentScroll = viewer.scrollTop;
-    const pageHeight = window.innerHeight;
+    const totalPages = pages.length;
 
-    let targetPage;
-
-    if (e.deltaY > 0) {
+    if (e.deltaY > 0 && currentPageIndex < totalPages - 1) {
         // Scrolling down
-        targetPage = pages.find((page) => page.offsetTop > currentScroll);
-    } else {
+        currentPageIndex++;
+    } else if (e.deltaY < 0 && currentPageIndex > 0) {
         // Scrolling up
-        targetPage = [...pages].reverse().find((page) => page.offsetTop < currentScroll);
+        currentPageIndex--;
+    } else {
+        return; // No valid scroll action
     }
 
-    if (targetPage) {
-        isScrolling = true;
-        viewer.scrollTo({
-            top: targetPage.offsetTop,
-            behavior: 'smooth',
-        });
-        setTimeout(() => {
-            isScrolling = false;
-        }, 600); // Adjust delay if needed
-    }
+    isScrolling = true;
+
+    viewer.scrollTo({
+        top: pages[currentPageIndex].offsetTop,
+        behavior: 'smooth',
+    });
+
+    setTimeout(() => {
+        isScrolling = false;
+    }, 500); // Lock scrolling for 500ms
 });
 
     // Live percentage display
