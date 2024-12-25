@@ -136,23 +136,38 @@
 <script>
     // Smooth scrolling enhancement
     let isScrolling = false;
-    document.querySelector('.viewer').addEventListener('wheel', (e) => {
-        e.preventDefault();
-        if (isScrolling) return;
-        isScrolling = true;
+let currentPageIndex = 0; // Track the current page index
 
-        const delta = e.deltaY > 0 ? 1 : -1;
-        const viewer = e.currentTarget;
-        viewer.scrollBy({
-            top: delta * window.innerHeight,
-            behavior: 'smooth'
-        });
+document.querySelector('.viewer').addEventListener('wheel', (e) => {
+    e.preventDefault();
 
-        setTimeout(() => {
-            isScrolling = false;
-        }, 600); // Prevent rapid scrolling
+    if (isScrolling) return;
+
+    const viewer = e.currentTarget;
+    const pages = Array.from(viewer.children);
+    const totalPages = pages.length;
+
+    if (e.deltaY > 0 && currentPageIndex < totalPages - 1) {
+        // Scrolling down
+        currentPageIndex++;
+    } else if (e.deltaY < 0 && currentPageIndex > 0) {
+        // Scrolling up
+        currentPageIndex--;
+    } else {
+        return; // No valid scroll action
+    }
+
+    isScrolling = true;
+
+    viewer.scrollTo({
+        top: pages[currentPageIndex].offsetTop,
+        behavior: 'smooth',
     });
 
+    setTimeout(() => {
+        isScrolling = false;
+    }, 500); // Lock scrolling for 500ms
+});
     // Live percentage display
 const viewer = document.querySelector('.viewer');
 const progressElement = document.getElementById('progressPercentage');
