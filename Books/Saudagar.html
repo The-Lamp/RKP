@@ -106,6 +106,10 @@
     <!-- Download Message -->
     <div class="message" id="downloadMessage">Wait, This PDF is downloading...</div>
 
+    <div class="progress" id="progressPercentage" style="position: fixed; bottom: 20px; left: 20px; background-color: rgba(0, 0, 0, 0.7); color: #fff; padding: 10px 15px; border-radius: 5px; font-size: 14px; z-index: 200;">
+    0%
+    </div>
+
 <script>
     // Enhanced single-page scroll functionality
 let isScrolling = false;
@@ -138,6 +142,25 @@ document.querySelector('.viewer').addEventListener('wheel', (e) => {
         setTimeout(() => {
             isScrolling = false;
         }, 600); // Adjust delay if needed
+    }
+});
+
+    // Live percentage display
+const viewer = document.querySelector('.viewer');
+const progressElement = document.getElementById('progressPercentage');
+
+viewer.addEventListener('scroll', () => {
+    const totalHeight = viewer.scrollHeight - window.innerHeight;
+    const scrollTop = viewer.scrollTop;
+
+    // Calculate percentage
+    const percentage = Math.round((scrollTop / totalHeight) * 100);
+
+    // Update progress element
+    if (percentage >= 100) {
+        progressElement.textContent = '100% (Finishes)';
+    } else {
+        progressElement.textContent = `${percentage}%`;
     }
 });
 
