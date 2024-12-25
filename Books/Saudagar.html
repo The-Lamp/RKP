@@ -107,24 +107,39 @@
     <div class="message" id="downloadMessage">Wait, This PDF is downloading...</div>
 
 <script>
-    // Smooth scrolling enhancement
-    let isScrolling = false;
-    document.querySelector('.viewer').addEventListener('wheel', (e) => {
-        e.preventDefault();
-        if (isScrolling) return;
+    // Enhanced single-page scroll functionality
+let isScrolling = false;
+
+document.querySelector('.viewer').addEventListener('wheel', (e) => {
+    e.preventDefault();
+    if (isScrolling) return;
+
+    const viewer = e.currentTarget;
+    const pages = Array.from(viewer.children);
+    const currentScroll = viewer.scrollTop;
+    const pageHeight = window.innerHeight;
+
+    let targetPage;
+
+    if (e.deltaY > 0) {
+        // Scrolling down
+        targetPage = pages.find((page) => page.offsetTop > currentScroll);
+    } else {
+        // Scrolling up
+        targetPage = [...pages].reverse().find((page) => page.offsetTop < currentScroll);
+    }
+
+    if (targetPage) {
         isScrolling = true;
-
-        const delta = e.deltaY > 0 ? 1 : -1;
-        const viewer = e.currentTarget;
-        viewer.scrollBy({
-            top: delta * window.innerHeight,
-            behavior: 'smooth'
+        viewer.scrollTo({
+            top: targetPage.offsetTop,
+            behavior: 'smooth',
         });
-
         setTimeout(() => {
             isScrolling = false;
-        }, 600); // Prevent rapid scrolling
-    });
+        }, 600); // Adjust delay if needed
+    }
+});
 
     // Redirect function for download logo
     function redirectToDownload() {
