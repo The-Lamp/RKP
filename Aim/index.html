@@ -8,61 +8,65 @@
         body {
             margin: 0;
             padding: 0;
-            font-family: 'Arial', sans-serif;
-            background: linear-gradient(to right, #1e3c72, #2a5298);
-            color: white;
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #1c1c1c, #3b5998);
+            color: #f4f4f4;
             display: flex;
             justify-content: center;
             align-items: center;
             min-height: 100vh;
-            overflow-y: auto; /* Enables scrolling */
+            overflow-y: auto;
         }
         .container {
-            max-width: 800px;
+            max-width: 900px;
             text-align: center;
-            background: rgba(255, 255, 255, 0.1);
-            padding: 30px;
+            background: rgba(0, 0, 0, 0.7);
+            padding: 40px;
             border-radius: 15px;
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.5);
+            border: 2px solid #ffcc00;
             position: relative;
         }
         h1 {
-            font-size: 3rem;
+            font-size: 3.5rem;
             margin-bottom: 20px;
             text-transform: uppercase;
-            color: #ffdf00;
-            letter-spacing: 2px;
+            color: #ffcc00;
+            letter-spacing: 3px;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
         }
         p {
-            font-size: 1.3rem;
+            font-size: 1.4rem;
             line-height: 2;
             margin-bottom: 30px;
+            text-align: justify;
         }
         footer {
             margin-top: 30px;
-            font-size: 1rem;
-            color: #ccc;
+            font-size: 1.1rem;
+            color: #aaa;
             text-align: right;
         }
         hr {
             border: none;
-            height: 1px;
-            background: rgba(255, 255, 255, 0.2);
+            height: 2px;
+            background: #ffcc00;
             margin: 20px 0;
         }
         #top-logo {
             position: absolute;
-            top: 10px;
-            left: 10px;
+            top: 15px;
+            left: 15px;
             z-index: 1000;
         }
         #top-logo img {
-            max-height: 40px;
+            max-height: 50px;
             width: auto;
             display: block;
+            filter: brightness(0) invert(1); /* Ensures white logo on dark background */
         }
         .highlight {
-            color: #ffdf00;
+            color: #ffcc00;
             font-weight: bold;
         }
     </style>
@@ -72,23 +76,25 @@
         <img src="Blacklogo.png" alt="Brand Logo">
     </div>
     <div class="container">
-        <h1>My Aim</h1>
+        <h1>मेरा लक्ष्य</h1>
         <p>
-            Apne sapne kisi ke saath <span class="highlight">share mat kariye</span>, kyunki agar aapke sapne pure nahi hote, toh log aapka mazak udayenge.
+            अपने <span class="highlight">सपनों</span> को कभी भी दूसरों के साथ साझा मत कीजिए।  
+            अगर आप सफल नहीं हुए, तो लोग आपका <span class="highlight">मज़ाक</span> उड़ाएंगे।  
+            सच यह है कि लोग आपकी सफलता से नहीं, आपकी <span class="highlight">असफलता</span> से खुश होते हैं।
         </p>
         <hr>
         <p>
-            Log aapke baare me nahi sochte, unhe sirf aapko girta dekhne ka maza aata hai. Main apne sare sapne aapke saath share kar sakta tha, lekin maine nahi kiya.
+            मेरा मानना है कि सपने खुद के लिए होते हैं।  
+            उन्हें <span class="highlight">दुनिया</span> के सामने तब तक प्रकट न करें,  
+            जब तक आप उन्हें पूरी तरह हासिल न कर लें।  
         </p>
         <hr>
         <p>
-            Mera aapse bas ek <span class="highlight">nivedan</span> hai ki apne sapno ko apne andar hi rakhiye. Jab tak aap unhe poori tarah se hasil na kar lein, unhe duniya ke samne mat layiye.
+            मेरे भी कुछ सपने हैं।  
+            सच कहूं तो मुझे भी नहीं पता कि मैं उन्हें पूरा कर पाऊंगा या नहीं।  
+            लेकिन जब तक मैं जिंदा हूं, मेरे अंदर उन्हें पाने की <span class="highlight">इच्छा</span> ज़रूर रहेगी।
         </p>
-        <hr>
-        <p>
-            Ab zara main apne sapno ki bhi baat kar loon. To asal mein mujhe khud bhi nahi pata ki main wo sab kar paunga ya nahi jo maine socha hai, lekin jab tak zinda hoon, mere andar un sapno ko paane ki khwahish zarur rahegi.
-        </p>
-        <footer>&mdash; by Rahul Kumar Puri</footer>
+        <footer>&mdash; राहुल कुमार पुरी</footer>
     </div>
 </body>
 </html>
