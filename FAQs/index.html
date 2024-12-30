@@ -75,14 +75,17 @@
     }
 
     .faq-question .circle {
-      width: 30px;
-      height: 30px;
-      border: 2px solid #fff;
-      border-radius: 50%;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      font-size: 1.2rem;
+  width: 30px;
+  height: 30px;
+  border: 2px solid #fff;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.2rem;
+  line-height: 1; /* Ensures text stays centered */
+  text-align: center; /* Fixes alignment issues */
+  flex-shrink: 0; /* Prevents shrinking */
     }
 
     .faq-answer {
