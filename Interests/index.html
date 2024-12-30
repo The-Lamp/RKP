@@ -229,20 +229,31 @@
             0% { opacity: 0; transform: translateY(-20px); }
             100% { opacity: 1; transform: translateY(0); }
         }
+
+         .clickable-link {
+        color: blue;
+        text-decoration: underline;
+        cursor: pointer;
+    }
+
+    .clickable-link:hover {
+        color: darkblue;
+    }
     </style>
 </head>
 <body>
     <h1>My Interests</h1>
     <div class="interest-section">
         <div class="interest-card card-tech">
-            <div class="interest-content">
-                <div class="interest-icon">🚀</div>
-                <div class="interest-title">Technology</div>
-                <button class="click-button">Click Here</button>
-            </div>
-            <div class="interest-backside">
-                Mai apni life me kuchh alag aur creative karna chahta hu, jo ab tak kisi ne nahi socha ho. Abhi confusion hai, but agar tum kuch suggest kar sakte ho, jo mind blowing ho. To mujhe yaha message karo.
-            </div>
+    <div class="interest-content">
+        <div class="interest-icon">🚀</div>
+        <div class="interest-title">Technology</div>
+        <button class="click-button">Click Here</button>
+    </div>
+    <div class="interest-backside">
+        Mai apni life me kuchh alag aur creative karna chahta hu, jo ab tak kisi ne nahi socha ho. Abhi confusion hai, but agar tum kuch suggest kar sakte ho, jo mind blowing ho. To 
+        <a href="https://example.com" class="clickable-link">mujhe yaha message karo.</a>
+    </div>
         </div>
 
         <div class="interest-card card-programming">
