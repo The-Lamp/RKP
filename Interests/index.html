@@ -1,304 +1,163 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-     <meta charset="UTF-8">
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="the lamp">
     <meta name="author" content="The Lamp">
     <title>The Lamp</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
 
         body {
             margin: 0;
             padding: 0;
-            background: linear-gradient(135deg, #1a1a2e, #16213e);
-            font-family: 'Arial', sans-serif;
-            color: #fff;
-            overflow-x: hidden;
+            font-family: 'Roboto', sans-serif;
+            background: linear-gradient(120deg, #f6d365, #fda085);
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
         }
 
         h1 {
+            font-size: 2.5rem;
+            margin: 40px 0;
+            color: #f76b1c;
             text-align: center;
-            margin: 50px 0;
-            font-size: 3em;
             text-transform: uppercase;
-            letter-spacing: 3px;
-            animation: fadeIn 2s ease-in-out;
-            font-family: 'Orbitron', sans-serif;
-            color: #fff;
-            text-shadow: 4px 4px 10px rgba(0, 0, 0, 0.8), 6px 6px 15px rgba(0, 0, 0, 0.7), 8px 8px 20px rgba(0, 0, 0, 0.6);
-            perspective: 500px;
-            transform: rotateX(10deg);
         }
 
         .interest-section {
             display: flex;
-            justify-content: space-around;
-            align-items: center;
+            justify-content: center;
             flex-wrap: wrap;
+            gap: 20px;
             padding: 20px;
         }
 
         .interest-card {
-            width: 250px;
-            height: 250px; /* Original height restored */
-            margin: 20px;
-            background: #0f3460;
-            border-radius: 20px;
-            perspective: 1000px;
-            transition: transform 0.3s;
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
-            position: relative;
-            cursor: pointer;
+            width: 300px;
+            background: #fff;
+            border-radius: 15px;
+            padding: 20px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
 
-        .interest-content, .interest-backside {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            backface-visibility: hidden;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            transition: transform 0.3s;
-            border-radius: 20px;
+        .interest-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 25px rgba(0, 0, 0, 0.3);
         }
 
         .interest-icon {
-            font-size: 4em;
+            font-size: 3rem;
             margin-bottom: 15px;
+            color: #f76b1c;
         }
 
         .interest-title {
-            font-size: 1.5em;
-            text-transform: uppercase;
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+            color: #333;
+            font-weight: bold;
         }
 
         .interest-backside {
-            transform: rotateY(180deg);
-            padding: 20px;
-            text-align: center;
-            background: #2f3542;
-            color: #dcdde1;
-            font-family: 'Perpetua', serif;
-            font-size: 1.2em;
+            font-size: 1rem;
+            color: #555;
+            line-height: 1.5;
+            text-align: justify;
         }
 
-        .interest-card:hover .interest-content, 
-        .interest-card:focus .interest-content, 
-        .interest-card:active .interest-content {
-            transform: rotateY(180deg);
+        a.clickable-link {
+            color: #f76b1c;
+            text-decoration: none;
+            font-weight: bold;
         }
 
-        .interest-card:hover .interest-backside, 
-        .interest-card:focus .interest-backside, 
-        .interest-card:active .interest-backside {
-            transform: rotateY(360deg);
+        a.clickable-link:hover {
+            text-decoration: underline;
         }
 
-        /* Updated CSS for Click Animation */
-.cursor {
-    position: fixed;
-    width: 30px;
-    height: 30px;
-    background: radial-gradient(circle, rgba(255, 255, 255, 1), rgba(0, 150, 255, 0.7), rgba(0, 150, 255, 0.3));
-    border-radius: 50%;
-    pointer-events: none;
-    transform: translate(-50%, -50%) scale(1);
-    transition: transform 0.1s ease, background 0.3s ease;
-    z-index: 9999;
-    box-shadow: 0 0 20px rgba(0, 150, 255, 0.6), 0 0 40px rgba(0, 150, 255, 0.4);
-}
-
-.cursor-grow {
-    transform: translate(-50%, -50%) scale(4);
-    background: radial-gradient(circle, rgba(255, 255, 255, 1), rgba(255, 0, 150, 0.7), rgba(255, 0, 150, 0.3));
-    box-shadow: 0 0 30px rgba(255, 0, 150, 0.6), 0 0 60px rgba(255, 0, 150, 0.4);
-}
-
-.cursor-trail {
-    background: radial-gradient(circle, rgba(0, 255, 255, 1), rgba(0, 150, 255, 0.7), rgba(0, 150, 255, 0.3));
-    transform: translate(-50%, -50%) scale(0.8);
-    animation: cursorTrailAnim 0.6s ease-out forwards;
-    box-shadow: 0 0 15px rgba(0, 150, 255, 0.5), 0 0 30px rgba(0, 150, 255, 0.3);
-}
-
-@keyframes cursorTrailAnim {
-    0% {
-        opacity: 1;
-        transform: translate(-50%, -50%) scale(0.8);
-    }
-    100% {
-        opacity: 0;
-        transform: translate(-50%, -50%) scale(2);
-    }
-}
-
-/* Ripple effect on click */
-.cursor-ripple {
-    position: absolute;
-    border-radius: 50%;
-    background: rgba(255, 255, 255, 0.4);
-    transform: translate(-50%, -50%) scale(0);
-    animation: ripple 0.6s ease-out forwards;
-    pointer-events: none;
-    z-index: 1000;
-}
-
-@keyframes ripple {
-    to {
-        transform: translate(-50%, -50%) scale(10);
-        opacity: 0;
-    }
-}
-
-/* Media query for mobile devices - Disable cursor animations */
-@media (max-width: 768px) {
-    .cursor,
-    .cursor-grow,
-    .cursor-trail,
-    .cursor-ripple {
-        display: none;
-    }
-}
-        
-        /* 3D Stylish Button */
-        .click-button {
-            margin-top: 10px; /* Reduced margin */
-            padding: 5px 10px; /* Smaller padding for smaller size */
-            background-color: #ff793f;
-            color: white;
+        button {
+            margin-top: 20px;
+            padding: 10px 15px;
+            font-size: 1rem;
+            color: #fff;
+            background: #f76b1c;
             border: none;
-            border-radius: 8px; /* Smaller border radius */
-            font-size: 0.8em; /* Smaller font size */
-            text-transform: uppercase;
+            border-radius: 5px;
             cursor: pointer;
-            transition: all 0.3s ease-in-out;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
-            transform: translateY(0);
+            transition: background 0.3s;
         }
 
-        .click-button:hover {
-            background-color: #ff6b81;
-            transform: translateY(-4px);
-            box-shadow: 0 8px 12px rgba(0, 0, 0, 0.3);
+        button:hover {
+            background: #d6541b;
         }
-
-        /* Mobile touch behavior */
-        @media (hover: none) {
-            .interest-card:active .interest-content {
-                transform: rotateY(180deg);
-            }
-
-            .interest-card:active .interest-backside {
-                transform: rotateY(360deg);
-            }
-
-            .click-button:active {
-                transform: translateY(-2px);
-                box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2);
-            }
-        }
-
-        /* Individual card colors */
-        .card-tech { background-color: #0a3d62; }
-        .card-programming { background-color: #1e3799; }
-        .card-hacking { background-color: #079992; }
-        .card-politics { background-color: #e55039; }
-        .card-writing { background-color: #fa983a; }
-        .card-consultant { background-color: #60a3bc; }
-
-        /* Animations */
-        @keyframes fadeIn {
-            0% { opacity: 0; transform: translateY(-20px); }
-            100% { opacity: 1; transform: translateY(0); }
-        }
-
-         .clickable-link {
-        color: blue;
-        text-decoration: underline;
-        cursor: pointer;
-    }
-
-    .clickable-link:hover {
-        color: darkblue;
-    }
     </style>
 </head>
 <body>
     <h1>My Interests</h1>
     <div class="interest-section">
-        <div class="interest-card card-tech">
-    <div class="interest-content">
-        <div class="interest-icon">🚀</div>
-        <div class="interest-title">Technology</div>
-        <button class="click-button">Click Here</button>
-    </div>
-    <div class="interest-backside">
-        Mai apni life me kuchh alag aur creative karna chahta hu, jo ab tak kisi ne nahi socha ho. Abhi confusion hai, but agar tum kuch suggest kar sakte ho, jo mind blowing ho. To 
-        <a href="https://www.instagram.com/cyb_rahul?igsh=bGk3Ym5pa2I2Y2Zr" class="clickable-link">mujhe yaha message karo.</a>
-    </div>
+        <!-- Card 1 -->
+        <div class="interest-card">
+            <div class="interest-icon">🚀</div>
+            <div class="interest-title">Technology</div>
+            <div class="interest-backside">
+                Mai apni life me kuchh alag aur creative karna chahta hu, jo ab tak kisi ne nahi socha ho. Agar tum kuch suggest kar sakte ho, jo mind blowing ho, to 
+                <a href="https://www.instagram.com/cyb_rahul" class="clickable-link">mujhe yaha message karo</a>.
+            </div>
         </div>
 
-        <div class="interest-card card-programming">
-            <div class="interest-content">
-                <div class="interest-icon">⚛️</div>
-                <div class="interest-title">Coding</div>
-                <button class="click-button">Click Here</button>
-            </div>
+        <!-- Card 2 -->
+        <div class="interest-card">
+            <div class="interest-icon">⚛️</div>
+            <div class="interest-title">Coding</div>
             <div class="interest-backside">
                 Main abhi coding bhi seekh raha hoon, lekin Python, HTML, CSS, aur JavaScript ko achhe se samajh sakta hoon. Saath hi thoda-bahut Java bhi seekh raha hoon.
             </div>
         </div>
 
-         <div class="interest-card card-song">
-    <div class="interest-content">
-        <div class="interest-icon">🎶</div>
-        <div class="interest-title">Songs</div>
-        <button class="click-button">Click Here</button>
-    </div>
-    <div class="interest-backside">
-        <p>Mai gane bahut sunata hu aur mere 2 favourite songs hai:</p>
-        <ul>
-            <li><strong>Tum Hi Ho</strong> (Hin)</li>
-            <li><strong>Broken Angel</strong> (Eng)</li>
-        </ul>
-    </div>
-         </div>
-
-        <div class="interest-card card-Cinema">
-            <div class="interest-content">
-                <div class="interest-icon">🎬</div>
-                <div class="interest-title">Cinema</div>
-                <button class="click-button">Click Here</button>
-            </div>
+        <!-- Card 3 -->
+        <div class="interest-card">
+            <div class="interest-icon">🎶</div>
+            <div class="interest-title">Songs</div>
             <div class="interest-backside">
-                Mujhe Filme dekhana kafi pasand hai(Only Bollywood and Hollywood) and My Fav Actor is shahid kapoor
+                Mai gane bahut sunata hu aur mere 2 favourite songs hai:
+                <ul>
+                    <li><strong>Tum Hi Ho</strong> (Hin)</li>
+                    <li><strong>Broken Angel</strong> (Eng)</li>
+                </ul>
             </div>
         </div>
 
-        <div class="interest-card card-politics">
-            <div class="interest-content">
-                <div class="interest-icon">⚖️</div>
-                <div class="interest-title">Politics</div>
-                <button class="click-button">Click Here</button>
+        <!-- Card 4 -->
+        <div class="interest-card">
+            <div class="interest-icon">🎬</div>
+            <div class="interest-title">Cinema</div>
+            <div class="interest-backside">
+                Mujhe Filme dekhna pasand hai (Only Bollywood and Hollywood). My Fav Actor: Shahid Kapoor.
             </div>
+        </div>
+
+        <!-- Card 5 -->
+        <div class="interest-card">
+            <div class="interest-icon">⚖️</div>
+            <div class="interest-title">Politics</div>
             <div class="interest-backside">
                 Following and supporting the BJP's Vision for India.
             </div>
         </div>
 
-        <div class="interest-card card-writing">
-            <div class="interest-content">
-                <div class="interest-icon">✍️</div>
-                <div class="interest-title">Writing</div>
-                <button class="click-button">Click Here</button>
-            </div>
+        <!-- Card 6 -->
+        <div class="interest-card">
+            <div class="interest-icon">✍️</div>
+            <div class="interest-title">Writing</div>
             <div class="interest-backside">
-                Bachpan se hi mujhe kuchh-kuchh likhne ka shauk hai, aur isi shauk ki wajah se aaj main ek chhota sa writer bhi hoon.
-                 <a href="https://www.instagram.com/cyb_rahul?igsh=bGk3Ym5pa2I2Y2Zr" class="clickable-link">mujhe yaha message karo.</a>
+                Bachpan se hi mujhe kuchh-kuchh likhne ka shauk hai, aur isi shauk ki wajah se main ek chhota sa writer hoon.
             </div>
         </div>
     </div>
