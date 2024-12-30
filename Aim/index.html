@@ -5,37 +5,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Aim</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
 
         body {
             margin: 0;
             padding: 0;
-            font-family: 'Poppins', sans-serif;
-            background: linear-gradient(135deg, #1c1c1c, #3b5998, #ffcc00);
-            background-size: 400% 400%;
-            animation: gradientAnimation 8s ease infinite;
-            color: #f4f4f4;
+            font-family: 'Roboto', sans-serif;
+            background: linear-gradient(120deg, #f6d365, #fda085);
+            color: #333;
             display: flex;
             justify-content: center;
             align-items: center;
             min-height: 100vh;
-            overflow-y: auto;
-        }
-
-        @keyframes gradientAnimation {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
         }
 
         .container {
-            max-width: 900px;
-            text-align: center;
-            background: rgba(0, 0, 0, 0.85);
+            max-width: 800px;
+            background: #fff;
             padding: 40px;
-            border-radius: 20px;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
-            border: 3px solid #ffcc00;
+            border-radius: 15px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
             position: relative;
             overflow: hidden;
         }
@@ -43,73 +32,87 @@
         .container::before {
             content: '';
             position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: radial-gradient(circle, rgba(255, 255, 255, 0.1), transparent 60%);
-            opacity: 0.2;
+            top: -50px;
+            left: -50px;
+            width: 200px;
+            height: 200px;
+            background: rgba(253, 160, 133, 0.3);
+            border-radius: 50%;
+            z-index: 1;
+        }
+
+        .container::after {
+            content: '';
+            position: absolute;
+            bottom: -50px;
+            right: -50px;
+            width: 200px;
+            height: 200px;
+            background: rgba(246, 211, 101, 0.3);
+            border-radius: 50%;
             z-index: 1;
         }
 
         h1 {
-            font-size: 4rem;
+            font-size: 2.5rem;
             margin-bottom: 20px;
+            color: #f76b1c;
+            text-align: center;
+            z-index: 2;
+            position: relative;
             text-transform: uppercase;
-            color: #ffcc00;
-            letter-spacing: 3px;
-            text-shadow: 4px 4px 10px rgba(0, 0, 0, 0.7);
         }
 
         p {
-            font-size: 1.5rem;
-            line-height: 2;
-            margin-bottom: 30px;
+            font-size: 1.2rem;
+            line-height: 1.8;
+            margin-bottom: 20px;
             text-align: justify;
             z-index: 2;
             position: relative;
-        }
-
-        footer {
-            margin-top: 30px;
-            font-size: 1.2rem;
-            color: #ccc;
-            text-align: right;
-            z-index: 2;
-            position: relative;
-        }
-
-        hr {
-            border: none;
-            height: 2px;
-            background: linear-gradient(90deg, #ffcc00, #3b5998);
-            margin: 20px 0;
-        }
-
-        #top-logo {
-            position: absolute;
-            top: 15px;
-            left: 15px;
-            z-index: 1000;
-        }
-
-        #top-logo img {
-            max-height: 50px;
-            width: auto;
-            display: block;
-            filter: brightness(0) invert(1);
+            color: #555;
         }
 
         .highlight {
-            color: #ffcc00;
+            color: #f76b1c;
             font-weight: bold;
-            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
-            transition: color 0.3s, transform 0.3s;
         }
 
-        .highlight:hover {
-            color: #3b5998;
-            transform: scale(1.1);
+        footer {
+            text-align: right;
+            font-size: 1rem;
+            color: #888;
+            z-index: 2;
+            position: relative;
+            margin-top: 20px;
+        }
+
+        button {
+            display: inline-block;
+            padding: 10px 20px;
+            font-size: 1rem;
+            color: #fff;
+            background: #f76b1c;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 20px;
+            z-index: 2;
+            position: relative;
+            transition: background 0.3s;
+        }
+
+        button:hover {
+            background: #d6541b;
+        }
+
+        .separator {
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, #f76b1c, #f6d365);
+            margin: 30px 0;
+            z-index: 2;
+            position: relative;
         }
     </style>
 </head>
@@ -121,18 +124,19 @@
             अगर आप सफल नहीं हुए, तो लोग आपका <span class="highlight">मज़ाक</span> उड़ाएंगे।  
             सच यह है कि लोग आपकी सफलता से नहीं, आपकी <span class="highlight">असफलता</span> से खुश होते हैं।
         </p>
-        <hr>
+        <div class="separator"></div>
         <p>
             मेरा मानना है कि सपने खुद के लिए होते हैं।  
             उन्हें <span class="highlight">दुनिया</span> के सामने तब तक प्रकट न करें,  
             जब तक आप उन्हें पूरी तरह हासिल न कर लें।  
         </p>
-        <hr>
+        <div class="separator"></div>
         <p>
             मेरे भी कुछ सपने हैं।  
             सच कहूं तो मुझे भी नहीं पता कि मैं उन्हें पूरा कर पाऊंगा या नहीं।  
             लेकिन जब तक मैं जिंदा हूं, मेरे अंदर उन्हें पाने की <span class="highlight">इच्छा</span> ज़रूर रहेगी।
         </p>
+        <button>Read More</button>
         <footer>&mdash; Rahul Kumar Puri</footer>
     </div>
 </body>
