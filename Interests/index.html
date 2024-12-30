@@ -9,6 +9,7 @@
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
 
+        /* General Body Styling */
         body {
             margin: 0;
             padding: 0;
@@ -21,57 +22,66 @@
             min-height: 100vh;
         }
 
+        /* Header Styling */
         h1 {
-            font-size: 2.5rem;
-            margin: 40px 0;
-            color: #f76b1c;
+            font-size: 3rem;
+            margin: 50px 0;
+            color: #ffffff;
             text-align: center;
+            text-shadow: 2px 4px 6px rgba(0, 0, 0, 0.4);
             text-transform: uppercase;
         }
 
+        /* Section for Cards */
         .interest-section {
             display: flex;
             justify-content: center;
             flex-wrap: wrap;
-            gap: 20px;
+            gap: 25px;
             padding: 20px;
         }
 
+        /* Cards Styling */
         .interest-card {
-            width: 300px;
-            background: #fff;
+            width: 320px;
+            background: rgba(255, 255, 255, 0.9);
             border-radius: 15px;
-            padding: 20px;
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+            padding: 25px;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
             text-align: center;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
 
         .interest-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 25px rgba(0, 0, 0, 0.3);
+            transform: translateY(-15px);
+            box-shadow: 0 20px 35px rgba(0, 0, 0, 0.3);
         }
 
+        /* Icon Styling */
         .interest-icon {
-            font-size: 3rem;
-            margin-bottom: 15px;
+            font-size: 3.5rem;
+            margin-bottom: 20px;
             color: #f76b1c;
         }
 
+        /* Title Styling */
         .interest-title {
-            font-size: 1.5rem;
-            margin-bottom: 10px;
+            font-size: 1.8rem;
+            margin-bottom: 15px;
             color: #333;
             font-weight: bold;
+            text-transform: capitalize;
         }
 
+        /* Backside Description */
         .interest-backside {
             font-size: 1rem;
             color: #555;
-            line-height: 1.5;
+            line-height: 1.7;
             text-align: justify;
         }
 
+        /* Links */
         a.clickable-link {
             color: #f76b1c;
             text-decoration: none;
@@ -80,22 +90,25 @@
 
         a.clickable-link:hover {
             text-decoration: underline;
+            color: #d6541b;
         }
 
+        /* Button Styling */
         button {
             margin-top: 20px;
-            padding: 10px 15px;
-            font-size: 1rem;
+            padding: 12px 18px;
+            font-size: 1.1rem;
             color: #fff;
             background: #f76b1c;
             border: none;
             border-radius: 5px;
             cursor: pointer;
-            transition: background 0.3s;
+            transition: background 0.3s, transform 0.2s;
         }
 
         button:hover {
             background: #d6541b;
+            transform: scale(1.05);
         }
     </style>
 </head>
@@ -117,7 +130,7 @@
             <div class="interest-icon">⚛️</div>
             <div class="interest-title">Coding</div>
             <div class="interest-backside">
-                Main abhi coding bhi seekh raha hoon, lekin Python, HTML, CSS, aur JavaScript ko achhe se samajh sakta hoon. Saath hi thoda-bahut Java bhi seekh raha hoon.
+                Main abhi coding bhi seekh raha hoon, lekin <strong>Python</strong>, <strong>HTML</strong>, <strong>CSS</strong>, aur <strong>JavaScript</strong> ko achhe se samajh sakta hoon. Saath hi thoda-bahut <strong>Java</strong> bhi seekh raha hoon.
             </div>
         </div>
 
@@ -139,7 +152,7 @@
             <div class="interest-icon">🎬</div>
             <div class="interest-title">Cinema</div>
             <div class="interest-backside">
-                Mujhe Filme dekhna pasand hai (Only Bollywood and Hollywood). My Fav Actor: Shahid Kapoor.
+                Mujhe Filme dekhna pasand hai (<strong>Bollywood</strong> and <strong>Hollywood</strong>). My Fav Actor: <strong>Shahid Kapoor</strong>.
             </div>
         </div>
 
@@ -148,7 +161,7 @@
             <div class="interest-icon">⚖️</div>
             <div class="interest-title">Politics</div>
             <div class="interest-backside">
-                Following and supporting the BJP's Vision for India.
+                Following and supporting the <strong>BJP</strong>'s Vision for India.
             </div>
         </div>
 
@@ -158,6 +171,7 @@
             <div class="interest-title">Writing</div>
             <div class="interest-backside">
                 Bachpan se hi mujhe kuchh-kuchh likhne ka shauk hai, aur isi shauk ki wajah se main ek chhota sa writer hoon.
+                <a href="https://www.example.com/my-stories" class="clickable-link">Read My Articles</a>.
             </div>
         </div>
     </div>
