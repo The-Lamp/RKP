@@ -22,49 +22,72 @@
             text-align: center;
             background: rgba(255, 255, 255, 0.1);
             padding: 30px;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            border-radius: 15px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+            position: relative;
         }
         h1 {
             font-size: 3rem;
             margin-bottom: 20px;
             text-transform: uppercase;
             color: #ffdf00;
+            letter-spacing: 2px;
         }
         p {
-            font-size: 1.2rem;
-            line-height: 1.8;
-            margin-bottom: 20px;
+            font-size: 1.3rem;
+            line-height: 2;
+            margin-bottom: 30px;
         }
         footer {
-            margin-top: 20px;
-            font-size: 0.9rem;
+            margin-top: 30px;
+            font-size: 1rem;
             color: #ccc;
-            text-align: right; /* Aligns text to the right */
+            text-align: right;
         }
-
+        hr {
+            border: none;
+            height: 1px;
+            background: rgba(255, 255, 255, 0.2);
+            margin: 20px 0;
+        }
         #top-logo {
-    position: absolute;
-    top: 10px; /* Distance from top */
-    left: 10px; /* Distance from left (change to `right: 10px` for right side) */
-    z-index: 1000; /* Ensures it's above other content */
-}
-
-#top-logo img {
-    max-height: 30px; /* Smaller logo height */
-    width: auto;      /* Maintain aspect ratio */
-    display: block;
-}
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            z-index: 1000;
+        }
+        #top-logo img {
+            max-height: 40px;
+            width: auto;
+            display: block;
+        }
+        .highlight {
+            color: #ffdf00;
+            font-weight: bold;
+        }
     </style>
 </head>
 <body>
     <div id="top-logo">
-    <img src="Blacklogo.png" alt="Brand Logo">
+        <img src="Blacklogo.png" alt="Brand Logo">
     </div>
     <div class="container">
         <h1>My Aim</h1>
-        <p>Apne sapne kisi ke saath share mat kariye, kyunki agar aapke sapne pure nahi hote, toh log aapka mazak udayenge. Log aapke baare me nahi sochte, unhe sirf aapko girta dekhne ka maza aata hai. Main apne sare sapne aapke saath share kar sakta tha, lekin maine nahi kiya. Mera aapse bas ek nivedan hai ki apne sapno ko apne andar hi rakhiye. Jab tak aap unhe poori tarah se hasil na kar lein, unhe duniya ke samne mat layiye.</p>
-        <p>Ab zara main apne sapno ki bhi baat kar loon. To asal mein mujhe khud bhi nahi pata ki main wo sab kar paunga ya nahi jo maine socha hai, lekin jab tak zinda hoon, mere andar un sapno ko paane ki khwahish zarur rahegi.</p>
+        <p>
+            Apne sapne kisi ke saath <span class="highlight">share mat kariye</span>, kyunki agar aapke sapne pure nahi hote, toh log aapka mazak udayenge.
+        </p>
+        <hr>
+        <p>
+            Log aapke baare me nahi sochte, unhe sirf aapko girta dekhne ka maza aata hai. Main apne sare sapne aapke saath share kar sakta tha, lekin maine nahi kiya.
+        </p>
+        <hr>
+        <p>
+            Mera aapse bas ek <span class="highlight">nivedan</span> hai ki apne sapno ko apne andar hi rakhiye. Jab tak aap unhe poori tarah se hasil na kar lein, unhe duniya ke samne mat layiye.
+        </p>
+        <hr>
+        <p>
+            Ab zara main apne sapno ki bhi baat kar loon. To asal mein mujhe khud bhi nahi pata ki main wo sab kar paunga ya nahi jo maine socha hai, lekin jab tak zinda hoon, mere andar un sapno ko paane ki khwahish zarur rahegi.
+        </p>
         <footer>&mdash; by Rahul Kumar Puri</footer>
     </div>
 </body>
