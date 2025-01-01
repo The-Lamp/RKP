@@ -75,12 +75,12 @@
 
         /* Backside Description */
         .interest-backside {
-    font-size: 1rem;
-    color: #555;
-    line-height: 1.6; /* Adjusted for proper spacing */
-    text-align: justify;
+            font-size: 1rem;
+            color: #555;
+            line-height: 1.7;
+            text-align: justify;
         }
-        
+
         /* Links */
         a.clickable-link {
             color: #f76b1c;
@@ -110,69 +110,6 @@
             background: #d6541b;
             transform: scale(1.05);
         }
-
-        /* Highlight Container Styling with Animation */
-.highlight-container {
-    font-weight: bold;
-    color: #f76b1c;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    background: rgba(255, 255, 255, 0.3);
-    padding: 5px 10px;
-    border-radius: 8px;
-    position: relative;
-    overflow: hidden;
-    margin: 0 10px; /* Increased margin for better spacing */
-}
-
-.highlight-container::before,
-.highlight-container::after {
-    content: '>>>';
-    color: #d6541b;
-    font-weight: bold;
-    margin-right: 5px;
-    opacity: 0;
-    position: absolute;
-    left: 15px; /* Adjusted spacing from the link */
-    animation: fade-in-out 3s infinite;
-}
-
-.highlight-container::after {
-    content: '<<<';
-    margin-right: 0;
-    margin-left: 5px;
-    left: auto;
-    right: 15px; /* Adjusted spacing from the link */
-    animation: fade-in-out 3s infinite reverse;
-}
-
-@keyframes fade-in-out {
-    0% {
-        opacity: 0;
-        transform: translateX(-10px);
-    }
-    50% {
-        opacity: 1;
-        transform: translateX(0);
-    }
-    100% {
-        opacity: 0;
-        transform: translateX(10px);
-    }
-}
-
-.highlight-container .clickable-link {
-    color: #d6541b;
-    font-weight: bold;
-    text-decoration: none;
-    margin: 0 10px;
-}
-
-.highlight-container .clickable-link:hover {
-    text-decoration: underline;
-    color: #f76b1c;
-}
     </style>
 </head>
 <body>
@@ -183,11 +120,8 @@
             <div class="interest-icon">🚀</div>
             <div class="interest-title">Technology</div>
             <div class="interest-backside">
-                Mai apni life me kuchh alag aur creative karna chahta hu, jo ab tak kisi ne nahi socha ho. lekin filhal mere pas abhi koi idea nahi hai lekin Agar aap kuch suggest kar sakte ho, jo mind blowing ho, to
-                <span class="highlight-container">
-    <a href="https://www.instagram.com/cyb_rahul" class="clickable-link">mujhe yaha message karo</a>
-                </span>
-<div style="border-bottom: 2px solid #f76b1c; margin-top: 5px; width: fit-content;"></div>
+                Mai apni life me kuchh alag aur creative karna chahta hu, jo ab tak kisi ne nahi socha ho. lekin filhal mere pas abhi koi idea nahi hai lekin Agar aap kuch suggest kar sakte ho, jo mind blowing ho, to 
+                <a href="https://www.instagram.com/cyb_rahul" class="clickable-link">mujhe yaha message karo</a>.
             </div>
         </div>
 
@@ -215,12 +149,11 @@
 
         <!-- Card 4 -->
         <div class="interest-card">
-    <div class="interest-icon">🎬</div>
-    <div class="interest-title">Cinema</div>
-    <div class="interest-backside">
-        Mujhe Filme dekhna pasand hai (lekin sirf <strong>Bollywood</strong> aur <strong>Hollywood</strong>). <br><br>
-        My Fav Actor : <strong> Shahid Kapoor</strong> <br>
-    </div>
+            <div class="interest-icon">🎬</div>
+            <div class="interest-title">Cinema</div>
+            <div class="interest-backside">
+                Mujhe Filme dekhna pasand hai (lekin sirf <strong>Bollywood</strong> and <strong>Hollywood</strong>). My Fav Actor: <strong>Shahid Kapoor</strong>.
+            </div>
         </div>
 
         <!-- Card 5 -->
@@ -238,10 +171,7 @@
             <div class="interest-title">Writing</div>
             <div class="interest-backside">
                 Bachpan se hi mujhe kuchh-kuchh likhne ka shauk hai, aur isi shauk ki wajah se main ek chhota sa writer hoon.
-                <span class="highlight-container">
-    <a href="https://the-lamp.github.io/RKP/Books/" class="clickable-link">Read My Articles</a>
-                </span>
-<div style="border-bottom: 2px solid #f76b1c; margin-top: 5px; width: fit-content;"></div>
+                <a href="https://the-lamp.github.io/RKP/Books/" class="clickable-link">Read My Articles</a>.
             </div>
         </div>
     </div>
