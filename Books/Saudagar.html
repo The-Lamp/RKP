@@ -84,31 +84,29 @@
             margin-right: 10px;
         }
 
-        .page {
-    flex: 0 0 auto; /* Ensures fixed dimensions */
-    width: 80vw; /* Set consistent width */
-    height: 90vh; /* Set consistent height */
-    display: flex;
-    justify-content: center;
-    align-items: center;
+        /* Default styles for mobile devices */
+.page {
+    flex: 0 0 auto;
+    width: 100vw; /* Full width for mobile devices */
+    height: auto; /* Automatic height for mobile screens */
+    display: block; /* Default display for mobile */
     background-color: #fff;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    margin: 5px auto; /* Centers the pages */
-    transition: transform 0.2s ease; /* Smooth zoom */
+    margin: 0 auto;
+    box-shadow: none; /* Remove shadow on mobile */
+    transform: none; /* No zoom on mobile */
+    transition: none; /* No animation on mobile */
 }
 
+/* Styles for large screens (Desktop, MacBook, etc.) */
 @media (min-width: 1024px) {
     .page {
-        flex: 0 0 auto; /* Ensures fixed dimensions */
-        width: 80vw; /* Set consistent width */
-        height: 90vh; /* Set consistent height */
-        display: flex;
+        width: 80vw; /* Smaller width for desktops */
+        height: 90vh; /* Fixed height for desktops */
+        display: flex; /* Flex layout for larger screens */
         justify-content: center;
         align-items: center;
-        background-color: #fff;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        margin: 5px auto; /* Centers the pages */
-        transition: transform 0.2s ease; /* Smooth zoom */
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Add shadow */
+        transition: transform 0.2s ease;
     }
 
     .zoom-controls {
@@ -116,9 +114,10 @@
     }
 }
 
+/* Hide zoom controls on mobile devices */
 @media (max-width: 1023px) {
     .zoom-controls {
-        display: none; /* Hide zoom controls on smaller screens */
+        display: none; /* Do not show zoom controls */
     }
 }
 
@@ -281,28 +280,29 @@ checkAndScroll();
 
     let zoomLevel = 1;
 
-    // Check if screen is large enough
+    // Check if the device has a large screen
     function isLargeScreen() {
-        return window.innerWidth >= 1024; // Only apply on screens wider than 1024px
+        return window.innerWidth >= 1024; // Only enable zoom for screens >= 1024px
     }
 
-    // Function to adjust zoom
+    // Adjust zoom functionality for large screens
     function adjustZoom(factor) {
         if (isLargeScreen()) {
             zoomLevel *= factor; // Update zoom level
             const pages = document.querySelectorAll('.page');
             pages.forEach(page => {
-                page.style.transform = `scale(${zoomLevel})`;
+                page.style.transform = `scale(${zoomLevel})`; // Apply zoom
             });
         }
     }
 
-    // Apply the zoom level when navigating between pages
-    document.querySelector('.viewer').addEventListener('scroll', () => {
-        if (isLargeScreen()) {
-            const pages = document.querySelectorAll('.page');
+    // Reset zoom and styling when navigating between pages
+    window.addEventListener('resize', () => {
+        const pages = document.querySelectorAll('.page');
+        if (!isLargeScreen()) {
+            zoomLevel = 1; // Reset zoom for mobile devices
             pages.forEach(page => {
-                page.style.transform = `scale(${zoomLevel})`;
+                page.style.transform = "none"; // No scaling for mobile
             });
         }
     });
