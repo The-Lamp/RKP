@@ -95,16 +95,33 @@
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     margin: 5px auto; /* Centers the pages */
     transition: transform 0.2s ease; /* Smooth zoom */
-        }
-
-        .zoom-controls {
-    position: fixed;
-    bottom: 20px;
-    left: 20px;
-    display: flex;
-    gap: 10px;
-    z-index: 1000;
 }
+
+@media (min-width: 1024px) {
+    .page {
+        flex: 0 0 auto; /* Ensures fixed dimensions */
+        width: 80vw; /* Set consistent width */
+        height: 90vh; /* Set consistent height */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: #fff;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        margin: 5px auto; /* Centers the pages */
+        transition: transform 0.2s ease; /* Smooth zoom */
+    }
+
+    .zoom-controls {
+        display: flex; /* Show zoom controls only on large screens */
+    }
+}
+
+@media (max-width: 1023px) {
+    .zoom-controls {
+        display: none; /* Hide zoom controls on smaller screens */
+    }
+}
+
 .zoom-controls button {
     background-color: #333;
     color: #fff;
@@ -264,21 +281,30 @@ checkAndScroll();
 
     let zoomLevel = 1;
 
+    // Check if screen is large enough
+    function isLargeScreen() {
+        return window.innerWidth >= 1024; // Only apply on screens wider than 1024px
+    }
+
     // Function to adjust zoom
     function adjustZoom(factor) {
-        zoomLevel *= factor; // Update zoom level
-        const pages = document.querySelectorAll('.page');
-        pages.forEach(page => {
-            page.style.transform = `scale(${zoomLevel})`;
-        });
+        if (isLargeScreen()) {
+            zoomLevel *= factor; // Update zoom level
+            const pages = document.querySelectorAll('.page');
+            pages.forEach(page => {
+                page.style.transform = `scale(${zoomLevel})`;
+            });
+        }
     }
 
     // Apply the zoom level when navigating between pages
     document.querySelector('.viewer').addEventListener('scroll', () => {
-        const pages = document.querySelectorAll('.page');
-        pages.forEach(page => {
-            page.style.transform = `scale(${zoomLevel})`;
-        });
+        if (isLargeScreen()) {
+            const pages = document.querySelectorAll('.page');
+            pages.forEach(page => {
+                page.style.transform = `scale(${zoomLevel})`;
+            });
+        }
     });
 </script>
 </body>
