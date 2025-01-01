@@ -83,6 +83,40 @@
             height: 30px;
             margin-right: 10px;
         }
+
+        .page {
+    flex: 0 0 auto; /* Ensures fixed dimensions */
+    width: 80vw; /* Set consistent width */
+    height: 90vh; /* Set consistent height */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin: 5px auto; /* Centers the pages */
+    transition: transform 0.2s ease; /* Smooth zoom */
+        }
+
+        .zoom-controls {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    display: flex;
+    gap: 10px;
+    z-index: 1000;
+}
+.zoom-controls button {
+    background-color: #333;
+    color: #fff;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    font-size: 18px;
+    cursor: pointer;
+}
+.zoom-controls button:hover {
+    background-color: #555;
+}
     </style>
 </head>
 <body>
@@ -98,6 +132,11 @@
         <div class="page"><img src="images/Three.jpg" alt="Page 3"></div>
     </div>
 
+    <div class="zoom-controls">
+    <button onclick="adjustZoom(1.1)">+</button>
+    <button onclick="adjustZoom(0.9)">-</button>
+    </div>
+    
     <!-- Download Logo -->
     <div class="download-logo" onclick="redirectToDownload()">
         <img src="images/Download.png" alt="Download">
@@ -222,6 +261,25 @@ document.querySelector('.viewer').addEventListener('scroll', () => {
 
 // Run the check when the page loads
 checkAndScroll();
+
+    let zoomLevel = 1;
+
+    // Function to adjust zoom
+    function adjustZoom(factor) {
+        zoomLevel *= factor; // Update zoom level
+        const pages = document.querySelectorAll('.page');
+        pages.forEach(page => {
+            page.style.transform = `scale(${zoomLevel})`;
+        });
+    }
+
+    // Apply the zoom level when navigating between pages
+    document.querySelector('.viewer').addEventListener('scroll', () => {
+        const pages = document.querySelectorAll('.page');
+        pages.forEach(page => {
+            page.style.transform = `scale(${zoomLevel})`;
+        });
+    });
 </script>
 </body>
 </html>
