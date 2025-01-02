@@ -164,12 +164,28 @@
     width: auto;      /* Maintain aspect ratio */
     display: block;
 }
+
+        #top-logo2 {
+    position: absolute;
+    top: 10px; /* Distance from top */
+    right: 10px; /* Distance from right (change to `right: 10px` for right side) */
+    z-index: 1000; /* Ensures it's above other content */
+}
+
+#top-logo2 img {
+    max-height: 30px; /* Smaller logo height */
+    width: auto;      /* Maintain aspect ratio */
+    display: block;
+}
     </style>
 </head>
 <body>
     <div id="top-logo">
     <img src="Blacklogo.png" alt="Brand Logo">
     </div>
+        <div id="top-logo2">
+    <img src="Blacklogo.png" alt="Brand Logo">
+        </div>
     <!-- PUBG Logo -->
     <img src="Pubglogo.png" alt="PUBG Logo" class="pubg-logo">
     <h1>Play BGMI With Me</h1>
