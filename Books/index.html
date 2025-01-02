@@ -227,37 +227,56 @@
     }
 
         .footer {
-    background-color: #1a1a1a;
+    background-color: #0a0a0a;
     color: #ffffff;
-    padding: 20px 0;
+    padding: 40px 20px;
     text-align: center;
     position: relative;
     bottom: 0;
     width: 100%;
 }
 
+.footer .brand h1 {
+    font-size: 32px;
+    margin: 0;
+    color: #ff9800;
+}
+
+.footer .brand p {
+    font-size: 16px;
+    margin: 5px 0 20px 0;
+    color: #d3d3d3;
+}
+
 .footer h2 {
-    margin-bottom: 10px;
-    font-size: 24px;
+    margin-bottom: 15px;
+    font-size: 22px;
+    color: #ffffff;
 }
 
 .footer .social-icons {
     display: flex;
     justify-content: center;
-    gap: 20px;
-    margin: 15px 0;
+    gap: 25px;
+    margin: 20px 0;
 }
 
 .footer .social-icon {
     color: #ffffff;
     text-decoration: none;
-    font-size: 28px;
+    font-size: 30px;
     transition: transform 0.3s, color 0.3s;
 }
 
 .footer .social-icon:hover {
-    transform: scale(1.2);
-    color: #00bcd4;
+    transform: scale(1.3);
+    color: #ff9800;
+}
+
+.footer-bottom p {
+    margin: 20px 0 0 0;
+    font-size: 14px;
+    color: #d3d3d3;
 }
 
 </style>
@@ -403,9 +422,13 @@
 
 
 
-  <!-- Footer Section -->
+ <!-- Footer Section -->
     <footer class="footer">
         <div class="container">
+            <div class="brand">
+                <h1>The Lamp</h1>
+                <p>Illuminating your path</p>
+            </div>
             <div class="footer-content">
                 <h2>Connect With Us</h2>
                 <div class="social-icons">
@@ -422,6 +445,9 @@
                         <i class="fab fa-linkedin-in"></i>
                     </a>
                 </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2025 The Lamp. All rights reserved.</p>
             </div>
         </div>
     </footer>
