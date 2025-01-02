@@ -226,6 +226,40 @@
 
     }
 
+        .footer {
+    background-color: #1a1a1a;
+    color: #ffffff;
+    padding: 20px 0;
+    text-align: center;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+}
+
+.footer h2 {
+    margin-bottom: 10px;
+    font-size: 24px;
+}
+
+.footer .social-icons {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin: 15px 0;
+}
+
+.footer .social-icon {
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 28px;
+    transition: transform 0.3s, color 0.3s;
+}
+
+.footer .social-icon:hover {
+    transform: scale(1.2);
+    color: #00bcd4;
+}
+
 </style>
 
 </head>
@@ -369,20 +403,28 @@
 
 
 
-    <div class="section-6">
-
-        <div class="footer-with-links">
-
-            <div>
-
-                <div class="paragraph-tiny">&copy;The Lamp</div>
-
+  <!-- Footer Section -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <h2>Connect With Us</h2>
+                <div class="social-icons">
+                    <a href="https://www.instagram.com" target="_blank" class="social-icon" aria-label="Instagram">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="https://www.snapchat.com" target="_blank" class="social-icon" aria-label="Snapchat">
+                        <i class="fab fa-snapchat-ghost"></i>
+                    </a>
+                    <a href="https://www.bgmi.com" target="_blank" class="social-icon" aria-label="BGMI">
+                        <i class="fas fa-gamepad"></i>
+                    </a>
+                    <a href="https://www.linkedin.com" target="_blank" class="social-icon" aria-label="LinkedIn">
+                        <i class="fab fa-linkedin-in"></i>
+                    </a>
+                </div>
             </div>
-
         </div>
-
-    </div>
-
+    </footer>
 </body>
 
 </html>
