@@ -91,27 +91,29 @@ function updateCountdown() {
   const timeDiff = birthDate - now;
 
     // Logic to determine what text to show
-  if (now.getMonth() === 5 && now.getDate() >= 1 && now.getDate() < 25) {
-    replaceHeaderText("Next Month is My Birthday");
-  } else if (now.getMonth() === 6 && now.getDate() >= 1 && now.getDate() < 18) {
-    replaceHeaderText("This Month is My Birthday");
-  } else if (now.getMonth() === 6 && now.getDate() >= 18 && now.getDate() < 25) {
-    replaceHeaderText("Next Week is My Birthday");
-  } else if (now.getMonth() === 6 && now.getDate() === 24) {
-    replaceHeaderText("Yesterday is My Birthday");
-  } else if (now.getMonth() === 6 && now.getDate() === 25) {
-    // Hide countdown and age calculator on the birthday
-    clearInterval(countdownInterval);
-    showBirthdayMessage();
-    return;
-  } else if (now.getMonth() === 6 && now.getDate() > 25) {
-    replaceHeaderText("Countdown to My Birthday");
-    mainCountdownElement.style.display = 'none';
-    ageContainerElement.style.display = 'none';
-    return;
-  } else {
-    replaceHeaderText("Countdown to My Birthday");
-  }
+if (now.getMonth() === 5 && now.getDate() >= 1 && now.getDate() < 25) {
+  replaceHeaderText("Next Month is My Birthday");
+} else if (now.getMonth() === 6 && now.getDate() >= 1 && now.getDate() < 18) {
+  replaceHeaderText("This Month is My Birthday");
+} else if (now.getMonth() === 6 && now.getDate() >= 18 && now.getDate() < 22) {
+  replaceHeaderText("Next Week is My Birthday");
+} else if (now.getMonth() === 6 && now.getDate() >= 22 && now.getDate() < 25) {
+  replaceHeaderText("This Week is My Birthday");
+} else if (now.getMonth() === 6 && now.getDate() === 24) {
+  replaceHeaderText("Yesterday is My Birthday");
+} else if (now.getMonth() === 6 && now.getDate() === 25) {
+  // Hide countdown and age calculator on the birthday
+  clearInterval(countdownInterval);
+  showBirthdayMessage();
+  return;
+} else if (now.getMonth() === 6 && now.getDate() > 25) {
+  replaceHeaderText("Countdown to My Birthday");
+  mainCountdownElement.style.display = 'none';
+  ageContainerElement.style.display = 'none';
+  return;
+} else {
+  replaceHeaderText("Countdown to My Birthday");
+}
 
   // Update countdown values
   if (timeDiff > 0) {
