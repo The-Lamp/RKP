@@ -60,57 +60,52 @@
   <div id="balloon-container"></div>
   
   <script>
-    const targetDate = new Date(new Date().getFullYear(), 0, 03, 0, 0, 0); // January 4th
-    const mainCountdownElement = document.getElementById('countdown');
-    const finalCountdownElement = document.getElementById('final-countdown');
-    const birthdayMessageElement = document.getElementById('birthday-message');
-    const confettiContainer = document.getElementById('confetti-container');
-    const balloonContainer = document.getElementById('balloon-container');
+    const targetDate = new Date(new Date().getFullYear(), 0, 4, 0, 0, 0); // January 4th
+const mainCountdownElement = document.getElementById('countdown');
+const birthdayMessageElement = document.getElementById('birthday-message');
+const confettiContainer = document.getElementById('confetti-container');
+const balloonContainer = document.getElementById('balloon-container');
 
-    function updateCountdown() {
-      const now = new Date();
-      const timeDiff = targetDate - now;
+// Function to replace header text
+function replaceHeaderText() {
+  const header = document.querySelector('header h1');
+  if (header) {
+    header.textContent = "Today is My Birthday";
+  }
+}
 
-      if (timeDiff > 0) {
-        const months = Math.floor(timeDiff / (1000 * 60 * 60 * 24 * 30));
-        const days = Math.floor((timeDiff % (1000 * 60 * 60 * 24 * 30)) / (1000 * 60 * 60 * 24));
-        const hours = Math.floor((timeDiff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-        const minutes = Math.floor((timeDiff % (1000 * 60 * 60)) / (1000 * 60));
-        const seconds = Math.floor((timeDiff % (1000 * 60)) / 1000);
+// Function to display the birthday message
+function showBirthdayMessage() {
+  replaceHeaderText(); // Replace header text
+  birthdayMessageElement.style.display = 'block';
+  launchConfetti();
+  launchBalloons();
+}
 
-        document.getElementById('months').textContent = months;
-        document.getElementById('days').textContent = days;
-        document.getElementById('hours').textContent = hours;
-        document.getElementById('minutes').textContent = minutes;
-        document.getElementById('seconds').textContent = seconds;
-      } else {
-        clearInterval(countdownInterval);
-        startFinalCountdown();
-      }
-    }
+// Countdown update function
+function updateCountdown() {
+  const now = new Date();
+  const timeDiff = targetDate - now;
 
-function startFinalCountdown() {
-      mainCountdownElement.style.display = 'none';
-      finalCountdownElement.parentElement.style.display = 'block';
+  if (timeDiff > 0) {
+    const months = Math.floor(timeDiff / (1000 * 60 * 60 * 24 * 30));
+    const days = Math.floor((timeDiff % (1000 * 60 * 60 * 24 * 30)) / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((timeDiff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const minutes = Math.floor((timeDiff % (1000 * 60 * 60)) / (1000 * 60));
+    const seconds = Math.floor((timeDiff % (1000 * 60)) / 1000);
 
-      let countdown = 3;
-      finalCountdownElement.textContent = countdown;
+    document.getElementById('months').textContent = months;
+    document.getElementById('days').textContent = days;
+    document.getElementById('hours').textContent = hours;
+    document.getElementById('minutes').textContent = minutes;
+    document.getElementById('seconds').textContent = seconds;
+  } else {
+    clearInterval(countdownInterval);
+    showBirthdayMessage();
+  }
+}
 
-      const finalInterval = setInterval(() => {
-        countdown--;
-        finalCountdownElement.textContent = countdown;
-
-        if (countdown <= 0) {
-          clearInterval(finalInterval);
-          finalCountdownElement.parentElement.style.display = 'none';
-          birthdayMessageElement.style.display = 'block';
-          launchConfetti();
-          launchBalloons();
-        }
-      }, 1000);
-    }
-
-  // Set your birthdate (25 July 2007)
+// Set your birthdate (25 July 2007)
 const birthDate = new Date("2007-07-25T00:00:00"); // YYYY-MM-DD format
 
 // Function to calculate live age
@@ -147,51 +142,57 @@ function calculateAge() {
 // Call the function every second to update the age live
 setInterval(calculateAge, 1000);
 
-    function launchConfetti() {
-      for (let i = 0; i < 100; i++) {
-        const confetti = document.createElement('div');
-        confetti.classList.add('confetti');
-        confetti.style.left = Math.random() * 100 + 'vw';
-        confetti.style.animationDelay = Math.random() * 3 + 's';
-        confetti.style.backgroundColor = randomColor();
-        confettiContainer.appendChild(confetti);
-      }
-    }
+// Function to launch confetti
+function launchConfetti() {
+  for (let i = 0; i < 100; i++) {
+    const confetti = document.createElement('div');
+    confetti.classList.add('confetti');
+    confetti.style.left = Math.random() * 100 + 'vw';
+    confetti.style.animationDelay = Math.random() * 3 + 's';
+    confetti.style.backgroundColor = randomColor();
+    confettiContainer.appendChild(confetti);
+  }
+}
 
-    function randomColor() {
-      const colors = ['#ff6a00', '#ee0979', '#fad0c4', '#ff0077', '#00c9ff'];
-      return colors[Math.floor(Math.random() * colors.length)];
-    }
+// Function to generate a random color
+function randomColor() {
+  const colors = ['#ff6a00', '#ee0979', '#fad0c4', '#ff0077', '#00c9ff'];
+  return colors[Math.floor(Math.random() * colors.length)];
+}
 
-    function launchBalloons() {
-      for (let i = 0; i < 20; i++) {
-        const balloon = document.createElement('div');
-        balloon.classList.add('balloon');
-        balloon.textContent = '🎈';
-        balloon.style.left = Math.random() * 100 + 'vw';
-        balloon.style.animationDelay = Math.random() * 5 + 's';
+// Function to launch balloons
+function launchBalloons() {
+  for (let i = 0; i < 20; i++) {
+    const balloon = document.createElement('div');
+    balloon.classList.add('balloon');
+    balloon.textContent = '🎈';
+    balloon.style.left = Math.random() * 100 + 'vw';
+    balloon.style.animationDelay = Math.random() * 5 + 's';
 
-        balloon.addEventListener('click', () => popBalloon(balloon));
-        balloonContainer.appendChild(balloon);
-      }
-    }
+    balloon.addEventListener('click', () => popBalloon(balloon));
+    balloonContainer.appendChild(balloon);
+  }
+}
+
+// Function to pop a balloon
 function popBalloon(balloon) {
-      const blast = document.createElement('div');
-      blast.classList.add('blast');
-      blast.textContent = '💥';
-      blast.style.left = balloon.style.left;
-      blast.style.top = balloon.getBoundingClientRect().top + 'px';
+  const blast = document.createElement('div');
+  blast.classList.add('blast');
+  blast.textContent = '💥';
+  blast.style.left = balloon.style.left;
+  blast.style.top = balloon.getBoundingClientRect().top + 'px';
 
-      document.body.appendChild(blast);
+  document.body.appendChild(blast);
 
-      balloon.remove();
+  balloon.remove();
 
-      setTimeout(() => {
-        blast.remove();
-      }, 1000);
-    }
+  setTimeout(() => {
+    blast.remove();
+  }, 1000);
+}
 
-    const countdownInterval = setInterval(updateCountdown, 1000);
+// Start the countdown interval
+const countdownInterval = setInterval(updateCountdown, 1000);
   </script>
 </body>
 </html>
