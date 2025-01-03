@@ -60,24 +60,27 @@
   <div id="balloon-container"></div>
   
   <script>
-    const targetDate = new Date(new Date().getFullYear(), 0, 4, 0, 0, 0); // January 4th
+    const birthDate = new Date(new Date().getFullYear(), 6, 25); // 25 July of the current year
 const mainCountdownElement = document.getElementById('countdown');
 const birthdayMessageElement = document.getElementById('birthday-message');
+const ageContainerElement = document.getElementById('age-container');
 const confettiContainer = document.getElementById('confetti-container');
 const balloonContainer = document.getElementById('balloon-container');
 
-// Function to replace header text
-function replaceHeaderText() {
+// Function to replace the header text
+function replaceHeaderText(text) {
   const header = document.querySelector('header h1');
   if (header) {
-    header.textContent = "Today is My Birthday";
+    header.textContent = text;
   }
 }
 
 // Function to display the birthday message
 function showBirthdayMessage() {
-  replaceHeaderText(); // Replace header text
-  birthdayMessageElement.style.display = 'block';
+  replaceHeaderText("Today is My Birthday"); // Replace header text
+  mainCountdownElement.style.display = 'none'; // Hide the countdown
+  ageContainerElement.style.display = 'none'; // Hide the age calculator
+  birthdayMessageElement.style.display = 'block'; // Show the birthday message
   launchConfetti();
   launchBalloons();
 }
@@ -85,8 +88,32 @@ function showBirthdayMessage() {
 // Countdown update function
 function updateCountdown() {
   const now = new Date();
-  const timeDiff = targetDate - now;
+  const timeDiff = birthDate - now;
 
+  // Logic to determine what text to show
+  if (now.getMonth() === 5 && now.getDate() >= 1 && now.getDate() < 25) {
+    replaceHeaderText("Next Month is My Birthday");
+  } else if (now.getMonth() === 6 && now.getDate() >= 1 && now.getDate() < 18) {
+    replaceHeaderText("This Month is My Birthday");
+  } else if (now.getMonth() === 6 && now.getDate() >= 18 && now.getDate() < 25) {
+    replaceHeaderText("Next Week is My Birthday");
+  } else if (now.getMonth() === 6 && now.getDate() === 24) {
+    replaceHeaderText("Yesterday is My Birthday");
+  } else if (now.getMonth() === 6 && now.getDate() === 25) {
+    // Hide countdown and age calculator on the birthday
+    clearInterval(countdownInterval);
+    showBirthdayMessage();
+    return;
+  } else if (now.getMonth() === 6 && now.getDate() > 25) {
+    replaceHeaderText("Countdown to My Birthday");
+    mainCountdownElement.style.display = 'none';
+    ageContainerElement.style.display = 'none';
+    return;
+  } else {
+    replaceHeaderText("Countdown to My Birthday");
+  }
+
+  // Update countdown values
   if (timeDiff > 0) {
     const months = Math.floor(timeDiff / (1000 * 60 * 60 * 24 * 30));
     const days = Math.floor((timeDiff % (1000 * 60 * 60 * 24 * 30)) / (1000 * 60 * 60 * 24));
@@ -105,37 +132,42 @@ function updateCountdown() {
   }
 }
 
-// Set your birthdate (25 July 2007)
-const birthDate = new Date("2007-07-25T00:00:00"); // YYYY-MM-DD format
+// Set your actual birthdate
+const actualBirthDate = new Date("2007-07-25T00:00:00"); // YYYY-MM-DD format
 
 // Function to calculate live age
 function calculateAge() {
-  try {
-    const now = new Date();
-    let years = now.getFullYear() - birthDate.getFullYear();
-    let months = now.getMonth() - birthDate.getMonth();
-    let days = now.getDate() - birthDate.getDate();
+  const now = new Date();
 
-    // Adjust for negative values
-    if (days < 0) {
-      months--;
-      const prevMonth = new Date(now.getFullYear(), now.getMonth(), 0).getDate(); // Days in the previous month
-      days += prevMonth;
-    }
-    if (months < 0) {
-      years--;
-      months += 12;
-    }
+  // If today is the birthday, hide age calculator
+  if (now.getMonth() === 6 && now.getDate() === 25) {
+    ageContainerElement.style.display = 'none';
+    return;
+  }
 
-    // Display the calculated age
-    const ageElement = document.getElementById("live-age");
-    if (ageElement) {
-      ageElement.textContent = `${years} Years, ${months} Months, and ${days} Days`;
-    } else {
-      console.error("Element with ID 'live-age' not found.");
-    }
-  } catch (error) {
-    console.error("Error calculating age:", error);
+  ageContainerElement.style.display = 'block'; // Show age calculator on other days
+
+  let years = now.getFullYear() - actualBirthDate.getFullYear();
+  let months = now.getMonth() - actualBirthDate.getMonth();
+  let days = now.getDate() - actualBirthDate.getDate();
+
+  // Adjust for negative values
+  if (days < 0) {
+    months--;
+    const prevMonth = new Date(now.getFullYear(), now.getMonth(), 0).getDate(); // Days in the previous month
+    days += prevMonth;
+  }
+  if (months < 0) {
+    years--;
+    months += 12;
+  }
+
+  // Display the calculated age
+  const ageElement = document.getElementById("live-age");
+  if (ageElement) {
+    ageElement.textContent = `${years} Years, ${months} Months, and ${days} Days`;
+  } else {
+    console.error("Element with ID 'live-age' not found.");
   }
 }
 
