@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Birthday</title>
+  <title>Birthday Countdown</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/4.1.3/darkly/bootstrap.min.css">
   <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Russo+One&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
@@ -91,26 +91,28 @@ function updateCountdown() {
   const timeDiff = birthDate - now;
 
     // Logic to determine what text to show
-    if (now.getMonth() === 11 && now.getDate() >= 1) {
-      replaceHeaderText("Next Month is My Birthday");
-    } else if (now.getMonth() === 0 && now.getDate() >= 1 && now.getDate() < 5) {
-      replaceHeaderText("This Month is My Birthday");
-    } else if (now.getMonth() === 0 && now.getDate() === 4) {
-      replaceHeaderText("Tomorrow is My Birthday");
-    } else if (now.getMonth() === 0 && now.getDate() === 5) {
-      // Hide countdown and age calculator on the birthday
-      clearInterval(countdownInterval);
-      showBirthdayMessage();
-      return;
-    } else if (now.getMonth() === 0 && now.getDate() > 5) {
-      replaceHeaderText("Countdown to My Birthday");
-      mainCountdownElement.style.display = 'none';
-      ageContainerElement.style.display = 'none';
-      return;
-    } else {
-      replaceHeaderText("Countdown to My Birthday");
-    }
-  
+  if (now.getMonth() === 5 && now.getDate() >= 1 && now.getDate() < 25) {
+    replaceHeaderText("Next Month is My Birthday");
+  } else if (now.getMonth() === 6 && now.getDate() >= 1 && now.getDate() < 18) {
+    replaceHeaderText("This Month is My Birthday");
+  } else if (now.getMonth() === 6 && now.getDate() >= 18 && now.getDate() < 25) {
+    replaceHeaderText("Next Week is My Birthday");
+  } else if (now.getMonth() === 6 && now.getDate() === 24) {
+    replaceHeaderText("Yesterday is My Birthday");
+  } else if (now.getMonth() === 6 && now.getDate() === 25) {
+    // Hide countdown and age calculator on the birthday
+    clearInterval(countdownInterval);
+    showBirthdayMessage();
+    return;
+  } else if (now.getMonth() === 6 && now.getDate() > 25) {
+    replaceHeaderText("Countdown to My Birthday");
+    mainCountdownElement.style.display = 'none';
+    ageContainerElement.style.display = 'none';
+    return;
+  } else {
+    replaceHeaderText("Countdown to My Birthday");
+  }
+
   // Update countdown values
   if (timeDiff > 0) {
     const months = Math.floor(timeDiff / (1000 * 60 * 60 * 24 * 30));
