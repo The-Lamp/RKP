@@ -1,1 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Birthday Countdown with Balloons</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/4.1.3/darkly/bootstrap.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Russo+One&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header>
+  <h1>Countdown to My Birthday</h1>
+</header>
 
+<div id="countdown">
+  <div class="group">
+    <div class="countdown-section">
+      <div class="countdown-value" id="months">0</div>
+      <div class="countdown-label">Months</div>
+    </div>
+    <div class="countdown-section">
+      <div class="countdown-value" id="days">0</div>
+      <div class="countdown-label">Days</div>
+    </div>
+  </div>
+  <div class="group">
+    <div class="countdown-section">
+      <div class="countdown-value" id="hours">0</div>
+      <div class="countdown-label">Hours</div>
+    </div>
+    <div class="countdown-section">
+      <div class="countdown-value" id="minutes">0</div>
+      <div class="countdown-label">Minutes</div>
+    </div>
+    <div class="countdown-section">
+      <div class="countdown-value" id="seconds">0</div>
+      <div class="countdown-label">Seconds</div>
+    </div>
+  </div>
+</div>
+
+  <div id="age-container" style="text-align: center; margin-top: 50px;">
+  <h2>What's My Age?</h2>
+  <div id="live-age" style="font-size: 1.5rem; font-family: 'Russo One', sans-serif; color: #fff;"></div>
+  </div>
+  
+  <!-- Final Countdown Section -->
+  <div id="final-countdown-container" style="display: none;">
+    <div id="final-countdown">60</div>
+  </div>
+
+  <!-- Birthday Message -->
+  <div id="birthday-message" style="display: none;">
+    <h1>🎉 Today is My Birthday! 🎉</h1>
+  </div>
+
+  <!-- Confetti and Balloons -->
+  <div id="confetti-container"></div>
+  <div id="balloon-container"></div>
+  
+  <script>
+    const targetDate = new Date(new Date().getFullYear(), 0, 4, 0, 0, 0); // January 4th
+    const mainCountdownElement = document.getElementById('countdown');
+    const finalCountdownElement = document.getElementById('final-countdown');
+    const birthdayMessageElement = document.getElementById('birthday-message');
+    const confettiContainer = document.getElementById('confetti-container');
+    const balloonContainer = document.getElementById('balloon-container');
+
+    function updateCountdown() {
+      const now = new Date();
+      const timeDiff = targetDate - now;
+
+      if (timeDiff > 0) {
+        const months = Math.floor(timeDiff / (1000 * 60 * 60 * 24 * 30));
+        const days = Math.floor((timeDiff % (1000 * 60 * 60 * 24 * 30)) / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((timeDiff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((timeDiff % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((timeDiff % (1000 * 60)) / 1000);
+
+        document.getElementById('months').textContent = months;
+        document.getElementById('days').textContent = days;
+        document.getElementById('hours').textContent = hours;
+        document.getElementById('minutes').textContent = minutes;
+        document.getElementById('seconds').textContent = seconds;
+      } else {
+        clearInterval(countdownInterval);
+        startFinalCountdown();
+      }
+    }
+
+function startFinalCountdown() {
+      mainCountdownElement.style.display = 'none';
+      finalCountdownElement.parentElement.style.display = 'block';
+
+      let countdown = 60;
+      finalCountdownElement.textContent = countdown;
+
+      const finalInterval = setInterval(() => {
+        countdown--;
+        finalCountdownElement.textContent = countdown;
+
+        if (countdown <= 0) {
+          clearInterval(finalInterval);
+          finalCountdownElement.parentElement.style.display = 'none';
+          birthdayMessageElement.style.display = 'block';
+          launchConfetti();
+          launchBalloons();
+        }
+      }, 1000);
+    }
+
+  // Set your birthdate (25 July 2007)
+const birthDate = new Date("2007-07-25T00:00:00"); // YYYY-MM-DD format
+
+// Function to calculate live age
+function calculateAge() {
+  try {
+    const now = new Date();
+    let years = now.getFullYear() - birthDate.getFullYear();
+    let months = now.getMonth() - birthDate.getMonth();
+    let days = now.getDate() - birthDate.getDate();
+
+    // Adjust for negative values
+    if (days < 0) {
+      months--;
+      const prevMonth = new Date(now.getFullYear(), now.getMonth(), 0).getDate(); // Days in the previous month
+      days += prevMonth;
+    }
+    if (months < 0) {
+      years--;
+      months += 12;
+    }
+
+    // Display the calculated age
+    const ageElement = document.getElementById("live-age");
+    if (ageElement) {
+      ageElement.textContent = `${years} Years, ${months} Months, and ${days} Days`;
+    } else {
+      console.error("Element with ID 'live-age' not found.");
+    }
+  } catch (error) {
+    console.error("Error calculating age:", error);
+  }
+}
+
+// Call the function every second to update the age live
+setInterval(calculateAge, 1000);
+
+    function launchConfetti() {
+      for (let i = 0; i < 100; i++) {
+        const confetti = document.createElement('div');
+        confetti.classList.add('confetti');
+        confetti.style.left = Math.random() * 100 + 'vw';
+        confetti.style.animationDelay = Math.random() * 3 + 's';
+        confetti.style.backgroundColor = randomColor();
+        confettiContainer.appendChild(confetti);
+      }
+    }
+
+    function randomColor() {
+      const colors = ['#ff6a00', '#ee0979', '#fad0c4', '#ff0077', '#00c9ff'];
+      return colors[Math.floor(Math.random() * colors.length)];
+    }
+
+    function launchBalloons() {
+      for (let i = 0; i < 20; i++) {
+        const balloon = document.createElement('div');
+        balloon.classList.add('balloon');
+        balloon.textContent = '🎈';
+        balloon.style.left = Math.random() * 100 + 'vw';
+        balloon.style.animationDelay = Math.random() * 5 + 's';
+
+        balloon.addEventListener('click', () => popBalloon(balloon));
+        balloonContainer.appendChild(balloon);
+      }
+    }
+function popBalloon(balloon) {
+      const blast = document.createElement('div');
+      blast.classList.add('blast');
+      blast.textContent = '💥';
+      blast.style.left = balloon.style.left;
+      blast.style.top = balloon.getBoundingClientRect().top + 'px';
+
+      document.body.appendChild(blast);
+
+      balloon.remove();
+
+      setTimeout(() => {
+        blast.remove();
+      }, 1000);
+    }
+
+    const countdownInterval = setInterval(updateCountdown, 1000);
+  </script>
+</body>
+</html>
