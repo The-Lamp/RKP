@@ -1,0 +1,194 @@
+body {
+  margin: 20px; /* Add margin for proper layout spacing */
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100vh;
+  background: linear-gradient(to bottom, #ff9a9e, #fad0c4);
+  font-family: 'Pacifico', cursive;
+  color: #fff;
+  overflow: hidden;
+}
+
+/* Heading at the top */
+header {
+  position: relative; /* Changed from absolute to relative */
+  width: 100%;
+  text-align: center;
+  margin-bottom: 50px; /* Add more space below the header */
+}
+header h1 {
+  font-family: 'Russo One', sans-serif;
+  font-size: 2.5rem;
+  color: #fff;
+  text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
+  margin-bottom: 30px; /* Added spacing below heading */
+}
+
+/* Countdown Container */
+#countdown-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 20px; /* Reduced margin-top since header already has space */
+}
+
+#countdown {
+  display: flex;
+  flex-wrap: wrap; /* Allows wrapping for two rows */
+  justify-content: space-evenly; /* Proper spacing between groups */
+  gap: 50px; /* Add spacing between rows */
+  width: 100%;
+  max-width: 800px; /* Limits the countdown width */
+  padding: 10px; /* Add padding around the container */
+}
+
+/* Group styling for horizontal division */
+.group {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: 40px; /* Add spacing between countdown items */
+}
+
+/* Individual countdown sections */
+.countdown-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  font-family: 'Russo One', sans-serif;
+  width: 120px; /* Fix width for equal spacing */
+}
+
+.countdown-value {
+  font-size: 4rem;
+  background: linear-gradient(to right, #ff6a00, #ee0979);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: bold;
+  animation: pulse 1s infinite;
+  margin-bottom: 10px; /* Add spacing below numbers */
+}
+
+.countdown-label {
+  font-size: 1.5rem;
+  color: #fff;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  #countdown {
+    flex-direction: column;
+    gap: 30px; /* Adjust spacing for small screens */
+  }
+
+  .countdown-value {
+    font-size: 3rem;
+  }
+
+  .countdown-label {
+    font-size: 1rem;
+  }
+
+  .group {
+    gap: 20px; /* Reduce spacing for mobile */
+  }
+}
+
+/* Animations */
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+/* Birthday Message Styles */
+#birthday-message {
+  display: none;
+  text-align: center;
+  animation: fadeIn 1.5s ease-in-out forwards;
+  user-select: none;
+}
+
+h1 {
+  font-size: 4rem;
+  text-shadow: 3px 3px 15px rgba(0, 0, 0, 0.4);
+  color: #ff0077;
+  margin-bottom: 20px;
+}
+
+/* Confetti Animation */
+.confetti {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  background-color: #fff;
+  animation: fall 3s linear infinite;
+}
+
+@keyframes fall {
+  0% {
+    transform: translateY(-100vh) rotate(0deg);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(100vh) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+/* Random colors for confetti */
+.confetti:nth-child(odd) {
+  background-color: #ff6a00;
+}
+
+.confetti:nth-child(even) {
+  background-color: #ff0077;
+}
+
+/* Balloon Styles */
+.balloon {
+  position: absolute;
+  font-size: 4rem;
+  animation: float 5s linear infinite;
+  cursor: pointer;
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(100vh) translateX(0);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-120vh) translateX(calc(30vw * (-1 + Math.random())));
+    opacity: 0;
+  }
+}
+
+.blast {
+  position: absolute;
+  font-size: 3rem;
+  animation: blastEffect 1s ease-in-out;
+}
+
+@keyframes blastEffect {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(2);
+    opacity: 0;
+  }
+}
